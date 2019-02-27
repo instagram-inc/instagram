@@ -1,0 +1,46 @@
+.Header-header {
+    height: 10vh;
+    border-bottom: 1px solid #E6E6E6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header-img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.Header-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.Header-logo {
+    height: 30px;
+    cursor: pointer;
+}
+
+.Header-div {
+    width: 25vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Header-search {
+    border: 2px solid #E6E6E6;
+    border-radius: 5%;
+    background-color: #FAFAFA;
+    display: flex;
+    align-items: center;
+}
+
+.Header-input {
+    border:none;
+    background-color:transparent;
+    outline: none;
+    text-align: center;
+}

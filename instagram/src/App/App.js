@@ -3,12 +3,15 @@ import './App.css';
 import FollowButton from '../common/UI/FollowButton/FollowButton';
 import ArticleContainer from '../common/UI/ArticleContainer/ArticleContainer';
 import CircleImg from '../common/UI/CircleImg/CircleImg';
+import InstaHeader from '../Header/Header'
  
 class App extends Component {
   render() {
     return (
       <div className="App">
         <h1>Test</h1>
+
+        <InstaHeader />
 
         <ArticleContainer />
         <FollowButton />
