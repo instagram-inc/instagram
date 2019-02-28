@@ -1,0 +1,22 @@
+.img {
+    height: 30px;
+    cursor: pointer;
+}
+
+.activityDiv {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.grandActivityDiv {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.likes {
+    float: left;
+    font-weight: bold;
+}
