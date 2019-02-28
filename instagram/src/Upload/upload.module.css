@@ -1,0 +1,46 @@
+.parentDiv {
+    border:  2px solid #efefef;
+    width: 55%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 1%;
+}
+
+.p {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.innerDiv {
+    border-bottom: 2px solid #efefef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 22vh;
+}
+
+.input {
+    outline: none;
+    border: 2px solid #E6E6E6;
+    border-radius: 2%;
+    background-color: #FAFAFA;
+}
+
+.innerDiv2 {
+    border-bottom: 2px solid #efefef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 31vh;
+}
+.shareButton {
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    border-radius: 4px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1em;
+    padding: 1vh 6vh;
+}

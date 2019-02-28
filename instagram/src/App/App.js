@@ -5,8 +5,8 @@ import ArticleContainer from '../common/UI/ArticleContainer/ArticleContainer';
 
 import InstaHeader from '../Header/Header'
 import Post from '../common/UI/Post/Post';
-// import ActivityIcons from '../common/UI/ActivityIcons/ActivityIcons'
- 
+import Upload from '../Upload/upload' 
+
 class App extends Component {
   render() {
     return (
@@ -18,7 +18,7 @@ class App extends Component {
         <ArticleContainer />
         <Post />
         <FollowButton />
-                
+        <Upload />
       </div>
     );
   }
