@@ -1,7 +1,8 @@
 import React from 'react';
 import HeaderOfPost from '../HeaderOfPost/HeaderOfPost';
 import PostPic from '../PostPic/PostPic';
-import Comment from '../Comment/Comment'
+import Comment from '../Comment/Comment';
+import ActivityIcons from '../ActivityIcons/ActivityIcons'
 import classes from './Post.module.css'
 
 const post = props => {
@@ -12,6 +13,7 @@ const post = props => {
             circleImgWidth={30} 
             />
             <PostPic srcPostPic={"http://www.artludnica.com/userfiles/productimages/product_3399.jpg"} />
+            <ActivityIcons />
             <Comment />
         </section>
 

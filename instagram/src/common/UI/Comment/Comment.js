@@ -3,7 +3,18 @@ import classes from './Comment.module.css'
 
 class Comment extends React.Component {
     state = {
-        newComment: ''
+        newComment: {
+            user: "",
+            comment : ''
+        }
+    }
+    setComment = event => {
+        const value = event.target.value;
+        console.log(value)
+        const newComment = {...this.state.newComment};
+        newComment.comment = value;
+        console.log(newComment)
+        this.setState({newComment})
     }
 
     render () {
@@ -11,7 +22,10 @@ class Comment extends React.Component {
             <div className={classes.comment}>
                 <p>test</p>
                 <div className={classes.inputContainer}>
-                    <textarea className={classes.input} placeholder="Add a comment..."type="text" />
+                    <textarea className={classes.input} 
+                    onChange={this.setComment}
+                    value={this.state.newComment.comment}
+                    placeholder="Add a comment..."type="text" />
                 </div>
             </div>
         )
