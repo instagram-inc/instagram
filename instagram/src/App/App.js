@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import FollowButton from '../common/UI/FollowButton/FollowButton';
 import ArticleContainer from '../common/UI/ArticleContainer/ArticleContainer';
-import CircleImg from '../common/UI/CircleImg/CircleImg';
+
 import InstaHeader from '../Header/Header'
+import HeaderOfPost from '../common/UI/HeaderOfPost/HeaderOfPost';
+import Post from '../common/UI/Post/Post';
  
 class App extends Component {
   render() {
@@ -14,9 +16,9 @@ class App extends Component {
         <InstaHeader />
 
         <ArticleContainer />
+        <Post />
         <FollowButton />
-        <CircleImg src={"https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"} 
-        width = {500}/>
+        
         
       </div>
     );
