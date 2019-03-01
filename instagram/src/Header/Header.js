@@ -21,8 +21,8 @@ const instaHeader = props =>
             {/* <Link to="/explore">Explore */}
                 <img className="Header-img" src="http://cdn.onlinewebfonts.com/svg/img_119257.png" alt=""></img>
             {/* </Link> */}
-            {/* <Link to="/все още нямам представа"> */}
-                <img className="Header-img" src="https://freeiconshop.com/wp-content/uploads/edd/heart-outline.png" alt="" width="24" height="24"></img>
+            {/* <Link to="/upload">Upload */}
+                <img className="Header-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7dWR4h06-0G2nWvbWsOxFGg8qPBMtze5HR37Wzneazl_ydhfSNw" alt="" width="24" height="24"></img>
             {/* </Link> */}
             {/* <Link to="/profile/:id">{props.users.name} */}
                 <img className="Header-img" src="https://png.pngtree.com/svg/20160308/db33b0089e.png" alt="" width="24" height="24"></img>

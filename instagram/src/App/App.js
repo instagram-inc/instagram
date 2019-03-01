@@ -8,6 +8,8 @@ import Post from '../common/UI/Post/Post';
 
 import { connect } from 'react-redux';
  
+import Upload from '../Upload/upload' 
+
 class App extends Component {
   render() {
     return (
@@ -20,7 +22,7 @@ class App extends Component {
         {/* <Post /> */}
         <Post props={this.props.users[0].posts[0]} />
         <FollowButton />
-                
+        <Upload />
       </div>
     );
   }
