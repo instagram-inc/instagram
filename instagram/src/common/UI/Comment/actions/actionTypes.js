@@ -1,0 +1,1 @@
+export const ADD_A_COMMENT = 'ADD_A_COMMENT';

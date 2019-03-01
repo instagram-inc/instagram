@@ -10,10 +10,8 @@ class Comment extends React.Component {
     }
     setComment = event => {
         const value = event.target.value;
-        console.log(value)
         const newComment = {...this.state.newComment};
         newComment.comment = value;
-        console.log(newComment)
         this.setState({newComment})
     }
 
