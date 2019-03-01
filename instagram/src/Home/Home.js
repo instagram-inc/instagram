@@ -1,11 +1,13 @@
+import React from 'react';
 import ArticleContainer from '../common/UI/ArticleContainer/ArticleContainer';
-import Post from '../common/UI/Post/Post';
+import ListOfPosts from '../common/UI/Post/ListOfPosts';
 
-const home = props => {
+
+const home = props =>
 (<React.Fragment>
     <ArticleContainer />
-    <Post props={this.props.users[0].posts[0]} />
+    <ListOfPosts />
 </React.Fragment>);
-}
+
 
 export default home;

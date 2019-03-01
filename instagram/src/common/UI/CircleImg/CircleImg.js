@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './CircleImg.module.css';
 
 
-const circleImg = ({props}) => {
+const circleImg = props => {
     let pic = {backgroundImage : `url("${props.srcProfilePic}")`, 
                width : props.circleImgWidth, 
                height: props.circleImgWidth};

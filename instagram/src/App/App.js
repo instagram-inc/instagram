@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-// import FollowButton from '../common/UI/FollowButton/FollowButton';
-import ArticleContainer from '../common/UI/ArticleContainer/ArticleContainer';
 
 import InstaHeader from '../Header/Header'
-import Post from '../common/UI/Post/Post';
+import Home from '../Home/Home';
 
-import { connect } from 'react-redux';
+
 import Explore from '../Explore/Explore';
 import Upload from '../Upload/upload' 
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
-import Login from '../LoginRegister/Login';
+// import Login from '../LoginRegister/Login';
 
 class App extends Component {
   render() {
@@ -24,7 +22,7 @@ class App extends Component {
           <Switch>
           {/* {isLogged ? */}
             <React.Fragment>
-              <Route exact path="/" component={ArticleContainer} /> {/*тук ще бъде Home с два ArticleContainer*/}
+              <Route exact path="/" component={Home} /> {/*тук ще бъде Home с два ArticleContainer*/}
               <Route exact path="/explore" component={Explore} />
               <Route exact path="/upload" component={Upload} />
             </React.Fragment>
@@ -32,9 +30,6 @@ class App extends Component {
             <Login />
           } */}
 
-            
-            {/* <Post /> */}
-            <Post props={this.props.users[0].posts[0]} />
             
           </Switch>
         </main>
@@ -50,11 +45,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-      users: state.users
-  }
-}
 
-// export default App;
-export default connect(mapStateToProps, null)(App);
+export default App;
+

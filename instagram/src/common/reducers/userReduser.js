@@ -5,13 +5,28 @@ const initialState = {
         {
             id:1,
             name: 'Pesho',
+            srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            followedUsers: [],
+            followersOfMe: [],
             posts: [
                 {
-                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    id: 1,
                     circleImgWidth: 30,
                     srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
-                    comments:[]
-                    
+                    comments:[],
+                    description: '',
+                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    likes: 0,
+
+                },
+                {
+                    id: 2,
+                    circleImgWidth: 30,
+                    srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
+                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    comments:[],
+                    description: '',
+                    likes: 10
                 }
             ]
         },{}

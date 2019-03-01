@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './PostPic.module.css'
 
-const postPic = ({props}) => {
+const postPic = props => {
     // let pic = {backgroundImage : `url("${props.srcPostPic}")`}
     
     return (
