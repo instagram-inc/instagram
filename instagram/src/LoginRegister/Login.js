@@ -1,9 +1,10 @@
 import React from 'react';
+import classes from './Login.module.css';
 
 class Login extends React.Component {
 
     state = {
-        newUser : {
+        loginUser : {
             email : '',
             pass : ''
         }
@@ -11,33 +12,40 @@ class Login extends React.Component {
 
     setEmail = event => {
         const value = event.target.value;
-        const newUser = {...this.state.newUser};
-        newUser.email = value;
-        this.setState({ newUser });
+        const loginUser = {...this.state.loginUser};
+        loginUser.email = value;
+        this.setState({ loginUser });
     }
     
     setPass = event => {
         const value = event.target.value;
-        const newUser = {...this.state.newUser};
-        newUser.pass = value;
-        this.setState({ newUser });
+        const loginUser = {...this.state.loginUser};
+        loginUser.pass = value;
+        this.setState({ loginUser });
+    }
+
+    onLogin = () => {
+        this.props.onLogin(this.state.newUser);
+        const loginUser = {email: '', pass: ''};
+        this.setState({ loginUser });
+        location.replace("/");
     }
 
     render() {
 
         return (
-            <div>
+            <div className={classes.container}>
                 <input
                 placeholder="Enter e-mail"
                 onChange={this.setEmail}
-                value={this.state.newUser.email}
+                value={this.state.loginUser.email}
                 >
                 </input>
 
                 <input
                 placeholder="Enter password"
                 onChange={this.setPass}
-                value={this.state.newUser.pass}
+                value={this.state.loginUser.pass}
                 >
                 </input>
 
@@ -47,4 +55,12 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+// export default Login;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: user => dispatch(setAsLogged(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login);
