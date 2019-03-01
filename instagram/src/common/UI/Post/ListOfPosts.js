@@ -3,6 +3,7 @@ import Post from './Post'
 import { connect } from 'react-redux';
 
 const listOfPosts = props => {
+    console.log(props)
     return (
         <React.Fragment >
             {props.posts.map(post => 

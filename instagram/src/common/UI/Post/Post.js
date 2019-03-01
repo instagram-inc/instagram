@@ -4,6 +4,8 @@ import PostPic from '../PostPic/PostPic';
 import Comment from '../Comment/Comment';
 import ActivityIcons from '../ActivityIcons/ActivityIcons'
 import classes from './Post.module.css'
+import { defineCurrentUser } from './actions/actions'
+import { connect } from 'react-redux';
 
 
 
@@ -17,10 +19,20 @@ const post = props => {
             <PostPic {...props} />
             <ActivityIcons />
             <Comment />
+            <button onClick={props.currentUser}>Find currentUser</button>
         </section>
 
     )
 
 }
 
-export default post
+const mapDispatchToProps = dispatch => {
+    return {
+        currentUser: () => dispatch(defineCurrentUser())
+    }
+}
+   
+
+export default connect(null, mapDispatchToProps)(post);
+
+// export default post
