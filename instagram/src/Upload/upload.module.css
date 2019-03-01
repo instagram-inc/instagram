@@ -44,3 +44,13 @@
     font-size: 1em;
     padding: 1vh 6vh;
 }
+
+@keyframes show {
+    from {opacity: 0;}
+    to {opacity: 5;}
+}
+
+.title {
+    animation-name: show;
+    animation-duration: 5s;
+}

@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import Explore from '../Explore/Explore';
 import Upload from '../Upload/upload' 
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import Login from '../LoginRegister/Login';
 
 class App extends Component {
   render() {
@@ -21,16 +22,20 @@ class App extends Component {
         
         <main>
           <Switch>
-          <Route exact path="/" component={ArticleContainer} /> {/*тук ще бъде Home с два ArticleContainer*/}
-          <Route exact path="/explore" component={Explore} />
-          <Route exact path="/upload" component={Upload} />
-            
+          {/* {isLogged ? */}
+            <React.Fragment>
+              <Route exact path="/" component={ArticleContainer} /> {/*тук ще бъде Home с два ArticleContainer*/}
+              <Route exact path="/explore" component={Explore} />
+              <Route exact path="/upload" component={Upload} />
+            </React.Fragment>
+          {/* :
+            <Login />
+          } */}
 
-            {/* <ArticleContainer /> */}
+            
             {/* <Post /> */}
             <Post props={this.props.users[0].posts[0]} />
-            {/* <FollowButton /> */}
-            <Upload />
+            
           </Switch>
         </main>
 

@@ -21,7 +21,7 @@ class Upload extends React.Component {
 
         return (
             <React.Fragment>
-                <h1>SHARE YOUR EXCITEMENTS AND EMOTIONS!</h1>
+                <h1 className={classes.title}>SHARE YOUR EXCITEMENTS AND EMOTIONS!</h1>
                 <div className={classes.parentDiv}>
                     <div className={classes.innerDiv}>
                         <p className={classes.p}>First step</p>
