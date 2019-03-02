@@ -1,5 +1,6 @@
 import { ADD_A_COMMENT,
-         DEFINE_CURRENT_USER } from './actionTypes'
+         DEFINE_CURRENT_USER,
+         NEW_USER } from './actionTypes'
 
 //comment = {userID: id, comment: 'string'};
 export const addAComment = comment => {
@@ -17,3 +18,10 @@ export const defineCurrentUser = () => {
         userID: JSON.parse(sessionStorage.getItem('currentUserId'))
     }
 }
+
+export const addNewUser = user => {
+    return {
+        type: NEW_USER,
+        user
+    }
+} 

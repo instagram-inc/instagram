@@ -1,5 +1,7 @@
 import React from 'react';
-import classes from './Register.module.css';
+// import classes from './Register.module.css';
+import { addNewUser } from '../common/UI/Post/actions/actions';
+import { connect } from 'react-redux';
 
 class Register extends React.Component {
 
@@ -7,7 +9,12 @@ class Register extends React.Component {
         newUser : {
             acc : '',
             email : '',
-            pass : ''
+            pass : '',
+            srcProfilePic : '',
+            followedUsers : [],
+            followersOfMe : [],
+            id : 2,
+            posts : []
         }
     }
 
@@ -33,7 +40,8 @@ class Register extends React.Component {
     }
 
     onAddUSer = () => {
-        this.props.onAddAlcohol(this.state.newUser);
+        
+        this.props.onAddUSer(this.state.newUser);
         const newUser = {acc: '', email: '', pass: ''};
         this.setState({ newUser });
         this.props.history.goBack();
@@ -64,7 +72,7 @@ class Register extends React.Component {
                 >
                 </input>
 
-                <button onClick={this.onAddUSer}>Log in</button>
+                <button onClick={this.onAddUSer}>Register</button>
             </div>
         )
     }
