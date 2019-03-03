@@ -42,7 +42,7 @@ const initialState = {
                     likes: 10
                 }
             ]
-        },{}
+        }
     ],
     currentUser: (JSON.parse(sessionStorage.getItem('currentUser'))) ? JSON.parse(sessionStorage.getItem('currentUser')) : null
 }
