@@ -22,6 +22,7 @@
     margin: auto 0;
     text-align: left;
     
+    
 
 }
 
@@ -41,5 +42,11 @@
     flex-grow: 20;
     display: flex;
     flex-direction: column;
-    justify-content: center
+    justify-content: center;
+    overflow-y: scroll;
+    padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+    box-sizing: content-box;
+}
+.commentContainer::-webkit-scrollbar {
+    display: none;
 }

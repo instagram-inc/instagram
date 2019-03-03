@@ -47,7 +47,7 @@ class ActivityIcons extends React.Component {
                     
                     <img
                     className="img"
-                    // onClick={}
+                    onClick={this.props.onCommentAreaFocus}
                     src={Comment}
                     alt=""
                     >

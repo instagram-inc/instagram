@@ -14,20 +14,35 @@ import { connect } from 'react-redux';
 
 
 
-const post = props => {
-    return (
-        <section
-        className={classes.post}>
-            <HeaderOfPost
-            {...props} 
-            />
-            <PostPic {...props} />
-            <ActivityIcons />
-            <ListOfComments comments={props.comments}/>
-            <AddAComment userId={props.uid} postId={props.pid} userName={props.name} comments={props.comments}/>
-        </section>
+class Post extends React.Component {
+    
+    state = {
+        isTextAreaActive: false
+    }
 
-    )
+    toggle = () => {
+        this.setState({  isTextAreaActive : !this.state.isTextAreaActive });
+    }
+    render(){
+        return (
+            <section
+            className={classes.post}>
+                <HeaderOfPost
+                {...this.props} 
+                />
+                <PostPic {...this.props} />
+                <ActivityIcons onCommentAreaFocus={()=>{this.toggle()}} />
+                <ListOfComments comments={this.props.comments}/>
+                <AddAComment  
+                statOfTextAreaActive ={this.state.isTextAreaActive}
+                userId={this.props.uid} 
+                postId={this.props.pid} 
+                userName={this.props.name} 
+                comments={this.props.comments}/>
+            </section>
+    
+        )
+    }
 
 }
 
@@ -38,6 +53,6 @@ const mapDispatchToProps = dispatch => {
 }
    
 
-export default connect(null, mapDispatchToProps)(post);
+export default connect(null, mapDispatchToProps)(Post);
 
 // export default post
