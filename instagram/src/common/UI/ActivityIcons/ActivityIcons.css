@@ -17,6 +17,7 @@
 }
 
 .likes {
-    float: left;
+    /* float: left; */
+    text-align: left;
     font-weight: bold;
 }

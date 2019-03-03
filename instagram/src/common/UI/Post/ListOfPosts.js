@@ -6,9 +6,8 @@ const listOfPosts = props => {
     console.log(props)
     return (
         <React.Fragment >
-            {props.posts.map(post => 
-                // <Alcohol key={alcohol.id} {...alcohol} />)
-                <Post key={post.id} {...post}/>)
+            {props.users[0].posts.map(post => 
+                <Post key={post.pid} {...post} {...props.currentUser}/>)
             }
         </React.Fragment>
     )
@@ -18,7 +17,8 @@ const listOfPosts = props => {
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-        posts: state.users[0].posts,
+        users: state.users,
+        currentUser: state.users[0]
         // followedUsers: state.user[0].followedUsers 
     }
 }

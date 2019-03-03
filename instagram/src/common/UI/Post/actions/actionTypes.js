@@ -1,2 +1,1 @@
-export const ADD_A_COMMENT = 'ADD_A_COMMENT';
 export const DEFINE_CURRENT_USER = 'DEFINE_CURRENT_USER';

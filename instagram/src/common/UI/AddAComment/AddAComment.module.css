@@ -1,16 +1,18 @@
 .comment {
     width: 100%;
+    /* border: 2px solid greenyellow; */
+    display: flex;
 }
 
 .inputContainer {
-    width: 100%;
+    width: 80%;
     height: 50px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     align-items: center;
 }
 .input{
-    width: 95%;
+    width: 80%;
     margin-left: 5px;
     border:none;
     background-color:transparent;

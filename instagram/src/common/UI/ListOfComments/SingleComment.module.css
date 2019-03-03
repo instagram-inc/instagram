@@ -1,0 +1,45 @@
+.singleCommentContainer {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name{
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: lowercase;
+    padding: 0;
+    text-align: left;
+    margin:auto 0;
+}
+
+.comment{
+    font-size: 0.8em;
+    padding: 0;
+    margin: auto 0;
+    text-align: left;
+    
+
+}
+
+.nameContainer {
+    height: inherit;
+    box-sizing: border-box;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    
+}
+
+.commentContainer{
+    height: inherit;
+    box-sizing: border-box;
+    flex-grow: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
