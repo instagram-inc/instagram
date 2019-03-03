@@ -1,0 +1,42 @@
+.dataDiv {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2vh 0;
+}
+
+.parentBox {
+    width: 35%;
+    border: 1px solid #E6E6E6;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    margin-bottom: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input {
+    border: 1px solid #E6E6E6;
+    background-color: #E6E6E6;
+    outline: none;
+    margin-bottom: 5vh;
+    font-size: 1em;
+    color: black;
+}
+
+.logo {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.info {
+    display: inline-block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-size: 0.7em;
+}
