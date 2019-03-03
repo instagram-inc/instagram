@@ -1,1 +1,2 @@
 export const DEFINE_CURRENT_USER = 'DEFINE_CURRENT_USER';
+export const NEW_USER = 'NEW_USER';

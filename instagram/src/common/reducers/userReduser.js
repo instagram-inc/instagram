@@ -1,6 +1,5 @@
-import { DEFINE_CURRENT_USER } from '../UI/Post/actions/actionTypes'
+import { DEFINE_CURRENT_USER, NEW_USER  } from '../UI/Post/actions/actionTypes'
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
-
 
 
 const initialState = {
@@ -76,6 +75,10 @@ const reducer = (state = initialState, action) => {
             const newState = {...state, currentUser: state.users.find(user => user.id === action.userID)}
             console.log(newState)
             return newState 
+        }
+        
+        case NEW_USER: {
+            return {...state, users: [...state.users, action.user]};
         }
 
         default: return state;

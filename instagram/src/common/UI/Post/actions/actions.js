@@ -1,4 +1,5 @@
-import { DEFINE_CURRENT_USER } from './actionTypes'
+import { DEFINE_CURRENT_USER,
+         NEW_USER } from './actionTypes'
 
 
 
@@ -8,3 +9,10 @@ export const defineCurrentUser = () => {
         userID: JSON.parse(sessionStorage.getItem('currentUserId'))
     }
 }
+
+export const addNewUser = user => {
+    return {
+        type: NEW_USER,
+        user
+    }
+} 

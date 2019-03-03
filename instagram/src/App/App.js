@@ -8,6 +8,7 @@ import Home from '../Home/Home';
 import Explore from '../Explore/Explore';
 import Upload from '../Upload/upload' 
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import Register from '../LoginRegister/Register';
 // import Login from '../LoginRegister/Login';
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
               <Route exact path="/" component={Home} /> {/*тук ще бъде Home с два ArticleContainer*/}
               <Route exact path="/explore" component={Explore} />
               <Route exact path="/upload" component={Upload} />
+              <Route exact path="/register" component={Register} />
             </React.Fragment>
           {/* :
             <Login />
