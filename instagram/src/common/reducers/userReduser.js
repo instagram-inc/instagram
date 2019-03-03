@@ -1,5 +1,6 @@
 import { DEFINE_CURRENT_USER, NEW_USER  } from '../UI/Post/actions/actionTypes'
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
+import { TOGGLE_IS_POST_LIKED } from '../UI/ActivityIcons/actions/actionTypes';
 
 
 const initialState = {
@@ -29,7 +30,8 @@ const initialState = {
                     ],
                     description: '',
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                    likes: 0,
+                    likes: 543,
+                    isThisPostLiked: false
 
                 },
                 {
@@ -73,12 +75,21 @@ const reducer = (state = initialState, action) => {
 
         case DEFINE_CURRENT_USER: {
             const newState = {...state, currentUser: state.users.find(user => user.id === action.userID)}
-            console.log(newState)
             return newState 
         }
         
         case NEW_USER: {
             return {...state, users: [...state.users, action.user]};
+        }
+        case TOGGLE_IS_POST_LIKED: {
+            const stateUsers = [...state.users]
+            const currentUserIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.status.uid);
+            const currentUser = stateUsers[currentUserIndex]
+            const currentUserPosts = [...currentUser.posts];
+            const currentPost = currentUserPosts.findIndex(post => post.pid === action.status.pid);
+            stateUsers[currentUserIndex].posts[currentPost].isThisPostLiked = action.status.isThisPostLiked;
+            stateUsers[currentUserIndex].posts[currentPost].likes = action.status.likes;
+            return {...state, users: stateUsers.splice(currentUserIndex, 1, currentUser)}
         }
 
         default: return state;

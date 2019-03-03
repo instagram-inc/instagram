@@ -31,7 +31,7 @@ class Post extends React.Component {
                 {...this.props} 
                 />
                 <PostPic {...this.props} />
-                <ActivityIcons onCommentAreaFocus={()=>{this.toggle()}} />
+                <ActivityIcons onCommentAreaFocus={()=>{this.toggle()}} {...this.props} />
                 <ListOfComments comments={this.props.comments}/>
                 <AddAComment  
                 statOfTextAreaActive ={this.state.isTextAreaActive}
