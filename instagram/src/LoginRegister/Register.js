@@ -93,6 +93,7 @@ class Register extends React.Component {
         const newUserId = (lastId) ? lastId.uid + 1 : 1;
         const newData = {...this.state.newUser, uid : newUserId}
         this.props.onAddUSer(newData);
+        console.log(this.props.users);
 
         const newUser = {acc: '', email: '', pass: ''};
         this.setState({ newUser });

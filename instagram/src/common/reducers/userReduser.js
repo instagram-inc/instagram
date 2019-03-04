@@ -1,4 +1,6 @@
-import { DEFINE_CURRENT_USER, NEW_USER  } from '../UI/Post/actions/actionTypes'
+import { DEFINE_CURRENT_USER,
+    NEW_USER,
+    LOGIN_USER  } from '../UI/Post/actions/actionTypes'
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
 
 
@@ -6,7 +8,9 @@ const initialState = {
     users: [
         {
             uid:1,
-            name: 'Pesho',
+            acc: 'Pesho',
+            pass: '123456',
+            email: 'asd@asd.bg',
             srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             followedUsers: [],
             followersOfMe: [],
@@ -44,11 +48,12 @@ const initialState = {
             ]
         }
     ],
-    currentUser: (JSON.parse(sessionStorage.getItem('currentUser'))) ? JSON.parse(sessionStorage.getItem('currentUser')) : null
+    currentUser: (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser')) : null
 }
 
 const reducer = (state = initialState, action) => {
     console.log('jjjjjjjjjjjjjjjjjjj')
+    console.log('tova e currentUser: ' + state.currentUser)
     switch (action.type) {
         case ADD_NEW_COMMENT: {
             //За момента не барай защото работи
@@ -80,6 +85,16 @@ const reducer = (state = initialState, action) => {
         case NEW_USER: {
             return {...state, users: [...state.users, action.user]};
         }
+        
+        case LOGIN_USER: {
+            sessionStorage.setItem('loggedUser', JSON.stringify(action.user));
+            let loggedUser = action.user;
+            return {...state, currentUser: {...state.currentUser, loggedUser}};
+            // let currentUser = {...state.currentUser};
+            // currentUser = loggedUser;
+            // return {...state, currentUser};
+        }
+
 
         default: return state;
     };
