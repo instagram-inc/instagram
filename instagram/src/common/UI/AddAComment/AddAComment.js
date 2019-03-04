@@ -7,15 +7,19 @@ import Button from '../Button/Button';
 
 
 class AddAComment extends React.Component {
+    
+    
     state = {
         newComment: {
             comment : ''
         },
         commentProperties:{
             isPostButtonActive: false,
-        }
+        },
     }
-    setComment = event => {
+    
+    setComment = (event, activate)=> {
+        console.log(2)
         const MAX_COMMENT_LENGHT = 300;
         const value = event.target.value;
         const newComment = {...this.state.newComment};
@@ -38,6 +42,13 @@ class AddAComment extends React.Component {
 
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.statOfTextAreaActive !== this.props.statOfTextAreaActive){
+            this._input.focus();
+        }     
+    }
+
+
     onAddNewComment = event => {
         event.preventDefault();
         if (this.state.commentProperties.isPostButtonActive) {
@@ -55,16 +66,17 @@ class AddAComment extends React.Component {
         return (
             <div className={classes.comment}>
                 <div className={classes.inputContainer}>
-                    <textarea className={classes.input} 
+                    <textarea
+                    ref={c => (this._input = c)}
+                    className={classes.input} 
                     onChange={this.setComment}
                     value={this.state.newComment.comment}
                     placeholder="Add a comment..."type="text" />
                 </div>
-                {/* <button onClick={this.onAddNewComment}>post</button> */}
                 <Button 
                 isActive={this.state.commentProperties.isPostButtonActive} 
                 activeText={'Post'}
-                onAdd={event=> this.onAddNewComment(event)}/>
+                onAdd={event => this.onAddNewComment(event)}/>
 
             </div>
         )

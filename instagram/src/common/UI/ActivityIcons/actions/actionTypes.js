@@ -1,0 +1,1 @@
+export const TOGGLE_IS_POST_LIKED = 'TOGGLE_IS_POST_LIKED';
