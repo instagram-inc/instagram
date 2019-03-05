@@ -239,7 +239,8 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     console.log('jjjjjjjjjjjjjjjjjjj')
-    console.log('tova e currentUser: ' + state.currentUser)
+    console.log('tova e currentUser: ')
+    console.log(state.currentUser)
     console.log('tova e systoqnieto: ' + state.currentUser.isLog)
     console.log('vsichki useri' + state.users)
     switch (action.type) {
@@ -268,20 +269,9 @@ const reducer = (state = initialState, action) => {
         
         case LOGIN_USER: {
             sessionStorage.setItem('loggedUser', JSON.stringify(action.user));
-            let loggedUser = action.user;
-            // return { ...state, currentUser: {...state.currentUser, isLog: true}}
-            const currentUser = {...state.currentUser};
-            currentUser.user = loggedUser;
-            currentUser.isLog = true;
-            return { currentUser };
-                 
-            // let loggedUser = action.user;
-            // let stateCurrentUSer = {...state, ...state.currentUser : loggedUser};
-
-            // return {...state, currentUser: {...state.currentUser, loggedUser}};
-            // let currentUser = {...state.currentUser};
-            // currentUser = loggedUser;
-            // return {...state, currentUser: loggedUser};
+            const isLog = true;
+            const users = [...state.users];
+            return { ...state, users, currentUser: {...state.currentUser, user: action.user, isLog} };
         }
 
         case TOGGLE_IS_POST_LIKED: {

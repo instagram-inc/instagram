@@ -9,8 +9,10 @@ import CircleImg from '../common/UI/CircleImg/CircleImg';
 
 
 const home = props => {
-    console.log("----++++++++++-------")
-    console.log(props)
+    console.log("----++++++++++---HOME----")
+    const users = props.users();
+    console.log(users)
+    console.log(props.currentUser)
     const profileProps = {...props.currentUser, circleImgWidth: 50}
 return (<div className={classes.home}>
     <section className={classes.posts}>
@@ -24,7 +26,7 @@ return (<div className={classes.home}>
             </div>
         </div>
         <GreyContainer title={"Recomended:"}>
-        {props.users.filter(user => user.uid !== 1) // филтъра трябва да е спрямо curent  user
+        {users // филтъра трябва да е спрямо curent  user
         .map(user => 
             <HeaderOfPost key={user.uid}{...user}/>)
         }
@@ -36,7 +38,7 @@ return (<div className={classes.home}>
 const mapStateToProps = (state) => {
     
     return {
-        users: state.users,
+        users: () => state.users.filter(user => user.uid !== state.currentUser.user.uid),
         currentUser: state.currentUser.user
         // followedUsers: state.user[0].followedUsers 
     }
