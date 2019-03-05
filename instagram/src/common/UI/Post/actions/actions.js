@@ -1,6 +1,7 @@
 import { DEFINE_CURRENT_USER,
          NEW_USER,
-         LOGIN_USER } from './actionTypes'
+         LOGIN_USER,
+         LOGOUT_USER } from './actionTypes'
 
 
 
@@ -24,3 +25,9 @@ export const setAsLogged = user => {
         user
     }
 } 
+
+export const setNoLoggedUser = () => {
+    return {
+        type: LOGOUT_USER
+    }
+}

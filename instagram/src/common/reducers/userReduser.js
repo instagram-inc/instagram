@@ -1,6 +1,7 @@
 import { DEFINE_CURRENT_USER,
     NEW_USER,
-    LOGIN_USER  } from '../UI/Post/actions/actionTypes'
+    LOGIN_USER,
+    LOGOUT_USER  } from '../UI/Post/actions/actionTypes'
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
 import { TOGGLE_IS_POST_LIKED, TOGGLE_IS_POST_SAVED } from '../UI/ActivityIcons/actions/actionTypes';
 
@@ -301,6 +302,14 @@ const reducer = (state = initialState, action) => {
                 stateUsers[currentUserIndex].savedPosts = stateUsers[currentUserIndex].savedPosts.filter(post => post.uid !== uid && post.pid !== pid);
             }
             return {...state, users: stateUsers, currentUser: {...currentUser, user: currentUser}}
+        }
+
+        case LOGOUT_USER: {
+            sessionStorage.removeItem('loggedUser');
+            const isLog = false;
+            const logOut = null;
+            const users = [...state.users];
+            return { ...state, users, currentUser: {...state.currentUser, user: logOut, isLog} };
         }
 
         default: return state;

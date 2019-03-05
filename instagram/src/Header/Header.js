@@ -27,7 +27,7 @@ const instaHeader = props =>
                     <Link to="/upload">
                         <img className="Header-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7dWR4h06-0G2nWvbWsOxFGg8qPBMtze5HR37Wzneazl_ydhfSNw" alt="" width="24" height="24"></img>
                     </Link>
-                    <Link to="/register">
+                    <Link to="/profile">
                         <img className="Header-img" src="https://png.pngtree.com/svg/20160308/db33b0089e.png" alt="" width="24" height="24"></img>
                     </Link>
                 </div>
