@@ -1,11 +1,11 @@
 import React from "react";
+import GreyContainer from "../GreyContainer/GreyContainer";
 
 class ArticleContainer extends React.Component{
     render() {
         return(
             <React.Fragment>
-                <p>test</p>
-                <p>test</p>
+                <GreyContainer title={"Recomended"}/>
             </React.Fragment>
         ) 
         

@@ -18,8 +18,7 @@ class AddAComment extends React.Component {
         },
     }
     
-    setComment = (event, activate)=> {
-        console.log(2)
+    setComment = event => {
         const MAX_COMMENT_LENGHT = 300;
         const value = event.target.value;
         const newComment = {...this.state.newComment};
@@ -42,7 +41,7 @@ class AddAComment extends React.Component {
 
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate (prevProps) {
         if (prevProps.statOfTextAreaActive !== this.props.statOfTextAreaActive){
             this._input.focus();
         }     

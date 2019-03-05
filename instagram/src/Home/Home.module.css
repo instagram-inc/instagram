@@ -1,0 +1,27 @@
+.home {
+    width: 935px;
+    margin: 0 auto;
+}
+.posts{
+    width: 66%
+}
+.profileSection{
+    max-width: 293px;
+    right: 0;
+    width: 100%;
+    /* border: 2px solid blue; */
+    position: fixed;
+    top: 78px;
+    left: 849px;
+    height: 100vh;
+}
+.userProfile{
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.name{
+    text-align: left;
+    text-transform: lowercase;
+    margin-left: 10px;  
+}
