@@ -7,8 +7,8 @@ import classes from './Post.module.css'
 import ListOfComments from '../ListOfComments/ListOfComments';
 import AddAComment from '../AddAComment/AddAComment';
 
-import { defineCurrentUser } from './actions/actions'
-import { connect } from 'react-redux';
+// import { defineCurrentUser } from './actions/actions'
+// import { connect } from 'react-redux';
 
 
 
@@ -24,11 +24,13 @@ class Post extends React.Component {
         this.setState({  isTextAreaActive : !this.state.isTextAreaActive });
     }
     render(){
+        console.log('POST')
+        console.log(this.props)
         return (
             <section
             className={classes.post}>
                 <HeaderOfPost
-                {...this.props} 
+            {...this.props} 
                 />
                 <PostPic {...this.props} />
                 <ActivityIcons onCommentAreaFocus={()=>{this.toggle()}} {...this.props} />
@@ -46,13 +48,13 @@ class Post extends React.Component {
 
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        currentUser: () => dispatch(defineCurrentUser())
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         currentUser: () => dispatch(defineCurrentUser())
+//     }
+// }
    
 
-export default connect(null, mapDispatchToProps)(Post);
+// export default connect(null, mapDispatchToProps)(Post);
 
-// export default post
+export default Post

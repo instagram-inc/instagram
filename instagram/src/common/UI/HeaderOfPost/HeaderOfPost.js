@@ -4,7 +4,7 @@ import CircleImg from '../CircleImg/CircleImg';
 
 
 const headerOfPost = props => {
-    console.log('header')
+    console.log('header-----------------------')
     console.log(props)
     return (
         

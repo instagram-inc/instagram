@@ -254,7 +254,7 @@ const reducer = (state = initialState, action) => {
             comments.push({userName: currentUser.name, cid: action.comment.newCommentId, comment: action.comment.newComment});
             currentUser.posts[currentPost].comments = comments;
             stateUsers.splice(currentUserIndex, 1, currentUser);
-            return {...state, users: stateUsers}
+            return {...state, users: stateUsers, currentUser: {...currentUser, user: currentUser} }
         }
 
         case DEFINE_CURRENT_USER: {
@@ -292,7 +292,7 @@ const reducer = (state = initialState, action) => {
             const currentPost = currentUserPosts.findIndex(post => post.pid === action.status.pid);
             stateUsers[currentUserIndex].posts[currentPost].isThisPostLiked = action.status.isThisPostLiked;
             stateUsers[currentUserIndex].posts[currentPost].likes = action.status.likes;
-            return {...state, users: stateUsers}
+            return {...state, users: stateUsers, currentUser: {...currentUser, user: currentUser}}
         }
 
         case TOGGLE_IS_POST_SAVED: {
@@ -310,7 +310,7 @@ const reducer = (state = initialState, action) => {
             } else {
                 stateUsers[currentUserIndex].savedPosts = stateUsers[currentUserIndex].savedPosts.filter(post => post.uid !== uid && post.pid !== pid);
             }
-            return {...state, users: stateUsers}
+            return {...state, users: stateUsers, currentUser: {...currentUser, user: currentUser}}
         }
 
         default: return state;

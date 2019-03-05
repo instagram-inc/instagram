@@ -9,10 +9,12 @@ import CircleImg from '../common/UI/CircleImg/CircleImg';
 
 
 const home = props => {
-    const profileProps = {...props.users[0], circleImgWidth: 50}
+    console.log("----++++++++++-------")
+    console.log(props)
+    const profileProps = {...props.currentUser, circleImgWidth: 50}
 return (<div className={classes.home}>
     <section className={classes.posts}>
-        <ListOfPosts />
+        <ListOfPosts user ={props.currentUser}/>
     </section>
     <section className={classes.profileSection}>
         <div className={classes.userProfile} >
@@ -35,7 +37,7 @@ const mapStateToProps = (state) => {
     
     return {
         users: state.users,
-        // currentUser: state.users[0]
+        currentUser: state.currentUser.user
         // followedUsers: state.user[0].followedUsers 
     }
 }
