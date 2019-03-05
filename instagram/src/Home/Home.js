@@ -1,13 +1,43 @@
 import React from 'react';
-import ArticleContainer from '../common/UI/ArticleContainer/ArticleContainer';
 import ListOfPosts from '../common/UI/Post/ListOfPosts';
+import classes from './Home.module.css';
+import GreyContainer from '../common/UI/GreyContainer/GreyContainer';
+
+import { connect } from 'react-redux';
+import HeaderOfPost from '../common/UI/HeaderOfPost/HeaderOfPost';
+import CircleImg from '../common/UI/CircleImg/CircleImg';
 
 
-const home = props =>
-(<React.Fragment>
-    <ArticleContainer />
-    <ListOfPosts />
-</React.Fragment>);
+const home = props => {
+    const profileProps = {...props.users[0], circleImgWidth: 50}
+return (<div className={classes.home}>
+    <section className={classes.posts}>
+        <ListOfPosts />
+    </section>
+    <section className={classes.profileSection}>
+        <div className={classes.userProfile} >
+            <CircleImg {...profileProps}/>
+            <div className={classes.name}>
+                <h1>{profileProps.name}</h1>
+            </div>
+        </div>
+        <GreyContainer title={"Recomended:"}>
+        {props.users.filter(user => user.uid !== 1) // филтъра трябва да е спрямо curent  user
+        .map(user => 
+            <HeaderOfPost key={user.uid}{...user}/>)
+        }
+        </GreyContainer>
+    </section>
+    </div>);
+}
 
+const mapStateToProps = (state) => {
+    
+    return {
+        users: state.users,
+        // currentUser: state.users[0]
+        // followedUsers: state.user[0].followedUsers 
+    }
+}
 
-export default home;
+export default connect(mapStateToProps, null)(home);

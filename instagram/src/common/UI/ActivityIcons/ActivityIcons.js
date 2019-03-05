@@ -6,17 +6,17 @@ import Share from '../../../immages/Share.png';
 import SaveEmpty from '../../../immages/SaveEmpty.png';
 import SaveFull from '../../../immages/SaveFull.png';
 import './ActivityIcons.css';
-import { toggleLiked } from './actions/actions'
+import { toggleLiked, toggleSaved } from './actions/actions'
 import { connect } from 'react-redux';
 
 class ActivityIcons extends React.Component {
-    state = {
-        isSaved: false
-    }
+    // state = {
+    //     isSaved: false
+    // }
 
-    toggleSave = () => {
-        this.setState({ isSaved : !this.state.isSaved });
-    }
+    // toggleSave = () => {
+    //     this.setState({ isSaved : !this.state.isSaved });
+    // }
     onToggleLiked = () => {
         const pid = this.props.pid;
         const uid = this.props.uid;
@@ -24,6 +24,13 @@ class ActivityIcons extends React.Component {
         const likes = (isThisPostLiked) ? this.props.likes + 1 : this.props.likes - 1;
         const status = {likes, pid, uid, isThisPostLiked};
         this.props.onToggleLiked(status);
+    }
+    onToggleSaved = () => {
+        const pid = this.props.pid;
+        const uid = this.props.uid;
+        const isThisPostSaved = !this.props.isThisPostSaved;
+        const status = { pid, uid, isThisPostSaved};
+        this.props.onToggleSaved(status);
     }
     
     render() {
@@ -33,10 +40,13 @@ class ActivityIcons extends React.Component {
         }
         
         let save = SaveEmpty;
-        if (this.state.isSaved) {
+        console.log('addasasdasdassd')
+        console.log(this.props)
+        console.log(this.props.isThisPostSaved)
+        if (this.props.isThisPostSaved) {
             save = SaveFull;
         }
-        console.log(this.props)
+        
         return (
             
             <React.Fragment>
@@ -44,7 +54,6 @@ class ActivityIcons extends React.Component {
                 <div className="activityDiv">
                     <img
                     className="img"
-                    // onClick={this.toggleLike}
                     onClick={this.onToggleLiked}
                     src={heart}
                     alt=""
@@ -71,7 +80,7 @@ class ActivityIcons extends React.Component {
                 <div>
                     <img
                     className="img"
-                    onClick={this.toggleSave}
+                    onClick={this.onToggleSaved}
                     src={save}
                     alt=""
                     >
@@ -88,7 +97,8 @@ class ActivityIcons extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onToggleLiked: status => dispatch(toggleLiked(status))
+        onToggleLiked: status => dispatch(toggleLiked(status)),
+        onToggleSaved: status => dispatch(toggleSaved(status))
     }
 }
 

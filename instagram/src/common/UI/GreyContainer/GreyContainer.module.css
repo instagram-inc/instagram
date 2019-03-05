@@ -1,0 +1,16 @@
+.container{
+    width:100%;
+    border: 1px solid #e6e6e6;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+}
+.title{
+    /* border: 1px solid green */
+}
+.title > h1 {
+    color: #999;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: left;
+    padding-left: 5px;
+}
