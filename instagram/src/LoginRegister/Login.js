@@ -59,7 +59,7 @@ class Login extends React.Component {
     onLoginUser = () => {
         const match = this.props.users.find(user => user.email === this.state.loginUser.email);
         this.props.onLoginUser(match);
-        console.log(this.props.users);
+        
 
         const loginUser = {email: '', pass: '', matchedUser: null};
         this.setState({ loginUser });
@@ -72,6 +72,7 @@ class Login extends React.Component {
             this.state.isButtonActive.isPassOk === true) {
             isBActive = true;
         }
+        console.log('e tuka ' + this.props.users[0].acc);
 
         return (
             <div className={classes.parentBox}>

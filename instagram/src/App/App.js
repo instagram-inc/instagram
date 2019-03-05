@@ -17,7 +17,6 @@ class App extends Component {
   render() {
 
     const isLogged = window.sessionStorage.getItem("loggedUser");
-    // const isLogged = true;
 
     return (
       <BrowserRouter>

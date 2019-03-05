@@ -50,12 +50,16 @@ const initialState = {
             ]
         }
     ],
-    currentUser: (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser')) : null
+    currentUser: {
+        user : (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser')) : null,
+        isLog : false
+    }
 }
 
 const reducer = (state = initialState, action) => {
     console.log('jjjjjjjjjjjjjjjjjjj')
     console.log('tova e currentUser: ' + state.currentUser)
+    console.log('tova e systoqnieto: ' + state.currentUser.isLog)
     switch (action.type) {
         case ADD_NEW_COMMENT: {
             //За момента не барай защото работи
@@ -90,10 +94,19 @@ const reducer = (state = initialState, action) => {
         case LOGIN_USER: {
             sessionStorage.setItem('loggedUser', JSON.stringify(action.user));
             let loggedUser = action.user;
-            return {...state, currentUser: {...state.currentUser, loggedUser}};
+            // return { ...state, currentUser: {...state.currentUser, isLog: true}}
+            const currentUser = {...state.currentUser};
+            currentUser.user = loggedUser;
+            currentUser.isLog = true;
+            return { currentUser };
+                 
+            // let loggedUser = action.user;
+            // let stateCurrentUSer = {...state, ...state.currentUser : loggedUser};
+
+            // return {...state, currentUser: {...state.currentUser, loggedUser}};
             // let currentUser = {...state.currentUser};
             // currentUser = loggedUser;
-            // return {...state, currentUser};
+            // return {...state, currentUser: loggedUser};
         }
 
         case TOGGLE_IS_POST_LIKED: {
