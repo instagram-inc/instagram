@@ -1,5 +1,6 @@
 import { DEFINE_CURRENT_USER,
-         NEW_USER } from './actionTypes'
+         NEW_USER,
+         LOGIN_USER } from './actionTypes'
 
 
 
@@ -13,6 +14,13 @@ export const defineCurrentUser = () => {
 export const addNewUser = user => {
     return {
         type: NEW_USER,
+        user
+    }
+} 
+
+export const setAsLogged = user => {
+    return {
+        type: LOGIN_USER,
         user
     }
 } 

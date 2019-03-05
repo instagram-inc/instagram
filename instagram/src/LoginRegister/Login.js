@@ -1,66 +1,135 @@
 import React from 'react';
 import classes from './Login.module.css';
+import Button from '../common/UI/Button/Button';
+import Insta from '../immages/Insta.png';
+import { Link } from 'react-router-dom';
+import { setAsLogged } from '../common/UI/Post/actions/actions';
+import { connect } from 'react-redux';
 
 class Login extends React.Component {
 
     state = {
+        isButtonActive : {
+            isEmailOk : false,
+            isPassOk : false
+        },
         loginUser : {
             email : '',
-            pass : ''
+            pass : '',
+            matchedUser : null
         }
     }
 
     setEmail = event => {
-        const value = event.target.value;
+        const MAX_EMAIL_LENGHT = 30;
+        var value = event.target.value;
         const loginUser = {...this.state.loginUser};
-        loginUser.email = value;
-        this.setState({ loginUser });
-    }
-    
-    setPass = event => {
-        const value = event.target.value;
-        const loginUser = {...this.state.loginUser};
-        loginUser.pass = value;
-        this.setState({ loginUser });
+        loginUser.email = value.substring(0,MAX_EMAIL_LENGHT);
+        this.setState({ 
+            ...this.state, loginUser,  
+            isButtonActive: this.EmailChecker(loginUser.email) ? 
+            {...this.state.isButtonActive, isEmailOk: true}
+            :
+            {...this.state.isButtonActive, isEmailOk: false}
+        });
     }
 
-    onLogin = () => {
-        this.props.onLogin(this.state.newUser);
-        const loginUser = {email: '', pass: ''};
+    EmailChecker = email => {
+        return this.props.users.some(user => user.email === email);
+    }
+
+    setPass = event => {
+        const MAX_PASS_LENGHT = 40;
+        const value = event.target.value;
+        const loginUser = {...this.state.loginUser};
+        loginUser.pass = value.substring(0,MAX_PASS_LENGHT);
+        this.setState({ 
+            ...this.state, loginUser,  
+            isButtonActive: this.PassChecker(loginUser.pass) ? 
+            {...this.state.isButtonActive, isPassOk: true}
+            :
+            {...this.state.isButtonActive, isPassOk: false}
+        });
+    }
+
+    PassChecker = pass => {
+        return this.props.users.some(user => user.pass === pass);
+    }
+
+    onLoginUser = () => {
+        const match = this.props.users.find(user => user.email === this.state.loginUser.email);
+        this.props.onLoginUser(match);
+        console.log(this.props.users);
+
+        const loginUser = {email: '', pass: '', matchedUser: null};
         this.setState({ loginUser });
-        location.replace("/");
+        // window.location = '/';
     }
 
     render() {
+        let isBActive = false;
+        if(this.state.isButtonActive.isEmailOk === true &&
+            this.state.isButtonActive.isPassOk === true) {
+            isBActive = true;
+        }
 
         return (
-            <div className={classes.container}>
-                <input
-                placeholder="Enter e-mail"
-                onChange={this.setEmail}
-                value={this.state.loginUser.email}
-                >
-                </input>
+            <div className={classes.parentBox}>
+            <img className={classes.logo} src={Insta} alt=""></img>
+                <div className={classes.dataDiv}>
+                    <input className={classes.input}
+                    placeholder="Enter e-mail"
+                    onChange={this.setEmail}
+                    value={this.state.loginUser.email}
+                    >
+                    </input>
 
-                <input
-                placeholder="Enter password"
-                onChange={this.setPass}
-                value={this.state.loginUser.pass}
-                >
-                </input>
+                    <input className={classes.input}
+                    placeholder="Enter password"
+                    onChange={this.setPass}
+                    value={this.state.loginUser.pass}
+                    >
+                    </input>
 
-                <button onClick={this.onLogin}>Log in</button>
+                    {isBActive ?
+                        <Link to="/">
+                            <Button 
+                                isActive={isBActive}
+                                activeText={'Log in'}
+                                onAdd={ (isBActive) ?
+                                    () => this.onLoginUser()
+                                :
+                                    null
+                                }
+                            />
+                        </Link>
+                    :
+                        <Button 
+                        isActive={isBActive}
+                        activeText={'Log in'}
+                        onAdd={ (isBActive) ?
+                            () => this.onLoginUser()
+                        :
+                            null
+                        }
+                        />
+                    }
+                </div>
             </div>
         )
     }
 }
 
-// export default Login;
-
 const mapDispatchToProps = dispatch => {
     return {
-        onLogin: user => dispatch(setAsLogged(user))
+        onLoginUser: user => dispatch(setAsLogged(user))
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+const mapStateToProps = state => {
+    return {
+        users: state.users
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
