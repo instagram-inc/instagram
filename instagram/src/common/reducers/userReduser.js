@@ -11,7 +11,6 @@ const initialState = {
             uid:1,
             name: 'Pesho',
             circleImgWidth: 30,
-            acc: 'Pesho',
             pass: '123456',
             email: 'asd@asd.bg',
             srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -242,6 +241,7 @@ const reducer = (state = initialState, action) => {
     console.log('jjjjjjjjjjjjjjjjjjj')
     console.log('tova e currentUser: ' + state.currentUser)
     console.log('tova e systoqnieto: ' + state.currentUser.isLog)
+    console.log('vsichki useri' + state.users)
     switch (action.type) {
         case ADD_NEW_COMMENT: {
             //За момента не барай защото работи

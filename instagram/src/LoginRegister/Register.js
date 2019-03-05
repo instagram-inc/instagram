@@ -9,12 +9,12 @@ class Register extends React.Component {
 
     state = {
         isButtonActive : {
-            isAccOk : false,
+            isnameOk : false,
             isEmailOk : false,
             isPassOk : false
         },
         newUser : {
-            acc : '',
+            name : '',
             email : '',
             pass : '',
             srcProfilePic : '',
@@ -24,21 +24,21 @@ class Register extends React.Component {
         }
     }
 
-    setAcc = event => {
-        const MAX_ACC_LENGHT = 15;
+    setname = event => {
+        const MAX_NAME_LENGHT = 15;
         const value = event.target.value.toLowerCase();
         const newUser = {...this.state.newUser};
-        newUser.acc = value.substring(0,MAX_ACC_LENGHT);
+        newUser.name = value.substring(0,MAX_NAME_LENGHT);
         this.setState({ 
             ...this.state, newUser,  
-            isButtonActive: this.AccDataChecker(newUser.acc) ? 
-            {...this.state.isButtonActive, isAccOk: true}
+            isButtonActive: this.nameDataChecker(newUser.name) ? 
+            {...this.state.isButtonActive, isnameOk: true}
             :
-            {...this.state.isButtonActive, isAccOk: false}
+            {...this.state.isButtonActive, isnameOk: false}
         });
     }
 
-    AccDataChecker = data =>{
+    nameDataChecker = data =>{
         if (data && typeof data === 'string' && data.trim().length > 4) {
             return true;
         } else {
@@ -95,14 +95,14 @@ class Register extends React.Component {
         this.props.onAddUSer(newData);
         console.log(this.props.users);
 
-        const newUser = {acc: '', email: '', pass: ''};
+        const newUser = {name: '', email: '', pass: ''};
         this.setState({ newUser });
         this.props.history.goBack();
     }
 
     render() {
         let isBActive = false;
-        if(this.state.isButtonActive.isAccOk === true &&
+        if(this.state.isButtonActive.isnameOk === true &&
             this.state.isButtonActive.isEmailOk === true &&
             this.state.isButtonActive.isPassOk === true) {
             isBActive = true;
@@ -116,8 +116,8 @@ class Register extends React.Component {
                     <input className={classes.input}
                     type="text"
                     placeholder="Enter username"
-                    onChange={this.setAcc}
-                    value={this.state.newUser.acc}
+                    onChange={this.setname}
+                    value={this.state.newUser.name}
                     >
                     </input>
                     
