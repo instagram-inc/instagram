@@ -6,6 +6,7 @@ import ActivityIcons from '../ActivityIcons/ActivityIcons'
 import classes from './Post.module.css'
 import ListOfComments from '../ListOfComments/ListOfComments';
 import AddAComment from '../AddAComment/AddAComment';
+import PostDescription from '../PostDescription/PostDescription';
 
 // import { defineCurrentUser } from './actions/actions'
 // import { connect } from 'react-redux';
@@ -34,6 +35,7 @@ class Post extends React.Component {
                 />
                 <PostPic {...this.props} />
                 <ActivityIcons onCommentAreaFocus={()=>{this.toggle()}} {...this.props} />
+                <PostDescription {...this.props} />
                 <ListOfComments comments={this.props.comments}/>
                 <AddAComment  
                 statOfTextAreaActive ={this.state.isTextAreaActive}

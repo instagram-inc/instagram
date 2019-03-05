@@ -36,7 +36,7 @@ class App extends Component {
               <Route exact path="/" component={Home} /> {/*тук ще бъде Home с два ArticleContainer*/}
               <Route exact path="/explore" component={Explore} />
               <Route exact path="/upload" component={Upload} />
-              <Route exact path="/profile" component={ProfilePage} />
+              <Route exact path="/profile/:uid" component={ProfilePage} />
             </React.Fragment>
           :
             <Login />

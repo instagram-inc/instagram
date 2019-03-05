@@ -15,8 +15,8 @@ const initialState = {
             pass: '123456',
             email: 'asd@asd.bg',
             srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-            followedUsers: [],
-            followersOfMe: [],
+            followedUsers: [{uid: 2}, {uid: 5}],
+            followersOfMe: [{uid: 2}, {uid: 5}, {uid: 3}],
             savedPosts:[],
             posts: [
                 {
@@ -34,7 +34,7 @@ const initialState = {
                         cid: 2
                         }
                     ],
-                    description: '',
+                    description: 'dsdfasdfa asgsfgasfg gSFGAFG ASGFDGADFH AGFVASFDVASGF GFAG adsgasfgafg sfadgafgadfg afsgafgadf afggafgafg',
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     likes: 543,
                     isThisPostLiked: false,
@@ -47,7 +47,7 @@ const initialState = {
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     comments:[],
-                    description: '',
+                    description: 'Ноо, той има и други постове...',
                     likes: 10,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
