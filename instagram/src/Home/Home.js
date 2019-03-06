@@ -18,13 +18,15 @@ const home = props => {
     const users = props.users();
     const profileProps = {...props.currentUser, circleImgWidth: 50}
     const postsToBeShown = props.currentUser.followedUsers;
-
 return (<div className={classes.home}>
     <section className={classes.posts}>
         {   postsToBeShown.length !== 0 ?
             <ListOfPosts posts={postsToBeShown}/>
             :
+            <>
             <h1>test</h1>
+            <p>sadfkjhfjksadfhfdjk</p>
+            </>
         }
     </section>
     <section className={classes.profileSection}>

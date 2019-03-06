@@ -14,7 +14,7 @@ class AddAComment extends React.Component {
         },
         commentProperties:{
             isPostButtonActive: false,
-        },
+        }
     }
     
     setComment = event => {

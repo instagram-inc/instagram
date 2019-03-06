@@ -4,6 +4,7 @@ import keyGen from '../../keyGen/keyGen';
 import { connect } from 'react-redux';
 
 const listOfPosts = props => {
+    console.log(props.getUserByUid(1));
     const posts = props.postsList()
     return (
         <React.Fragment >

@@ -5,6 +5,7 @@ import { DEFINE_CURRENT_USER,
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
 import { TOGGLE_IS_POST_LIKED, TOGGLE_IS_POST_SAVED } from '../UI/ActivityIcons/actions/actionTypes';
 import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes'
+import { ADD_NEW_POST } from '../../Upload/actions/actionsTypes'
 
 
 const initialState = {
@@ -52,7 +53,6 @@ const initialState = {
                 {   
                     uid:1,
                     pid: 2,
-                    circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     comments:[],
@@ -66,6 +66,8 @@ const initialState = {
         {
             uid:2,
             name: 'Gosho',
+            pass: '123456',
+            email: 'a@a.bg',
             circleImgWidth: 30,
             srcProfilePic: "http://www.howtogeek.com/wp-content/uploads/2016/11/650x433xfreddie.jpg.pagespeed.gp+jp+jw+pj+js+rj+rp+rw+ri+cp+md.ic.X9S8A5J_bd.jpg",
             followedUsers: [],
@@ -95,7 +97,6 @@ const initialState = {
                         }
                     ],
                     description: 'fsdafsdafsadf',
-                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     likes: 543,
                     isThisPostLiked: false,
                     isThisPostSaved: false
@@ -104,9 +105,7 @@ const initialState = {
                 {
                     uid:2,
                     pid: 2,
-                    circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
-                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     comments:[],
                     description: '',
                     likes: 10,
@@ -147,7 +146,6 @@ const initialState = {
                         }
                     ],
                     description: '',
-                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     likes: 543,
                     isThisPostLiked: false,
                     isThisPostSaved: false
@@ -156,9 +154,7 @@ const initialState = {
                 {   
                     uid:3,
                     pid: 2,
-                    circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
-                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     comments:[],
                     description: '',
                     likes: 10,
@@ -199,7 +195,6 @@ const initialState = {
                         }
                     ],
                     description: '',
-                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     likes: 543,
                     isThisPostLiked: false,
                     isThisPostSaved: false
@@ -208,9 +203,7 @@ const initialState = {
                 {
                     uid: 4,
                     pid: 2,
-                    circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
-                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     comments:[],
                     description: '',
                     likes: 10,
@@ -251,7 +244,6 @@ const initialState = {
                         }
                     ],
                     description: '',
-                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     likes: 543,
                     isThisPostLiked: false,
                     isThisPostSaved: false
@@ -260,9 +252,7 @@ const initialState = {
                 {
                     uid:5,
                     pid: 2,
-                    circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
-                    srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     comments:[],
                     description: '',
                     likes: 10,
@@ -305,6 +295,7 @@ const reducer = (state = initialState, action) => {
         case NEW_USER: {
             const newUser = action.user;
             newUser.srcProfilePic = 'http://imperialsoftech.com/images/front/Default_profile_picture.jpg';
+            newUser.circleImgWidth = 30;
             return {...state, users: [...state.users, newUser]};
         }
         
@@ -346,13 +337,15 @@ const reducer = (state = initialState, action) => {
         }
 
         case ADD_A_FOLLOWER_TO_CURRENT_USER: {
+            console.log(action)
+            const users = [...state.users]
+            const currentUserIndex = users.findIndex(user => user.uid === state.currentUser.user.uid);
             if (action.status.status){
-                const users = [...state.users]
-                const currentUserIndex = users.findIndex(user => user.uid === action.status.uid);
                 users[currentUserIndex].followedUsers.push(action.status.uid);
-                return {...state, users, currentUser: {...state.currentUser, user: {...state.currentUser.user, followedUsers: [...state.currentUser.user.followedUsers, action.status.uid] }}}
+                return {...state, users}
             } else {
-                return {...state, currentUser: {...state.currentUser, user: {...state.currentUser.user, followedUsers: state.currentUser.user.followedUsers.filter(userId => userId!== action.status.uid )}}}
+                users[currentUserIndex].followedUsers = users[currentUserIndex].followedUsers.filter(uid => uid !== action.status.uid);
+                return {...state, users}
             }
         }
 
@@ -362,6 +355,23 @@ const reducer = (state = initialState, action) => {
             const logOut = null;
             const users = [...state.users];
             return { ...state, users, currentUser: {...state.currentUser, user: logOut, isLog} };
+        }
+
+        case ADD_NEW_POST:{
+            console.log(action)
+            ///POST DEAFALUT VALUES:
+            const comments = [];
+            const likes = 0;
+            const isThisPostLiked = false;
+            const isThisPostSaved = false;
+            //INCOMEING VALUES:
+            const {pid, uid, srcPostPic, description} = action.post;
+            //Compile new post:
+            const newPost = {pid, uid, srcPostPic, comments, description, likes, isThisPostLiked, isThisPostSaved};
+            const stateUsers = [...state.users]
+            const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.post.uid);
+            stateUsers[userIndex].posts.push(newPost);
+            return {...state, users: stateUsers}
         }
 
         default: return state;
