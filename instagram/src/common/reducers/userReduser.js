@@ -303,7 +303,9 @@ const reducer = (state = initialState, action) => {
         }
         
         case NEW_USER: {
-            return {...state, users: [...state.users, action.user]};
+            const newUser = action.user;
+            newUser.srcProfilePic = 'http://imperialsoftech.com/images/front/Default_profile_picture.jpg';
+            return {...state, users: [...state.users, newUser]};
         }
         
         case LOGIN_USER: {
