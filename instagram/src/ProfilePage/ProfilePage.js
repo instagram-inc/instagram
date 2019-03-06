@@ -3,26 +3,19 @@ import classes from './ProfilePage.module.css';
 import CircleImg from '../common/UI/CircleImg/CircleImg';
 import Button from '../common/UI/Button/Button';
 import { setNoLoggedUser } from '../common/UI/Post/actions/actions';
+import { addAfollowed } from '../Home/actions/actions';
 import { connect } from 'react-redux';
 
 
 const profilePage = props => {
+    const UNIT = 'vh';
+
     const userId = props.match.params.uid;
-    console.log(props.match.params)
-    // const userId = '1';
     const users = props.users;
-    console.log(userId)
     const userINeed = users.find(user => user.uid === +userId);
-    console.log(props.users);
-    console.log(userINeed);
-    // console.log('***id***')
-    // console.log(props.currentUser.uid)
-    // console.log('***id***')
     const profileProps = {...userINeed, circleImgWidth: 150, }
-    console.log(profileProps)
-    // console.log('***** props *****')
-    // console.log(props)
-    // console.log('***** props *****')
+
+    const checkFollowerStatus = () => props.currentUser.followedUsers.some(id => id === +userId);
 
     return ( <React.Fragment>
         <div className={classes.parrentDiv}>
@@ -33,11 +26,26 @@ const profilePage = props => {
                 <div className={classes.nameAndButtonDiv}>
                     <h4 className={classes.userName}><strong>{profileProps.name}</strong></h4>
                     <div className={classes.button}>
-                        <Button 
-                        isActive={true}
-                        activeText={'Log out'}
-                        onAdd={() => props.onLogOut()}
-                        />
+                        {(profileProps.uid === props.currentUser.uid) ?
+                            <Button 
+                            isActive={true}
+                            activeText={'Log out'}
+                            onAdd={() => props.onLogOut()}
+                            style={{padding:`${1 + UNIT} ${6 + UNIT}`}}
+                            />
+                        :
+                            <Button 
+                            activeText={"Unfollow"} 
+                            text={"Follow"}
+                            isActive={checkFollowerStatus()} 
+                            style={{padding:`${1 + UNIT} ${6 + UNIT}`}}
+                            onAdd={() => {
+                                checkFollowerStatus() ?
+                                props.onAddAfollowed({status: false, uid : profileProps.uid})
+                                :
+                                props.onAddAfollowed({status: true, uid : profileProps.uid})}} 
+                            />
+                        }
                     </div>
                 </div>
                 <div className={classes.info}>
@@ -52,7 +60,8 @@ const profilePage = props => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLogOut: () => dispatch(setNoLoggedUser())
+        onLogOut: () => dispatch(setNoLoggedUser()),
+        onAddAfollowed: status => dispatch(addAfollowed(status))
     }
 }
 

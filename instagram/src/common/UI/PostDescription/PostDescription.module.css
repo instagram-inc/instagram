@@ -43,3 +43,8 @@
     margin: auto 0;
     text-align: left;
 }
+
+.link {
+    text-decoration: none;
+    color: black;
+}

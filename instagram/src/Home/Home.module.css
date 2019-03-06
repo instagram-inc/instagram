@@ -34,3 +34,8 @@
 .buttonWraper{
     height: 25
 }
+
+.link {
+    text-decoration: none;
+    color: black;
+}
