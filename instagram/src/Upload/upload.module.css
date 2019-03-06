@@ -51,6 +51,7 @@
 }
 
 .title {
+    margin-top: 12vh;
     animation-name: show;
     animation-duration: 5s;
 }

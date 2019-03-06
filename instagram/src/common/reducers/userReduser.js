@@ -1,6 +1,7 @@
 import { DEFINE_CURRENT_USER,
     NEW_USER,
-    LOGIN_USER  } from '../UI/Post/actions/actionTypes'
+    LOGIN_USER,
+    LOGOUT_USER  } from '../UI/Post/actions/actionTypes'
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
 import { TOGGLE_IS_POST_LIKED, TOGGLE_IS_POST_SAVED } from '../UI/ActivityIcons/actions/actionTypes';
 import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes'
@@ -12,7 +13,6 @@ const initialState = {
             uid:1,
             name: 'Pesho',
             circleImgWidth: 30,
-            acc: 'Pesho',
             pass: '123456',
             email: 'asd@asd.bg',
             srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -42,7 +42,7 @@ const initialState = {
                         cid: 2
                         }
                     ],
-                    description: '',
+                    description: 'dsdfasdfa asgsfgasfg gSFGAFG ASGFDGADFH AGFVASFDVASGF GFAG adsgasfgafg sfadgafgadfg afsgafgadf afggafgafg',
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     likes: 543,
                     isThisPostLiked: false,
@@ -56,7 +56,7 @@ const initialState = {
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     comments:[],
-                    description: '',
+                    description: 'Ноо, той има и други постове...',
                     likes: 10,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
@@ -352,6 +352,14 @@ const reducer = (state = initialState, action) => {
             } else {
                 return {...state, currentUser: {...state.currentUser, user: {...state.currentUser.user, followedUsers: state.currentUser.user.followedUsers.filter(userId => userId!== action.status.uid )}}}
             }
+        }
+
+        case LOGOUT_USER: {
+            sessionStorage.removeItem('loggedUser');
+            const isLog = false;
+            const logOut = null;
+            const users = [...state.users];
+            return { ...state, users, currentUser: {...state.currentUser, user: logOut, isLog} };
         }
 
         default: return state;
