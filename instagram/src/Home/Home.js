@@ -9,6 +9,7 @@ import CircleImg from '../common/UI/CircleImg/CircleImg';
 import Button from '../common/UI/Button/Button';
 import { addAfollowed } from './actions/actions'
 import keyGen from '../common/keyGen/keyGen'
+import { Link } from 'react-router-dom';
 
 
 const home = props => {
@@ -32,7 +33,9 @@ return (<div className={classes.home}>
         <div className={classes.userProfile} >
             <CircleImg {...profileProps}/>
             <div className={classes.name}>
-                <h1>{profileProps.name}</h1>
+                <Link className={classes.link} to={"/profile/"+profileProps.uid}>
+                    <h1>{profileProps.name}</h1>
+                </Link>
             </div>
         </div>
         <GreyContainer title={"Recomended:"}>

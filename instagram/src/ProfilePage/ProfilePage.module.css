@@ -10,6 +10,7 @@
     font-size: 2em;
     margin-block-start: 0;
     margin-block-end: 0;
+    text-transform: lowercase;
 }
 
 .nameAndButtonDiv {
