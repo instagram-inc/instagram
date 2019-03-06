@@ -10,13 +10,7 @@ import { toggleLiked, toggleSaved } from './actions/actions'
 import { connect } from 'react-redux';
 
 class ActivityIcons extends React.Component {
-    // state = {
-    //     isSaved: false
-    // }
 
-    // toggleSave = () => {
-    //     this.setState({ isSaved : !this.state.isSaved });
-    // }
     onToggleLiked = () => {
         const pid = this.props.pid;
         const uid = this.props.uid;
@@ -40,9 +34,6 @@ class ActivityIcons extends React.Component {
         }
         
         let save = SaveEmpty;
-        console.log('addasasdasdassd')
-        console.log(this.props)
-        console.log(this.props.isThisPostSaved)
         if (this.props.isThisPostSaved) {
             save = SaveFull;
         }
@@ -103,5 +94,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(ActivityIcons);
-
-// export default ActivityIcons;

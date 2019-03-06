@@ -7,12 +7,6 @@ import classes from './Post.module.css'
 import ListOfComments from '../ListOfComments/ListOfComments';
 import AddAComment from '../AddAComment/AddAComment';
 
-// import { defineCurrentUser } from './actions/actions'
-// import { connect } from 'react-redux';
-
-
-
-
 
 class Post extends React.Component {
     
@@ -24,8 +18,6 @@ class Post extends React.Component {
         this.setState({  isTextAreaActive : !this.state.isTextAreaActive });
     }
     render(){
-        console.log('POST')
-        console.log(this.props)
         return (
             <section
             className={classes.post}>
@@ -48,13 +40,5 @@ class Post extends React.Component {
 
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         currentUser: () => dispatch(defineCurrentUser())
-//     }
-// }
-   
-
-// export default connect(null, mapDispatchToProps)(Post);
 
 export default Post

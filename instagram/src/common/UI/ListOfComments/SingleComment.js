@@ -2,14 +2,12 @@ import React from 'react'
 import classes from './SingleComment.module.css'
 
 const singleComment = props => {
-    console.log("singlecomment")
-    console.log(props)
     return (
         <React.Fragment>
             <div className={classes.singleCommentContainer}>
                 <div className={classes.nameContainer}>
                     <h3 className={classes.name}>
-                        {props.userName}
+                        {props.userName.name}
                     </h3>
                 </div>
                 <div className={classes.commentContainer}>

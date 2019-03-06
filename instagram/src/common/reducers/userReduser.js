@@ -3,6 +3,7 @@ import { DEFINE_CURRENT_USER,
     LOGIN_USER  } from '../UI/Post/actions/actionTypes'
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
 import { TOGGLE_IS_POST_LIKED, TOGGLE_IS_POST_SAVED } from '../UI/ActivityIcons/actions/actionTypes';
+import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes'
 
 
 const initialState = {
@@ -15,21 +16,28 @@ const initialState = {
             pass: '123456',
             email: 'asd@asd.bg',
             srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-            followedUsers: [],
+            followedUsers: [3],
             followersOfMe: [],
             savedPosts:[],
             posts: [
-                {
+                {   
+                    uid:1,
                     pid: 1,
                     srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
                     comments:[
-                        {
-                        userName: 'Tosho',
+                         {
+                        userName: {
+                            name: 'Tosho',
+                            uid: 3
+                        },
                         comment: 'Много як пост браааааат! НапраУ пръскаааш!',
                         cid: 1
                         },
                         {
-                        userName: 'Niki',
+                        userName: {
+                            name: 'Niki',
+                            uid: 2
+                        },
                         comment: 'Всичко свърши!',
                         cid: 2
                         }
@@ -41,7 +49,8 @@ const initialState = {
                     isThisPostSaved: false
 
                 },
-                {
+                {   
+                    uid:1,
                     pid: 2,
                     circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
@@ -64,21 +73,28 @@ const initialState = {
             savedPosts:[],
             posts: [
                 {
+                    uid:2,
                     pid: 1,
                     srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
                     comments:[
                         {
-                        userName: 'Tosho',
+                        userName: {
+                            name: 'Tosho',
+                            uid: 3
+                        },
                         comment: 'Много як пост браааааат! НапраУ пръскаааш!',
                         cid: 1
                         },
                         {
-                        userName: 'Niki',
+                        userName: {
+                            name: 'Niki',
+                            uid: 2
+                        },
                         comment: 'Всичко свърши!',
                         cid: 2
                         }
                     ],
-                    description: '',
+                    description: 'fsdafsdafsadf',
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     likes: 543,
                     isThisPostLiked: false,
@@ -86,6 +102,7 @@ const initialState = {
 
                 },
                 {
+                    uid:2,
                     pid: 2,
                     circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
@@ -108,16 +125,23 @@ const initialState = {
             circleImgWidth: 30,
             posts: [
                 {
+                    uid:3,
                     pid: 1,
                     srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
                     comments:[
-                        {
-                        userName: 'Tosho',
+                         {
+                        userName: {
+                            name: 'Tosho',
+                            uid: 3
+                        },
                         comment: 'Много як пост браааааат! НапраУ пръскаааш!',
                         cid: 1
                         },
                         {
-                        userName: 'Niki',
+                        userName: {
+                            name: 'Niki',
+                            uid: 2
+                        },
                         comment: 'Всичко свърши!',
                         cid: 2
                         }
@@ -129,7 +153,8 @@ const initialState = {
                     isThisPostSaved: false
 
                 },
-                {
+                {   
+                    uid:3,
                     pid: 2,
                     circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
@@ -151,17 +176,24 @@ const initialState = {
             followersOfMe: [],
             savedPosts:[],
             posts: [
-                {
+                {   
+                    uid:4,
                     pid: 1,
                     srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
                     comments:[
-                        {
-                        userName: 'Tosho',
+                         {
+                        userName: {
+                            name: 'Tosho',
+                            uid: 3
+                        },
                         comment: 'Много як пост браааааат! НапраУ пръскаааш!',
                         cid: 1
                         },
                         {
-                        userName: 'Niki',
+                        userName: {
+                            name: 'Niki',
+                            uid: 2
+                        },
                         comment: 'Всичко свърши!',
                         cid: 2
                         }
@@ -174,6 +206,7 @@ const initialState = {
 
                 },
                 {
+                    uid: 4,
                     pid: 2,
                     circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
@@ -196,16 +229,23 @@ const initialState = {
             circleImgWidth: 30,
             posts: [
                 {
+                    uid:5,
                     pid: 1,
                     srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
                     comments:[
                         {
-                        userName: 'Tosho',
+                        userName: {
+                            name: 'Tosho',
+                            uid: 3
+                        },
                         comment: 'Много як пост браааааат! НапраУ пръскаааш!',
                         cid: 1
                         },
                         {
-                        userName: 'Niki',
+                        userName: {
+                            name: 'Niki',
+                            uid: 2
+                        },
                         comment: 'Всичко свърши!',
                         cid: 2
                         }
@@ -218,6 +258,7 @@ const initialState = {
 
                 },
                 {
+                    uid:5,
                     pid: 2,
                     circleImgWidth: 30,
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
@@ -239,10 +280,6 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    console.log('jjjjjjjjjjjjjjjjjjj')
-    console.log('tova e currentUser: ')
-    console.log(state.currentUser)
-    console.log('tova e systoqnieto: ' + state.currentUser.isLog)
     switch (action.type) {
         case ADD_NEW_COMMENT: {
             //За момента не барай защото работи
@@ -252,10 +289,12 @@ const reducer = (state = initialState, action) => {
             const currentUserPosts = [...currentUser.posts];
             const currentPost = currentUserPosts.findIndex(post => post.pid === action.comment.postId)
             const comments = currentUser.posts[currentPost].comments.slice();
-            comments.push({userName: currentUser.name, cid: action.comment.newCommentId, comment: action.comment.newComment});
+            const userName = {name: state.currentUser.user.name, uid: state.currentUser.user.uid} 
+            console.log(userName)
+            comments.push({userName, cid: action.comment.newCommentId, comment: action.comment.newComment});
             currentUser.posts[currentPost].comments = comments;
             stateUsers.splice(currentUserIndex, 1, currentUser);
-            return {...state, users: stateUsers, currentUser: {...currentUser, user: currentUser} }
+            return {...state, users: stateUsers}
         }
 
         case DEFINE_CURRENT_USER: {
@@ -276,31 +315,43 @@ const reducer = (state = initialState, action) => {
 
         case TOGGLE_IS_POST_LIKED: {
             const stateUsers = [...state.users]
-            const currentUserIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.status.uid);
-            const currentUser = stateUsers[currentUserIndex]
-            const currentUserPosts = [...currentUser.posts];
-            const currentPost = currentUserPosts.findIndex(post => post.pid === action.status.pid);
-            stateUsers[currentUserIndex].posts[currentPost].isThisPostLiked = action.status.isThisPostLiked;
-            stateUsers[currentUserIndex].posts[currentPost].likes = action.status.likes;
-            return {...state, users: stateUsers, currentUser: {...currentUser, user: currentUser}}
+            const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.status.uid);
+            const user = stateUsers[userIndex]
+            const userPosts = [...user.posts];
+            const currentPost = userPosts.findIndex(post => post.pid === action.status.pid);
+            stateUsers[userIndex].posts[currentPost].isThisPostLiked = action.status.isThisPostLiked;
+            stateUsers[userIndex].posts[currentPost].likes = action.status.likes;
+
+            return {...state, users: stateUsers}
         }
 
         case TOGGLE_IS_POST_SAVED: {
             const stateUsers = [...state.users]
-            const currentUserIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.status.uid);
-            const currentUser = stateUsers[currentUserIndex]
-            const currentUserPosts = [...currentUser.posts];
-            const currentPost = currentUserPosts.findIndex(post => post.pid === action.status.pid);
-            stateUsers[currentUserIndex].posts[currentPost].isThisPostSaved = action.status.isThisPostSaved;
+            const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.status.uid);
+            const user = stateUsers[userIndex]
+            const userPosts = [...user.posts];
+            const currentPost = userPosts.findIndex(post => post.pid === action.status.pid);
+            stateUsers[userIndex].posts[currentPost].isThisPostSaved = action.status.isThisPostSaved;
             const uid = action.status.uid;
             const pid = action.status.pid;
             if (action.status.isThisPostSaved){
                 const status = {uid,pid};
-                stateUsers[currentUserIndex].savedPosts = [status, ...stateUsers[currentUserIndex].savedPosts]
+                stateUsers[userIndex].savedPosts = [status, ...stateUsers[userIndex].savedPosts]
             } else {
-                stateUsers[currentUserIndex].savedPosts = stateUsers[currentUserIndex].savedPosts.filter(post => post.uid !== uid && post.pid !== pid);
+                stateUsers[userIndex].savedPosts = stateUsers[userIndex].savedPosts.filter(post => post.uid !== uid && post.pid !== pid);
             }
-            return {...state, users: stateUsers, currentUser: {...currentUser, user: currentUser}}
+            return {...state, users: stateUsers}
+        }
+
+        case ADD_A_FOLLOWER_TO_CURRENT_USER: {
+            if (action.status.status){
+                const users = [...state.users]
+                const currentUserIndex = users.findIndex(user => user.uid === action.status.uid);
+                users[currentUserIndex].followedUsers.push(action.status.uid);
+                return {...state, users, currentUser: {...state.currentUser, user: {...state.currentUser.user, followedUsers: [...state.currentUser.user.followedUsers, action.status.uid] }}}
+            } else {
+                return {...state, currentUser: {...state.currentUser, user: {...state.currentUser.user, followedUsers: state.currentUser.user.followedUsers.filter(userId => userId!== action.status.uid )}}}
+            }
         }
 
         default: return state;

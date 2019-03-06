@@ -25,3 +25,12 @@
     text-transform: lowercase;
     margin-left: 10px;  
 }
+.recomendedRow{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 10px;
+}
+.buttonWraper{
+    height: 25
+}

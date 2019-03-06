@@ -8,7 +8,6 @@ import Button from '../Button/Button';
 
 class AddAComment extends React.Component {
     
-    
     state = {
         newComment: {
             comment : ''
