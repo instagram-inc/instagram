@@ -12,6 +12,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Register from '../LoginRegister/Register';
 import Login from '../LoginRegister/Login';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import LandscapePost from '../common/UI/Post/LandscapePost'
 
 class App extends Component {
 
@@ -37,7 +38,7 @@ class App extends Component {
               <Route exact path="/explore" component={Explore} />
               <Route exact path="/upload" component={Upload} />
               <Route exact path="/profile/:uid" component={ProfilePage} />
-              <Route exact path="profile/:uid/post/:pid" />
+              <Route exact path="/profile/:uid/post/:pid" component={LandscapePost} />
             </React.Fragment> 
           :
             <Login />

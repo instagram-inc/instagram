@@ -32,7 +32,7 @@ class SquarePost extends React.Component {
             backgroundSize: 'cover',
             backgroundPositionX: 'center',
             backgroundPositionY: 'center',
-            webkitFilter: 'brightness(50%)'
+            WebkitFilter: 'brightness(50%)'
         }
         
         
@@ -42,7 +42,7 @@ class SquarePost extends React.Component {
             backgroundSize: 'cover',
             backgroundPositionX: 'center',
             backgroundPositionY: 'center',
-            webkitFilter: 'brightness(100%)'
+            WebkitFilter: 'brightness(100%)'
         }
 
 
