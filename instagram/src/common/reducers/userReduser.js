@@ -24,7 +24,7 @@ const initialState = {
                 {   
                     uid:1,
                     pid: 1,
-                    srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
+                    srcPostPic: "https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     comments:[
                          {
                         userName: {
@@ -43,7 +43,7 @@ const initialState = {
                         cid: 2
                         }
                     ],
-                    description: 'dsdfasdfa asgsfgasfg gSFGAFG ASGFDGADFH AGFVASFDVASGF GFAG adsgasfgafg sfadgafgadfg afsgafgadf afggafgafg',
+                    description: 'Невероятна разходка в парка (happy) :)',
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     likes: 543,
                     isThisPostLiked: false,
@@ -56,7 +56,7 @@ const initialState = {
                     srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     comments:[],
-                    description: 'Ноо, той има и други постове...',
+                    description: 'Време е за балкан и паржолкииии...',
                     likes: 10,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
@@ -77,7 +77,7 @@ const initialState = {
                 {
                     uid:2,
                     pid: 1,
-                    srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
+                    srcPostPic: "http://expressions-productions.com/wp-content/uploads/2017/09/cars-wallpaper-portrait-thegem-gallery-masonry-100.jpg",
                     comments:[
                         {
                         userName: {
@@ -96,7 +96,7 @@ const initialState = {
                         cid: 2
                         }
                     ],
-                    description: 'fsdafsdafsadf',
+                    description: 'Да ми е честита новата кола!',
                     likes: 543,
                     isThisPostLiked: false,
                     isThisPostSaved: false
@@ -105,9 +105,9 @@ const initialState = {
                 {
                     uid:2,
                     pid: 2,
-                    srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
+                    srcPostPic: "https://cmsimages-alt.kbb.com/content/dam/kbb-editorial/make/lamborghini/lamborghini-other/2019-lambo-urus/01-2019-lamborghini-urus-oem.jpg",
                     comments:[],
-                    description: '',
+                    description: '#power #cars #rage',
                     likes: 10,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
@@ -126,7 +126,7 @@ const initialState = {
                 {
                     uid:3,
                     pid: 1,
-                    srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
+                    srcPostPic: "https://www.justbake.in/userfiles/pure-punch-1kg-cake.jpg",
                     comments:[
                          {
                         userName: {
@@ -145,7 +145,7 @@ const initialState = {
                         cid: 2
                         }
                     ],
-                    description: '',
+                    description: '#homeMade #cake',
                     likes: 543,
                     isThisPostLiked: false,
                     isThisPostSaved: false
@@ -154,9 +154,9 @@ const initialState = {
                 {   
                     uid:3,
                     pid: 2,
-                    srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
+                    srcPostPic: "https://www.eatingonadime.com/wp-content/uploads/2016/07/easy-homemade-blueberry-muffins.jpg",
                     comments:[],
-                    description: '',
+                    description: 'Едни мъфинчета, като за през уикенда :)))',
                     likes: 10,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
@@ -175,7 +175,7 @@ const initialState = {
                 {   
                     uid:4,
                     pid: 1,
-                    srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
+                    srcPostPic: "https://wallpapersfit.com/wp-content/uploads/data/2017/11/27/Amazing-Military-Pictures-1WC300126.jpg",
                     comments:[
                          {
                         userName: {
@@ -194,7 +194,7 @@ const initialState = {
                         cid: 2
                         }
                     ],
-                    description: '',
+                    description: 'Тук воювам и спасявам малки кученца...',
                     likes: 543,
                     isThisPostLiked: false,
                     isThisPostSaved: false
@@ -203,9 +203,9 @@ const initialState = {
                 {
                     uid: 4,
                     pid: 2,
-                    srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
+                    srcPostPic: "https://www.armytimes.com/resizer/LRaSu_1582g-U25Kexw5gQCPeak=/1200x0/filters:quality(100)/arc-anglerfish-arc2-prod-mco.s3.amazonaws.com/public/4ICIOXH5YZH7JETGADYG6PQWYY.jpg",
                     comments:[],
-                    description: '',
+                    description: 'Един нормален работен ден :)',
                     likes: 10,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
@@ -243,7 +243,7 @@ const initialState = {
                         cid: 2
                         }
                     ],
-                    description: '',
+                    description: '#mnogoSymKrasiva',
                     likes: 543,
                     isThisPostLiked: false,
                     isThisPostSaved: false
@@ -254,7 +254,7 @@ const initialState = {
                     pid: 2,
                     srcPostPic: "https://i.pinimg.com/originals/91/9f/6d/919f6d84985c345a1e714ca968020856.jpg",
                     comments:[],
-                    description: '',
+                    description: '#mood #perfect #day',
                     likes: 10,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
@@ -264,7 +264,7 @@ const initialState = {
                     pid: 3,
                     srcPostPic: "https://www.portraitprofessional.com/img/page-images/homepage/v18/slider/layers-B.jpg",
                     comments:[],
-                    description: '',
+                    description: '#newHairColor',
                     likes: 250,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
@@ -274,7 +274,7 @@ const initialState = {
                     pid: 4,
                     srcPostPic: "https://data.whicdn.com/images/47137307/original.jpg",
                     comments:[],
-                    description: '',
+                    description: '#kifla#kroasan#ponichka#banichka',
                     likes: 250,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
