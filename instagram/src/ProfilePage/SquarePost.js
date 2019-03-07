@@ -59,7 +59,7 @@ class SquarePost extends React.Component {
             >
             <div>
                 {(isHover) ?
-                <Link to={"/profile/"+this.props.uid+"/post/"+this.props.pid}>
+                <Link className={classes.link} to={"/profile/"+this.props.uid+"/post/"+this.props.pid}>
                     <div className={classes.postHover}>
                         <img src={WhiteHeart} alt="" height='20' />
                         <span>{this.props.likes}</span>
