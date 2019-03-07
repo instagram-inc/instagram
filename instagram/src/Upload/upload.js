@@ -3,6 +3,7 @@ import classes from './upload.module.css';
 import Button from "../common/UI/Button/Button"
 import { onAddNewPost } from './actions/actions'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Upload extends React.Component {
     state = {
@@ -63,8 +64,7 @@ class Upload extends React.Component {
         })
 
     }
-    onAddNewPost = event => {
-        event.preventDefault()
+    onAddNewPost = () => {
         if (this.state.uploadFormProperties.isPicButtonActive 
             && this.state.uploadFormProperties.isDescButtonActive) {
             const uid = this.props.currentUser.user.uid;
@@ -80,6 +80,11 @@ class Upload extends React.Component {
     }
 
     render() {
+        let isBActive = false;
+        if(this.state.uploadFormProperties.isPicButtonActive === true &&
+            this.state.uploadFormProperties.isDescButtonActive === true) {
+            isBActive = true;
+        }
 
         return (
             <React.Fragment>
@@ -112,16 +117,19 @@ class Upload extends React.Component {
                     
                     <div className={classes.innerDiv}> 
                         <p className={classes.p}>Final step</p>
-                        {/* <button
-                        className={classes.shareButton}
-                        // onClick={}
-                        >SHARE
-                        </button> */}
-                        <Button 
-                            isActive={this.state.uploadFormProperties.isPicButtonActive 
-                            && this.state.uploadFormProperties.isDescButtonActive} 
+                        {isBActive ?
+                            <Link to={"/profile/"+this.props.currentUser.user.uid}>
+                                <Button 
+                                isActive={isBActive} 
+                                activeText={'Share'}
+                                onAdd={() => this.onAddNewPost()}/>
+                            </Link>
+                        :
+                            <Button 
+                            isActive={false} 
                             activeText={'Share'}
-                            onAdd={event => this.onAddNewPost(event)}/>
+                            onAdd={() => this.onAddNewPost()}/>
+                        }
                     </div>
                 </div>
             </React.Fragment>
