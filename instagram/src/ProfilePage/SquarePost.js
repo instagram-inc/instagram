@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './SquarePost.module.css';
 import WhiteHeart from '../immages/WhiteHeart.png';
 import WhiteComment from '../immages/WhiteComment.png';
+import { Link } from 'react-router-dom';
 
 class SquarePost extends React.Component {
 
@@ -46,6 +47,7 @@ class SquarePost extends React.Component {
 
 
         return (
+            
             <div className={classes.post}
             style={ (isHover) ?
                 {...postStyleOn}
@@ -57,12 +59,14 @@ class SquarePost extends React.Component {
             >
             <div>
                 {(isHover) ?
+                <Link to={"/profile/"+this.props.uid+"/post/"+this.props.pid}>
                     <div className={classes.postHover}>
                         <img src={WhiteHeart} alt="" height='20' />
                         <span>{this.props.likes}</span>
                         <img src={WhiteComment} alt="" height='40' />
                         <span>{this.props.comments.length}</span>
                     </div>
+                </Link>
                 :
                     null
                 }

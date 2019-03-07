@@ -37,7 +37,8 @@ class App extends Component {
               <Route exact path="/explore" component={Explore} />
               <Route exact path="/upload" component={Upload} />
               <Route exact path="/profile/:uid" component={ProfilePage} />
-            </React.Fragment>
+              <Route exact path="profile/:uid/post/:pid" />
+            </React.Fragment> 
           :
             <Login />
           }

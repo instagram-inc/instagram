@@ -14,7 +14,7 @@ const postsContainer = props => {
     return (
         <div className={classes.postsContainer}>
         {neededPosts.map(post => 
-        <SquarePost key={keyGen()} {...post} />
+                <SquarePost key={keyGen()} {...post} />
         )}
         </div>
     )
