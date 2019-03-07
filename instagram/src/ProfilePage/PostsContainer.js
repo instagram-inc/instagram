@@ -11,11 +11,18 @@ const postsContainer = props => {
     let neededPosts = userOnScreen.posts;
     neededPosts = neededPosts.sort( (p1, p2) => p2.pid - p1.pid);
 
+    console.log(neededPosts.length)
+    console.log(neededPosts.length % 3)
     return (
         <div className={classes.postsContainer}>
         {neededPosts.map(post => 
                 <SquarePost key={keyGen()} {...post} />
         )}
+        { (neededPosts.length % 3 === 2 || neededPosts.length === 2) ?
+            <div className={classes.post}></div>
+        :
+            null
+        }
         </div>
     )
 }
