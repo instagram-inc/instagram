@@ -9,6 +9,7 @@ import './ActivityIcons.css';
 import { toggleLiked, toggleSaved } from './actions/actions'
 import { connect } from 'react-redux';
 
+
 class ActivityIcons extends React.Component {
 
     onToggleLiked = () => {
@@ -28,6 +29,10 @@ class ActivityIcons extends React.Component {
     }
     
     render() {
+        let landscapePostStyle = null;
+        if (this.props.landscapePostStyle){
+            landscapePostStyle = this.props.landscapePostStyle;
+        }
         let heart = HeartEmpty;
         if (this.props.isThisPostLiked) {
             heart = HeartFull;
@@ -42,7 +47,10 @@ class ActivityIcons extends React.Component {
             
             <React.Fragment>
             <div className="grandActivityDiv">
-                <div className="activityDiv">
+                <div 
+                className="activityDiv"
+                style={{...landscapePostStyle}}
+                >
                     <img
                     className="img"
                     onClick={this.onToggleLiked}
