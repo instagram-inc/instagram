@@ -224,7 +224,7 @@ const initialState = {
                 {
                     uid:5,
                     pid: 1,
-                    srcPostPic: "https://cdn.wallpapersafari.com/64/8/JqlzeV.jpg",
+                    srcPostPic: "https://i.pinimg.com/originals/35/74/d0/3574d07df916fd207e111de6cde7843f.jpg",
                     comments:[
                         {
                         userName: {
@@ -252,10 +252,30 @@ const initialState = {
                 {
                     uid:5,
                     pid: 2,
-                    srcPostPic: "https://i.pinimg.com/originals/42/73/b7/4273b7c22af24b9d4bade05c28cdc2ac.jpg",
+                    srcPostPic: "https://i.pinimg.com/originals/91/9f/6d/919f6d84985c345a1e714ca968020856.jpg",
                     comments:[],
                     description: '',
                     likes: 10,
+                    isThisPostLiked: false,
+                    isThisPostSaved: false,
+                },
+                {
+                    uid:5,
+                    pid: 3,
+                    srcPostPic: "https://www.portraitprofessional.com/img/page-images/homepage/v18/slider/layers-B.jpg",
+                    comments:[],
+                    description: '',
+                    likes: 250,
+                    isThisPostLiked: false,
+                    isThisPostSaved: false,
+                },
+                {
+                    uid:5,
+                    pid: 4,
+                    srcPostPic: "https://data.whicdn.com/images/47137307/original.jpg",
+                    comments:[],
+                    description: '',
+                    likes: 250,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
                 }

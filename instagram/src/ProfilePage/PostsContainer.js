@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './PostsContainer.module.css';
 import { connect } from 'react-redux';
 import SquarePost from './SquarePost';
+import keyGen from '../common/keyGen/keyGen'
 
 const postsContainer = props => {
 
@@ -13,7 +14,7 @@ const postsContainer = props => {
     return (
         <div className={classes.postsContainer}>
         {neededPosts.map(post => 
-        <SquarePost {...post} />
+        <SquarePost key={keyGen()} {...post} />
         )}
         </div>
     )
