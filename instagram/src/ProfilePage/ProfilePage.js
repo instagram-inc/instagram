@@ -5,6 +5,7 @@ import Button from '../common/UI/Button/Button';
 import { setNoLoggedUser } from '../common/UI/Post/actions/actions';
 import { addAfollowed } from '../Home/actions/actions';
 import { connect } from 'react-redux';
+import PostsContainer from './PostsContainer';
 
 
 const profilePage = props => {
@@ -55,6 +56,8 @@ const profilePage = props => {
                 </div>
             </div>
         </div>
+
+        <PostsContainer {...props} />
 </React.Fragment>)
 }
 
