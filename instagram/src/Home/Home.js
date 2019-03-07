@@ -11,21 +11,28 @@ import { addAfollowed } from './actions/actions'
 import keyGen from '../common/keyGen/keyGen'
 import { Link } from 'react-router-dom';
 
-
 const home = props => {
-   
+    // Wellcome pic is shown to all new users. The pic src must be from CDN in oreder to load fast!
+    const WELLCOMEPIC = 'https://cdn.gsmarena.com/imgroot/news/18/03/instagram-timeline-changes/-728/gsmarena_001.jpg';
+    const WELLCOMEPIC_ALT = 'Image depicting the instagram logo';
     const UNIT = 'vh'
     const users = props.users();
-    const profileProps = {...props.currentUser, circleImgWidth: 50}
-    const postsToBeShown = props.currentUser.followedUsers;
+    const currentUser = props.getUserByUid(props.currentUserUid)
+    const profileProps = {...currentUser, circleImgWidth: 50}
+    const postsToBeShown = currentUser.followedUsers;
+    console.log(currentUser)
 return (<div className={classes.home}>
     <section className={classes.posts}>
         {   postsToBeShown.length !== 0 ?
             <ListOfPosts posts={postsToBeShown}/>
             :
             <>
-            <h1>test</h1>
-            <p>sadfkjhfjksadfhfdjk</p>
+            <div className={classes.wellcome}>
+                <img className={classes.wellcomePic}
+                src={WELLCOMEPIC}
+                alt= {WELLCOMEPIC_ALT}
+                />
+            </div>
             </>
         }
     </section>
@@ -68,8 +75,9 @@ const mapStateToProps = (state) => {
     
     return {
         users: () => state.users.filter(user => user.uid !== state.currentUser.user.uid),
-        currentUser: state.currentUser.user,
+        currentUserUid: state.currentUser.user.uid,
         checkFollowerStatus: uid => state.currentUser.user.followedUsers.some(userId => userId === +uid),
+        getUserByUid: uid => state.users.find(user => user.uid === uid)
     }
 }
 const mapDispatchToProps = dispatch => {

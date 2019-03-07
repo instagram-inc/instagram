@@ -339,14 +339,16 @@ const reducer = (state = initialState, action) => {
         case ADD_A_FOLLOWER_TO_CURRENT_USER: {
             console.log(action)
             const users = [...state.users]
+            const folloedUserIndex = users.findIndex(user => user.uid === action.status.uid);
             const currentUserIndex = users.findIndex(user => user.uid === state.currentUser.user.uid);
             if (action.status.status){
                 users[currentUserIndex].followedUsers.push(action.status.uid);
-                return {...state, users}
+                users[folloedUserIndex].followersOfMe.push(state.currentUser.user.uid);
             } else {
                 users[currentUserIndex].followedUsers = users[currentUserIndex].followedUsers.filter(uid => uid !== action.status.uid);
-                return {...state, users}
+                users[folloedUserIndex].followersOfMe = users[folloedUserIndex].followersOfMe.filter(uid => uid !== state.currentUser.user.uid);
             }
+            return {...state, users, currentUser: {...state.currentUser, user: users[currentUserIndex]}}
         }
 
         case LOGOUT_USER: {

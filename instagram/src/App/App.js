@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 
 import Explore from '../Explore/Explore';
-import Upload from '../Upload/upload' 
+import Upload from '../Upload/Upload' 
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Register from '../LoginRegister/Register';
 import Login from '../LoginRegister/Login';
