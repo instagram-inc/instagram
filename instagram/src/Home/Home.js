@@ -17,15 +17,6 @@ const home = props => {
     // WELLCOMEPIC is shown to all new users. The pic src must be from CDN in oreder to load fast!
     const WELLCOMEPIC = 'https://cdn.gsmarena.com/imgroot/news/18/03/instagram-timeline-changes/-728/gsmarena_001.jpg';
     const WELLCOMEPIC_ALT = 'Image depicting the instagram logo';
-    const UNIT = 'vh';
-    const currentUser = props.allusers.find(user => user.uid === props.currentUserUid);
-    console.log(currentUser)
-    const profileProps = {...currentUser, circleImgWidth: 50};
-    const postsToBeShown = currentUser.followedUsers;
-    const checkFollowerStatus = uid => currentUser.followedUsers.some(userId => userId === +uid);
-    const remainingRecommendations = props.filteredUsers
-    .filter(user => !currentUser.followedUsers.some(uid => uid === user.uid));
-    
     const shuffle = array => {
         let currentIndex = array.length, temporaryValue, randomIndex;
     
@@ -39,10 +30,19 @@ const home = props => {
       
         return array;
       }
-    const recommended = shuffle(remainingRecommendations).slice(0, NUMBER_OF_USERS_TO_RECOMMEND).filter(user => user);
+    const UNIT = 'vh';
+    const currentUser = props.allusers.find(user => user.uid === props.currentUserUid);
+    console.log('admina li e ' + props.isAdmin)
+    var profileProps = {...currentUser, circleImgWidth: 50};
+    if (!props.isAdmin) {
+        var postsToBeShown = currentUser.followedUsers;
+        var checkFollowerStatus = uid => currentUser.followedUsers.some(userId => userId === +uid);
+        const remainingRecommendations = props.filteredUsers
+        .filter(user => !currentUser.followedUsers.some(uid => uid === user.uid));
+        var recommended = shuffle(remainingRecommendations).slice(0, NUMBER_OF_USERS_TO_RECOMMEND).filter(user => user);
+    }
 
     
-    console.log('admina li e ' + props.isAdmin)
     console.log(props.allusers)
     return (
         <div className={classes.home}>
@@ -84,7 +84,7 @@ const home = props => {
                             </Link>
                         </div>
                     </div>
-                    {recommended.length !== 0 ?
+                    {recommended && recommended.length !== 0 ?
                         <GreyContainer title={"Recommended:"} link={'more'} to={'/list/recommended'}>
                         {recommended.map(user => 
                             <div key={keyGen()}className={classes.recomendedRow}>
@@ -119,10 +119,11 @@ const home = props => {
 }
 
 const mapStateToProps = (state) => {
-    
+    const ADMIN_UID = 0;
     return {
-        filteredUsers: state.users.filter(user => user.uid !== state.currentUser.user.uid), // All users without currently logged.
-        allusers: state.users,
+        filteredUsers: state.users.filter(user => user.uid !== state.currentUser.user.uid 
+            && user.uid !== ADMIN_UID), // All users without currently logged and Admin.
+        allusers: state.users.filter(user => user.uid !== ADMIN_UID),
         currentUserUid: state.currentUser.user.uid,
         isAdmin: state.currentUser.isAdmin
     }

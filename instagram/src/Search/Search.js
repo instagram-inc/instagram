@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { searchForUsers } from './actions/actions';
 
+
 class Search extends React.Component{
 
     state = {
@@ -28,7 +29,7 @@ class Search extends React.Component{
     action = event =>{
         const { search, placeholder } = {...this.state};
         const ENTER = 13;
-        if (event.keyCode === ENTER) {
+        if (event.keyCode === ENTER && this.state.search.value.trim().length !== 0) {
             if (!this.props.users.some(user => user.name.toLowerCase().includes(this.state.search.value))) {
                 placeholder.value = 'Sorry we have no resault for you';
                 search.value = ''
@@ -69,8 +70,9 @@ class Search extends React.Component{
 }
 
 const mapStateToProps = state => {
+    const ADMIN_UID = 0;
     return {
-        users: state.users,
+        users: state.users.filter(user => user.uid !== ADMIN_UID)
     }
 }
 

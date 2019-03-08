@@ -2,7 +2,6 @@ import React from 'react';
 import HeartEmpty from '../../../immages/HeartEmpty.png';
 import HeartFull from '../../../immages/HeartFull.png';
 import Comment from '../../../immages/Comment.png';
-import Share from '../../../immages/Share.png';
 import SaveEmpty from '../../../immages/SaveEmpty.png';
 import SaveFull from '../../../immages/SaveFull.png';
 import './ActivityIcons.css';

@@ -331,9 +331,11 @@ const reducer = (state = initialState, action) => {
         };
         
         case NEW_USER: {
+            console.log(action)
             const newUser = action.user;
             newUser.srcProfilePic = 'http://imperialsoftech.com/images/front/Default_profile_picture.jpg';
             newUser.circleImgWidth = 30;
+            newUser.savedPosts = [];
             return {...state, users: [...state.users, newUser]};
         };
         

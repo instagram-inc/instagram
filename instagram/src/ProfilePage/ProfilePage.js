@@ -17,6 +17,12 @@ class ProfilePage extends React.Component {
         isSavedActive: true,
         isOwnActive: false
     }
+    setOwnPosts = () => {
+        this.setState({ ...this.state, isSavedClicked : false, isOwnActive: false, isSavedActive: true })
+    }
+    setSavedPosts = () => {
+        this.setState({ ...this.state, isSavedClicked : true, isSavedActive: false, isOwnActive: true })
+    }
 
     render() {
         const UNIT = 'vh';
@@ -30,18 +36,7 @@ class ProfilePage extends React.Component {
         let ownPosts = userINeed.posts;
         ownPosts = ownPosts.sort( (p1, p2) => p2.pid - p1.pid);
         let savedPosts = currentUser.savedPosts;
-        savedPosts = savedPosts.map(postInfo => {
-            const user = this.props.users.find(user => user.uid === postInfo.uid);
-            const post = user.posts.find(post => post.pid === postInfo.pid);
-            return post;
-        });
         
-        const setOwnPosts = () => {
-            this.setState({ ...this.state, isSavedClicked : false, isOwnActive: false, isSavedActive: true })
-        }
-        const setSavedPosts = () => {
-            this.setState({ ...this.state, isSavedClicked : true, isSavedActive: false, isOwnActive: true })
-        }
 
         const checkFollowerStatus = () => this.props.currentUser.followedUsers.some(id => id === +userId);
 
@@ -90,13 +85,13 @@ class ProfilePage extends React.Component {
                         <Button 
                         isActive={this.state.isSavedActive}
                         activeText={'saved posts'}
-                        onAdd={() => setSavedPosts()}/>
+                        onAdd={() => this.setSavedPosts()}/>
                     </Link>
                     <Link to={"/profile/"+userId}>
                         <Button 
                         isActive={this.state.isOwnActive}
                         activeText={'own posts'}
-                        onAdd={() => setOwnPosts()}/>
+                        onAdd={() => this.setOwnPosts()}/>
                     </Link>
                 </div>
             :
@@ -105,9 +100,9 @@ class ProfilePage extends React.Component {
 
             <PostsContainer>
                 {this.state.isSavedClicked ?
-                    savedPosts.map(post => <SquarePost key={keyGen()} {...post} />) 
+                   savedPosts && savedPosts.map(post => <SquarePost key={keyGen()} {...post} />) 
                 :
-                    ownPosts.map(post => <SquarePost key={keyGen()} {...post} />)
+                ownPosts && ownPosts.map(post => <SquarePost key={keyGen()} {...post} />)
                 }
                 {(ownPosts.length % 3 === 2 || ownPosts.length === 2) ?
                     <div className={classes.post}></div>
