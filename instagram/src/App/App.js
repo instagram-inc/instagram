@@ -50,6 +50,8 @@ class App extends Component {
               <Route exact path="/explore" component={Explore} />
               <Route exact path="/upload" component={Upload} />
               <Route exact path="/list" component={List} />
+              <Route exact path="/list/resault" component={List} />
+              <Route exact path="/list/recommended" component={List} />
               <Route exact path="/profile/:uid" component={ProfilePage} />
               <Route exact path="/profile/:uid/saved" component={ProfilePage} />
               <Route exact path="/profile/:uid/post/:pid" component={LandscapePost} />

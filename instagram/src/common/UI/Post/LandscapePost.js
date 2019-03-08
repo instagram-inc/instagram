@@ -25,11 +25,10 @@ class LandscapePost extends React.Component {
     }
     render () {
         const {uid, pid} = this.props.match.params
-        console.log(uid, pid)
         const currentUid = +uid;
         const currentPid = +pid;
         const {user, post} = this.props.getUserAndPostBydIds(currentUid,currentPid)
-        const ACTIVTY_DIV_STYLE = {width: '40%'};
+        const ACTIVTY_DIV_STYLE = {width: '30%'};
         const DESCRIPTION_DIV_CSS = {marginBottom: '1vh'};
 
         const backgroundSrc = {backgroundImage: `url("${post.srcPostPic}")`}

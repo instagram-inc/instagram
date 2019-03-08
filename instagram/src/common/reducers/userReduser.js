@@ -7,6 +7,8 @@ import { TOGGLE_IS_POST_LIKED, TOGGLE_IS_POST_SAVED } from '../UI/ActivityIcons/
 import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes';
 import { ADD_NEW_POST } from '../../Upload/actions/actionsTypes';
 import { DELETE_USER } from '../UI/HeaderOfPost/actionTypes';
+import { SEARCH_FOR_USERS } from '../../Search/actions/actionsTypes';
+
 
 
 const initialState = {
@@ -300,7 +302,8 @@ const initialState = {
         user : (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser')) : null,
         isLog : false,
         isAdmin : false
-    }
+    },
+    requestedUids: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -428,6 +431,10 @@ const reducer = (state = initialState, action) => {
             console.log(newUsers)
             return {...state, users: newUsers};
         };
+        case SEARCH_FOR_USERS: {
+            const requestedUids = action.requestedUids;
+            return {...state, requestedUids};
+        }
 
         default: return state;
     };  

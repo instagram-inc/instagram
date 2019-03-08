@@ -8,7 +8,7 @@ import { deleteUser } from './actions';
 
 
 const headerOfPost = props => {
- 
+    
     return (
         
         <div className={classes.header}>
@@ -23,12 +23,16 @@ const headerOfPost = props => {
                     </h1>
                 </div>
             </div>
-            <div className={classes.deleteButton}>
-                <Button
-                isActive={true}
-                activeText={'delete user'}
-                onAdd={() => props.ondeleteUser(props.uid)}/>
-            </div>
+            {props.isAdmin ?
+                <div className={classes.deleteButton}>
+                    <Button
+                    isActive={true}
+                    activeText={'delete user'}
+                    onAdd={() => props.ondeleteUser(props.uid)}/>
+                </div>
+            :
+                null
+            }
         </div>
     )
 }

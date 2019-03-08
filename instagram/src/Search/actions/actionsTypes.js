@@ -1,0 +1,1 @@
+export const SEARCH_FOR_USERS = 'SEARCH_FOR_USERS';
