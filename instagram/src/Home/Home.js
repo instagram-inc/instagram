@@ -10,6 +10,7 @@ import Button from '../common/UI/Button/Button';
 import { addAfollowed } from './actions/actions'
 import keyGen from '../common/keyGen/keyGen'
 import { Link } from 'react-router-dom';
+import List from '../List/List';
 
 const home = props => {
     // WELLCOMEPIC is shown to all new users. The pic src must be from CDN in oreder to load fast!
@@ -21,53 +22,73 @@ const home = props => {
     const postsToBeShown = currentUser.followedUsers;
     const checkFollowerStatus = uid => currentUser.followedUsers.some(userId => userId === +uid);
     
+    console.log('admina li e ' + props.isAdmin)
+    console.log(props.allusers)
 return (
 <div className={classes.home}>
     <section className={classes.posts}>
-        {   postsToBeShown.length !== 0 ?
-            <ListOfPosts posts={postsToBeShown}/>
-            :
+        {props.isAdmin ?
             <>
-                <div className={classes.wellcome}>
-                    <img className={classes.wellcomePic}
-                    src={WELLCOMEPIC}
-                    alt= {WELLCOMEPIC_ALT}
-                    />
+            <div className={classes.adminProfile} >
+                <CircleImg {...profileProps}/>
+                <div className={classes.name}>
+                    <Link className={classes.link} to={"/profile/"+profileProps.uid}>
+                        <h1>{profileProps.name}</h1>
+                    </Link>
                 </div>
-            </>
-        }
-    </section>
-    <section className={classes.profileSection}>
-        <div className={classes.userProfile} >
-            <CircleImg {...profileProps}/>
-            <div className={classes.name}>
-                <Link className={classes.link} to={"/profile/"+profileProps.uid}>
-                    <h1>{profileProps.name}</h1>
-                </Link>
+                <span>(advanced options)</span>
             </div>
-        </div>
-        <GreyContainer title={"Recomended:"}>
-        {props.filteredUsers.map(user => 
-            <div key={keyGen()}className={classes.recomendedRow}>
-                <HeaderOfPost key={keyGen()}{...user}/>
-                <div  className={classes.buttonWraper}>
-                    <Button 
-                    key={keyGen()}
-                    activeText={"Unfollow"} 
-                    text={"Follow"}
-                    isActive={checkFollowerStatus(user.uid)} 
-                    onAdd={() => {
-                        checkFollowerStatus(user.uid) ?
-                        props.addAfollowed({status: false, uid : user.uid})
-                        :
-                        props.addAfollowed({status: true, uid : user.uid})}} 
-                    style={{padding:`${0.3 + UNIT} ${3 + UNIT}`}} 
-                    />
-                </div>
-            </div>)
+            <List />
+            </>
+        :
+            (postsToBeShown.length !== 0) ?
+                <ListOfPosts posts={postsToBeShown}/>
+            :
+                <>
+                    <div className={classes.wellcome}>
+                        <img className={classes.wellcomePic}
+                        src={WELLCOMEPIC}
+                        alt= {WELLCOMEPIC_ALT}
+                        />
+                    </div>
+                </>  
         }
-        </GreyContainer>
     </section>
+    {!props.isAdmin ?
+        <section className={classes.profileSection}>
+            <div className={classes.userProfile} >
+                <CircleImg {...profileProps}/>
+                <div className={classes.name}>
+                    <Link className={classes.link} to={"/profile/"+profileProps.uid}>
+                        <h1>{profileProps.name}</h1>
+                    </Link>
+                </div>
+            </div>
+            <GreyContainer title={"Recomended:"}>
+            {props.filteredUsers.map(user => 
+                <div key={keyGen()}className={classes.recomendedRow}>
+                    <HeaderOfPost key={keyGen()}{...user}/>
+                    <div  className={classes.buttonWraper}>
+                        <Button 
+                        key={keyGen()}
+                        activeText={"Unfollow"} 
+                        text={"Follow"}
+                        isActive={checkFollowerStatus(user.uid)} 
+                        onAdd={() => {
+                            checkFollowerStatus(user.uid) ?
+                            props.addAfollowed({status: false, uid : user.uid})
+                            :
+                            props.addAfollowed({status: true, uid : user.uid})}} 
+                        style={{padding:`${0.3 + UNIT} ${3 + UNIT}`}} 
+                        />
+                    </div>
+                </div>)
+            }
+            </GreyContainer>
+        </section>
+        :
+            null
+        }
     </div>);
 }
 
@@ -76,7 +97,8 @@ const mapStateToProps = (state) => {
     return {
         filteredUsers: state.users.filter(user => user.uid !== state.currentUser.user.uid), // All users without currently logged.
         allusers: state.users,
-        currentUserUid: state.currentUser.user.uid
+        currentUserUid: state.currentUser.user.uid,
+        isAdmin: state.currentUser.isAdmin
     }
 }
 const mapDispatchToProps = dispatch => {

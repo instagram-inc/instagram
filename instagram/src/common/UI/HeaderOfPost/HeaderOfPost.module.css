@@ -4,6 +4,7 @@
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .nameContainer{    
@@ -30,4 +31,8 @@
 .link {
     text-decoration: none;
     color: black;
+}
+
+.deleteButton {
+    margin-right: 10px;
 }

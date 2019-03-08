@@ -10,11 +10,9 @@ class SquarePost extends React.Component {
         hover : false
     }
     onMouseEnter = () => {
-        // console.log('Hover');
         this.setState({ hover: true });
     }
     onMouseLeave = () => {
-        // console.log('not hover')
         this.setState({ hover: false });
     }
 
@@ -23,8 +21,6 @@ class SquarePost extends React.Component {
         if(this.state.hover === true) {
             isHover = true;
         }
-        // console.log('props:')
-        // console.log(this.props)
 
         const postStyleOn = {
             backgroundImage: `url('${this.props.srcPostPic}')`,
@@ -35,7 +31,6 @@ class SquarePost extends React.Component {
             WebkitFilter: 'brightness(50%)'
         }
         
-        
         const postStyleOff = {
             backgroundImage: `url('${this.props.srcPostPic}')`,
             backgroundRepeat: 'no-repeat',
@@ -44,7 +39,6 @@ class SquarePost extends React.Component {
             backgroundPositionY: 'center',
             WebkitFilter: 'brightness(100%)'
         }
-
 
         return (
             
@@ -59,23 +53,21 @@ class SquarePost extends React.Component {
             >
             <div>
                 {(isHover) ?
-                <Link className={classes.link} to={"/profile/"+this.props.uid+"/post/"+this.props.pid}>
-                    <div className={classes.postHover}>
-                        <img src={WhiteHeart} alt="" height='20' />
-                        <span>{this.props.likes}</span>
-                        <img src={WhiteComment} alt="" height='40' />
-                        <span>{this.props.comments.length}</span>
-                    </div>
-                </Link>
+                    <Link className={classes.link} to={"/profile/"+this.props.uid+"/post/"+this.props.pid}>
+                        <div className={classes.postHover}>
+                            <img src={WhiteHeart} alt="" height='20' />
+                            <span>{this.props.likes}</span>
+                            <img src={WhiteComment} alt="" height='40' />
+                            <span>{this.props.comments.length}</span>
+                        </div>
+                    </Link>
                 :
                     null
                 }
             </div>
             </div>
-            )
+        )
     }
-
-    
 }
 
 export default SquarePost;

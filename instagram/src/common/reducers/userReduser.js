@@ -1,11 +1,12 @@
 import { DEFINE_CURRENT_USER,
     NEW_USER,
     LOGIN_USER,
-    LOGOUT_USER  } from '../UI/Post/actions/actionTypes'
+    LOGOUT_USER  } from '../UI/Post/actions/actionTypes';
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
 import { TOGGLE_IS_POST_LIKED, TOGGLE_IS_POST_SAVED } from '../UI/ActivityIcons/actions/actionTypes';
-import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes'
-import { ADD_NEW_POST } from '../../Upload/actions/actionsTypes'
+import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes';
+import { ADD_NEW_POST } from '../../Upload/actions/actionsTypes';
+import { DELETE_USER } from '../UI/HeaderOfPost/actionTypes';
 
 
 const initialState = {
@@ -280,12 +281,25 @@ const initialState = {
                     isThisPostSaved: false,
                 }
             ]
+        },
+        {
+            uid:0,
+            name: 'admin',
+            pass: '123456',
+            email: 'admin@admin.bg',
+            circleImgWidth: 30,
+            srcProfilePic: "http://www.clker.com/cliparts/b/5/c/6/1242811944897241787Warning_notice_-_EVIL_ADMIN.svg.med.png",
+            followedUsers: [],
+            followersOfMe: [],
+            savedPosts: [],
+            posts: []
         }
 
     ],
     currentUser: {
         user : (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser')) : null,
-        isLog : false
+        isLog : false,
+        isAdmin : false
     }
 }
 
@@ -321,10 +335,17 @@ const reducer = (state = initialState, action) => {
         };
         
         case LOGIN_USER: {
+            const ADMIN_EMAIL = 'admin@admin.bg';
+            const ADMIN_PASS = '123456';
+
             sessionStorage.setItem('loggedUser', JSON.stringify(action.user));
+            let isAdmin = false;
+            if (action.user.email === ADMIN_EMAIL && action.user.pass === ADMIN_PASS) {
+                isAdmin = true;
+            } 
             const isLog = true;
             const users = [...state.users];
-            return { ...state, users, currentUser: {...state.currentUser, user: action.user, isLog} };
+            return { ...state, users, currentUser: {...state.currentUser, user: action.user, isLog: isLog, isAdmin: isAdmin} };
         };
 
         case TOGGLE_IS_POST_LIKED: {
@@ -394,6 +415,19 @@ const reducer = (state = initialState, action) => {
             stateUsers[userIndex].posts.push(newPost);
             return {...state, users: stateUsers}
         }
+
+        case DELETE_USER: {
+            const newUsers = [...state.users];
+            console.log('newUsers')
+            console.log(newUsers)
+            const indexForDelete = newUsers.findIndex(user => user.uid === action.uid);
+            console.log('indexForDelete')
+            console.log(indexForDelete)
+            newUsers.splice(indexForDelete, 1);
+            console.log('newUsers 2')
+            console.log(newUsers)
+            return {...state, users: newUsers};
+        };
 
         default: return state;
     };  

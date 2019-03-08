@@ -52,3 +52,10 @@
 .wellcomePic{
     width: 100%;
 }
+
+.adminProfile {
+    display: flex;
+    align-items: center;
+    margin-top: 10vh;
+    margin-bottom: -90px;
+}

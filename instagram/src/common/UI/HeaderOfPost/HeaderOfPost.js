@@ -2,11 +2,13 @@ import React from 'react';
 import classes from './HeaderOfPost.module.css';
 import CircleImg from '../CircleImg/CircleImg';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Button from '../Button/Button';
+import { deleteUser } from './actions';
 
 
 const headerOfPost = props => {
-    console.log('[HEADER OD POST]')
-    console.log(props)
+ 
     return (
         
         <div className={classes.header}>
@@ -21,9 +23,27 @@ const headerOfPost = props => {
                     </h1>
                 </div>
             </div>
+            <div className={classes.deleteButton}>
+                <Button
+                isActive={true}
+                activeText={'delete user'}
+                onAdd={() => props.ondeleteUser(props.uid)}/>
+            </div>
         </div>
     )
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        ondeleteUser: uid => dispatch(deleteUser(uid))
+    }
+}
 
-export default headerOfPost;
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.currentUser.user,
+        isAdmin: state.currentUser.isAdmin
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(headerOfPost);
