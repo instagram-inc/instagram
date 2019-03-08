@@ -51,6 +51,7 @@ class ActivityIcons extends React.Component {
                 className="activityDiv"
                 style={{...landscapePostStyle}}
                 >
+                    <div className="tooltip">
                     <img
                     className="img"
                     onClick={this.onToggleLiked}
@@ -58,25 +59,32 @@ class ActivityIcons extends React.Component {
                     alt=""
                     >
                     </img>
+                    <span class="tooltiptext">Like</span>
+                    </div>
+
+                    <div className="tooltip">
+                        <span class="tooltiptext">Comment</span>
+                        <img
+                        className="img"
+                        onClick={this.props.onCommentAreaFocus}
+                        src={Comment}
+                        alt=""
+                        >
+                        </img>
+                    </div>
                     
-                    <img
-                    className="img"
-                    onClick={this.props.onCommentAreaFocus}
-                    src={Comment}
-                    alt=""
-                    >
-                    </img>
-                    
-                    <img
+                    {/* <img
                     className="img"
                     // onClick={}
                     src={Share}
                     alt=""
                     >
-                    </img>
+                    </img> */}
                 </div>
 
-                <div>
+                
+                <div className="tooltip">
+                    <span class="tooltiptext">Save</span>
                     <img
                     className="img"
                     onClick={this.onToggleSaved}

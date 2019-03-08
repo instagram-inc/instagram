@@ -12,14 +12,34 @@ import keyGen from '../common/keyGen/keyGen'
 import { Link } from 'react-router-dom';
 
 const home = props => {
+    const NUMBER_OF_USERS_TO_RECOMMEND = 3;
     // WELLCOMEPIC is shown to all new users. The pic src must be from CDN in oreder to load fast!
     const WELLCOMEPIC = 'https://cdn.gsmarena.com/imgroot/news/18/03/instagram-timeline-changes/-728/gsmarena_001.jpg';
     const WELLCOMEPIC_ALT = 'Image depicting the instagram logo';
     const UNIT = 'vh';
     const currentUser = props.allusers.find(user => user.uid === props.currentUserUid);
+    console.log(currentUser)
     const profileProps = {...currentUser, circleImgWidth: 50};
     const postsToBeShown = currentUser.followedUsers;
     const checkFollowerStatus = uid => currentUser.followedUsers.some(userId => userId === +uid);
+    const remainingRecommendations = props.filteredUsers
+    .filter(user => !currentUser.followedUsers.some(uid => uid === user.uid));
+    
+    const shuffle = array => {
+        let currentIndex = array.length, temporaryValue, randomIndex;
+    
+        while (0 !== currentIndex) {
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+      
+        return array;
+      }
+    const recommended = shuffle(remainingRecommendations).slice(0, NUMBER_OF_USERS_TO_RECOMMEND).filter(user => user);
+
     
 return (
 <div className={classes.home}>
@@ -46,8 +66,9 @@ return (
                 </Link>
             </div>
         </div>
-        <GreyContainer title={"Recomended:"}>
-        {props.filteredUsers.map(user => 
+        {recommended.length !== 0 ?
+        <GreyContainer title={"Recommended:"} link={'more'} to={'/list/recommended'}>
+        {recommended.map(user => 
             <div key={keyGen()}className={classes.recomendedRow}>
                 <HeaderOfPost key={keyGen()}{...user}/>
                 <div  className={classes.buttonWraper}>
@@ -67,6 +88,13 @@ return (
             </div>)
         }
         </GreyContainer>
+        :
+        <GreyContainer title={"You have no new recommendations!"} 
+        link={''} 
+        to={'/list/recommended'}
+        />
+        
+    }
     </section>
     </div>);
 }

@@ -5,7 +5,10 @@
     border-radius: 4px;
 }
 .title{
-    /* border: 1px solid green */
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .title > h1 {
     color: #999;

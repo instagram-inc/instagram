@@ -1,11 +1,13 @@
 import { DEFINE_CURRENT_USER,
     NEW_USER,
     LOGIN_USER,
-    LOGOUT_USER  } from '../UI/Post/actions/actionTypes'
+    LOGOUT_USER  } from '../UI/Post/actions/actionTypes';
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
 import { TOGGLE_IS_POST_LIKED, TOGGLE_IS_POST_SAVED } from '../UI/ActivityIcons/actions/actionTypes';
-import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes'
-import { ADD_NEW_POST } from '../../Upload/actions/actionsTypes'
+import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes';
+import { ADD_NEW_POST } from '../../Upload/actions/actionsTypes';
+import { SEARCH_FOR_USERS } from '../../Search/actions/actionsTypes';
+
 
 
 const initialState = {
@@ -286,7 +288,8 @@ const initialState = {
     currentUser: {
         user : (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser')) : null,
         isLog : false
-    }
+    },
+    requestedUids: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -393,6 +396,11 @@ const reducer = (state = initialState, action) => {
             const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.post.uid);
             stateUsers[userIndex].posts.push(newPost);
             return {...state, users: stateUsers}
+        }
+
+        case SEARCH_FOR_USERS: {
+            const requestedUids = action.requestedUids;
+            return {...state, requestedUids};
         }
 
         default: return state;
