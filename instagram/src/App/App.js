@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import InstaHeader from '../Header/Header'
 import Home from '../Home/Home';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router'
 
 
 import Explore from '../Explore/Explore';
@@ -30,9 +31,18 @@ class App extends Component {
         
         <main>
           <Switch>
-
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
+            
+          {isLogged ?
+            <Route exact path="/login"  render={() => (<Redirect to="/" />)}/>
+          :
+            <Route exact path="/login" component={Login} />
+          }
+          
+          {isLogged ?
+            <Route exact path="/register"  render={() => (<Redirect to="/" />)}/>
+          :
+            <Route exact path="/register" component={Register} />
+          }
 
           {isLogged ?
             <React.Fragment>
@@ -43,20 +53,21 @@ class App extends Component {
               <Route exact path="/list/resault" component={List} />
               <Route exact path="/list/recommended" component={List} />
               <Route exact path="/profile/:uid" component={ProfilePage} />
+              <Route exact path="/profile/:uid/saved" component={ProfilePage} />
               <Route exact path="/profile/:uid/post/:pid" component={LandscapePost} />
             </React.Fragment> 
           :
             <Login />
           }
 
-          {/* NOT FOUND page */}
-          {/* <Route render={
+          {/* PAGE NOT FOUND */}
+          <Route render={
             () => 
             ( <React.Fragment>
               <h1>Sorry, this page isn't available.</h1>
               <p>The link you followed may be broken, or the page may have been removed. <Link to="/">Go back to Instagram.</Link></p>
               </React.Fragment>)
-          } /> */}
+          } />
 
           </Switch>
         </main>
@@ -80,5 +91,4 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, null)(App);
 
-// export default App;
 

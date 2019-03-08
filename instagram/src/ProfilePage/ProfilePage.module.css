@@ -27,3 +27,17 @@
     display: flex;
     justify-content: space-between;
 }
+
+.post {
+    width: 30%;
+    height: 45vh;
+    margin-bottom: 3vh;
+}
+
+.buttonsContainer {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 8vh;
+    display: flex;
+    justify-content: space-between;
+}
