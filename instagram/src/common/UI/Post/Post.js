@@ -7,7 +7,7 @@ import classes from './Post.module.css'
 import ListOfComments from '../ListOfComments/ListOfComments';
 import AddAComment from '../AddAComment/AddAComment';
 import PostDescription from '../PostDescription/PostDescription';
-
+import { connect } from 'react-redux';
 
 class Post extends React.Component {
     
@@ -18,23 +18,28 @@ class Post extends React.Component {
     toggle = () => {
         this.setState({  isTextAreaActive : !this.state.isTextAreaActive });
     }
+    
     render(){
+        const user = this.props.users.find(user => user.uid === this.props.uid);
+        const post = user.posts.find(post => post.pid === this.props.pid);
+
         return (
             <section
             className={classes.post}>
-                <HeaderOfPost
-            {...this.props} 
-                />
-                <PostPic {...this.props} />
-                <ActivityIcons onCommentAreaFocus={()=>{this.toggle()}} {...this.props} />
-                <PostDescription {...this.props} />
-                <ListOfComments comments={this.props.comments}/>
+                <HeaderOfPost {...user} />
+                <PostPic {...post} />
+                <ActivityIcons 
+                onCommentAreaFocus={()=> this.toggle()}
+                {...post}
+                {...user} />
+                <PostDescription {...user}{...post}/>
+                <ListOfComments comments={post.comments}/>
                 <AddAComment  
                 statOfTextAreaActive ={this.state.isTextAreaActive}
-                userId={this.props.uid} 
-                postId={this.props.pid} 
-                userName={this.props.name} 
-                comments={this.props.comments}/>
+                userId={user.uid} 
+                postId={post.pid} 
+                userName={user.name} 
+                comments={post.comments}/>
             </section>
     
         )
@@ -42,5 +47,12 @@ class Post extends React.Component {
 
 }
 
+const mapStateToProps = state => {
+    return {
+        users: state.users,
+    }
+}
 
-export default Post
+export default connect(mapStateToProps, null)(Post);
+
+// export default Post

@@ -291,6 +291,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+
         case ADD_NEW_COMMENT: {
             //За момента не барай защото работи
             const stateUsers = [...state.users]
@@ -305,26 +306,26 @@ const reducer = (state = initialState, action) => {
             currentUser.posts[currentPost].comments = comments;
             stateUsers.splice(currentUserIndex, 1, currentUser);
             return {...state, users: stateUsers}
-        }
+        };
 
         case DEFINE_CURRENT_USER: {
             const newState = {...state, currentUser: state.users.find(user => user.id === action.userID)}
             return newState 
-        }
+        };
         
         case NEW_USER: {
             const newUser = action.user;
             newUser.srcProfilePic = 'http://imperialsoftech.com/images/front/Default_profile_picture.jpg';
             newUser.circleImgWidth = 30;
             return {...state, users: [...state.users, newUser]};
-        }
+        };
         
         case LOGIN_USER: {
             sessionStorage.setItem('loggedUser', JSON.stringify(action.user));
             const isLog = true;
             const users = [...state.users];
             return { ...state, users, currentUser: {...state.currentUser, user: action.user, isLog} };
-        }
+        };
 
         case TOGGLE_IS_POST_LIKED: {
             const stateUsers = [...state.users]
@@ -336,7 +337,7 @@ const reducer = (state = initialState, action) => {
             stateUsers[userIndex].posts[currentPost].likes = action.status.likes;
 
             return {...state, users: stateUsers}
-        }
+        };
 
         case TOGGLE_IS_POST_SAVED: {
             const stateUsers = [...state.users]
@@ -354,10 +355,9 @@ const reducer = (state = initialState, action) => {
                 stateUsers[userIndex].savedPosts = stateUsers[userIndex].savedPosts.filter(post => post.uid !== uid && post.pid !== pid);
             }
             return {...state, users: stateUsers}
-        }
+        };
 
         case ADD_A_FOLLOWER_TO_CURRENT_USER: {
-            console.log(action)
             const users = [...state.users]
             const folloedUserIndex = users.findIndex(user => user.uid === action.status.uid);
             const currentUserIndex = users.findIndex(user => user.uid === state.currentUser.user.uid);
@@ -369,7 +369,7 @@ const reducer = (state = initialState, action) => {
                 users[folloedUserIndex].followersOfMe = users[folloedUserIndex].followersOfMe.filter(uid => uid !== state.currentUser.user.uid);
             }
             return {...state, users, currentUser: {...state.currentUser, user: users[currentUserIndex]}}
-        }
+        };
 
         case LOGOUT_USER: {
             sessionStorage.removeItem('loggedUser');
@@ -377,10 +377,9 @@ const reducer = (state = initialState, action) => {
             const logOut = null;
             const users = [...state.users];
             return { ...state, users, currentUser: {...state.currentUser, user: logOut, isLog} };
-        }
+        };
 
         case ADD_NEW_POST:{
-            console.log(action)
             ///POST DEAFALUT VALUES:
             const comments = [];
             const likes = 0;
@@ -397,9 +396,7 @@ const reducer = (state = initialState, action) => {
         }
 
         default: return state;
-    };
-    
-
-}
+    };  
+};
 
 export default reducer

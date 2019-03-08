@@ -13,6 +13,8 @@ import Register from '../LoginRegister/Register';
 import Login from '../LoginRegister/Login';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import LandscapePost from '../common/UI/Post/LandscapePost'
+import List from '../List/List';
+
 
 class App extends Component {
 
@@ -37,6 +39,7 @@ class App extends Component {
               <Route exact path="/" component={Home} /> {/*тук ще бъде Home с два ArticleContainer*/}
               <Route exact path="/explore" component={Explore} />
               <Route exact path="/upload" component={Upload} />
+              <Route exact path="/list" component={List} />
               <Route exact path="/profile/:uid" component={ProfilePage} />
               <Route exact path="/profile/:uid/post/:pid" component={LandscapePost} />
             </React.Fragment> 
