@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 
 const headerOfPost = props => {
+    console.log('[HEADER OD POST]')
+    console.log(props)
     return (
         
         <div className={classes.header}>

@@ -12,27 +12,28 @@ import keyGen from '../common/keyGen/keyGen'
 import { Link } from 'react-router-dom';
 
 const home = props => {
-    // Wellcome pic is shown to all new users. The pic src must be from CDN in oreder to load fast!
+    // WELLCOMEPIC is shown to all new users. The pic src must be from CDN in oreder to load fast!
     const WELLCOMEPIC = 'https://cdn.gsmarena.com/imgroot/news/18/03/instagram-timeline-changes/-728/gsmarena_001.jpg';
     const WELLCOMEPIC_ALT = 'Image depicting the instagram logo';
-    const UNIT = 'vh'
-    const users = props.users();
-    const currentUser = props.getUserByUid(props.currentUserUid)
-    const profileProps = {...currentUser, circleImgWidth: 50}
+    const UNIT = 'vh';
+    const currentUser = props.allusers.find(user => user.uid === props.currentUserUid);
+    const profileProps = {...currentUser, circleImgWidth: 50};
     const postsToBeShown = currentUser.followedUsers;
-    console.log(currentUser)
-return (<div className={classes.home}>
+    const checkFollowerStatus = uid => currentUser.followedUsers.some(userId => userId === +uid);
+    
+return (
+<div className={classes.home}>
     <section className={classes.posts}>
         {   postsToBeShown.length !== 0 ?
             <ListOfPosts posts={postsToBeShown}/>
             :
             <>
-            <div className={classes.wellcome}>
-                <img className={classes.wellcomePic}
-                src={WELLCOMEPIC}
-                alt= {WELLCOMEPIC_ALT}
-                />
-            </div>
+                <div className={classes.wellcome}>
+                    <img className={classes.wellcomePic}
+                    src={WELLCOMEPIC}
+                    alt= {WELLCOMEPIC_ALT}
+                    />
+                </div>
             </>
         }
     </section>
@@ -46,8 +47,7 @@ return (<div className={classes.home}>
             </div>
         </div>
         <GreyContainer title={"Recomended:"}>
-        {users
-        .map(user => 
+        {props.filteredUsers.map(user => 
             <div key={keyGen()}className={classes.recomendedRow}>
                 <HeaderOfPost key={keyGen()}{...user}/>
                 <div  className={classes.buttonWraper}>
@@ -55,9 +55,9 @@ return (<div className={classes.home}>
                     key={keyGen()}
                     activeText={"Unfollow"} 
                     text={"Follow"}
-                    isActive={props.checkFollowerStatus(user.uid)} 
+                    isActive={checkFollowerStatus(user.uid)} 
                     onAdd={() => {
-                        props.checkFollowerStatus(user.uid) ?
+                        checkFollowerStatus(user.uid) ?
                         props.addAfollowed({status: false, uid : user.uid})
                         :
                         props.addAfollowed({status: true, uid : user.uid})}} 
@@ -74,10 +74,9 @@ return (<div className={classes.home}>
 const mapStateToProps = (state) => {
     
     return {
-        users: () => state.users.filter(user => user.uid !== state.currentUser.user.uid),
-        currentUserUid: state.currentUser.user.uid,
-        checkFollowerStatus: uid => state.currentUser.user.followedUsers.some(userId => userId === +uid),
-        getUserByUid: uid => state.users.find(user => user.uid === uid)
+        filteredUsers: state.users.filter(user => user.uid !== state.currentUser.user.uid), // All users without currently logged.
+        allusers: state.users,
+        currentUserUid: state.currentUser.user.uid
     }
 }
 const mapDispatchToProps = dispatch => {

@@ -7,14 +7,7 @@ const circleImg = props => {
                width : props.circleImgWidth, 
                height: props.circleImgWidth};
 
-    return (
-        <div 
-        className={classes.circle} 
-        style={pic}
-        >
-
-        </div>
-    )
+    return <div className={classes.circle} style={pic} />;
 }
 
 

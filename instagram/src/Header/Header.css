@@ -35,14 +35,6 @@
     justify-content: space-between;
 }
 
-.Header-search {
-    border: 2px solid #E6E6E6;
-    border-radius: 5%;
-    background-color: #FAFAFA;
-    display: flex;
-    align-items: center;
-}
-
 .Header-input {
     border: none;
     background-color: transparent;

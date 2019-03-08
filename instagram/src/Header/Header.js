@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Search from '../Search/Search';
 
 const instaHeader = props =>
 (<header className="Header-header">
@@ -18,7 +19,7 @@ const instaHeader = props =>
                 </div>
 
                 <div className="Header-search">
-                    <input className="Header-input" placeholder="Search"></input>
+                    <Search />
                 </div>
 
                 <div className="Header-div">

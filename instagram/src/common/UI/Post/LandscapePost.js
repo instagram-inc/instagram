@@ -8,7 +8,6 @@ import ListOfComments from '../ListOfComments/ListOfComments'
 import ActivityIcons from '../ActivityIcons/ActivityIcons';
 import AddAComment from '../AddAComment/AddAComment';
 
-
 class LandscapePost extends React.Component {
     
     state = {
@@ -49,38 +48,38 @@ class LandscapePost extends React.Component {
                         style={backgroundSrc}
                         className={classes.picContainer} // Post Pic container
                         ></div>
-
+                        
                         <div                                // Post info container
                         className={classes.postInfo}> 
-                        <HeaderOfPost {... user} />
+                            <HeaderOfPost {... user} />
 
-                        <hr />
+                            <hr />
 
-                        <div                                // Comment container
-                        className={classes.commentArea}>
+                            <div                                // Comment container
+                            className={classes.commentArea}>
 
-                        <PostDescription 
-                        {...user}{...post}
-                        descriptionCss={DESCRIPTION_DIV_CSS}/>
+                            <PostDescription 
+                            {...user}{...post}
+                            descriptionCss={DESCRIPTION_DIV_CSS}/>
 
-                        <ListOfComments comments={post.comments}/>
+                            <ListOfComments comments={post.comments}/>
 
-                        <ActivityIcons 
-                        onCommentAreaFocus={()=> this.toggle()}
-                        landscapePostStyle = {ACTIVTY_DIV_STYLE} 
-                        {...post}
-                        {...user} />
+                            <ActivityIcons 
+                            onCommentAreaFocus={()=> this.toggle()}
+                            landscapePostStyle = {ACTIVTY_DIV_STYLE} 
+                            {...post}
+                            {...user} />
 
-                        <hr />
+                            <hr />
 
-                        <AddAComment  
-                        statOfTextAreaActive ={this.state.isTextAreaActive}
-                        userId={user.uid} 
-                        postId={post.pid} 
-                        userName={user.name} 
-                        comments={post.comments}/>
+                            <AddAComment  
+                            statOfTextAreaActive ={this.state.isTextAreaActive}
+                            userId={user.uid} 
+                            postId={post.pid} 
+                            userName={user.name} 
+                            comments={post.comments}/>
 
-                        </div>
+                         </div>
                         </div>
                     </div>
                 </div>

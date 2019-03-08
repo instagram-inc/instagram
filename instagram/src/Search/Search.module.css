@@ -1,0 +1,7 @@
+.headerSearch {
+    border: 2px solid #E6E6E6;
+    border-radius: 5%;
+    background-color: #FAFAFA;
+    display: flex;
+    align-items: center;
+}
