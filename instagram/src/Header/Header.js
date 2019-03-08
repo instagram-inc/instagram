@@ -35,7 +35,7 @@ const instaHeader = props =>
             </nav>
         </React.Fragment>
     :
-        <h4>Wellcome to Instagram!   <Link to="/login">Sing in</Link>   or   <Link to="/register">Register</Link></h4> 
+        <h4>Wellcome to Instagram!   <Link className="link" to="/login">Sing in</Link>   or   <Link className="link" to="/register">Register</Link></h4> 
     }
 </header>);
 

@@ -4,11 +4,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 17vh;
-}
-
-.post {
-    width: 30%;
-    height: 45vh;
-    margin-bottom: 3vh;
+    margin-top: 6vh;
 }

@@ -1,16 +1,29 @@
 import React from 'react';
 import classes from './Explore.module.css';
-import ExploreContainer from './ExploreContainer';
 import { connect } from 'react-redux';
+import PostsContainer from '../HOC/PostsContainer';
+import SquarePost from '../ProfilePage/SquarePost';
+import keyGen from '../common/keyGen/keyGen';
 
-const explore = props =>
-(<React.Fragment>
-    <h1 className={classes.margin}>tuk shte ima *explore*</h1>
-    <ExploreContainer {...props} />
-</React.Fragment>);
+const explore = props => {
 
+    let allPosts = [];
+    props.users.forEach(user => {
+        user.posts.forEach(post => {
+            allPosts.push(post);
+        });
+    });
+    allPosts = allPosts.sort( (p1, p2) => p2.pid - p1.pid);
 
-// export default explore;
+    return (<React.Fragment>
+        <h1 className={classes.title}>*explore*</h1>
+        <PostsContainer>
+            {allPosts.map(post => 
+            <SquarePost key={keyGen()} {...post} />
+            )}
+        </PostsContainer>
+    </React.Fragment>);
+}
 
 const mapStateToProps = (state) => {
     

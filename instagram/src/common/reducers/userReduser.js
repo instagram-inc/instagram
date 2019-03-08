@@ -19,7 +19,7 @@ const initialState = {
             srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             followedUsers: [3],
             followersOfMe: [],
-            savedPosts:[],
+            savedPosts:[{uid: 1, pid: 2}, {uid: 5, pid:1}],
             posts: [
                 {   
                     uid:1,

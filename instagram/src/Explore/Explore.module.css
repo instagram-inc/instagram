@@ -1,3 +1,10 @@
-.margin {
-    margin-top: 15vh;
+@keyframes show {
+    from {opacity: 0;}
+    to {opacity: 5;}
+}
+
+.title {
+    margin-top: 12vh;
+    animation-name: show;
+    animation-duration: 6s;
 }
