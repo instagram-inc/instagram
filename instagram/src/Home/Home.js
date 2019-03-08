@@ -2,7 +2,6 @@ import React from 'react';
 import ListOfPosts from '../common/UI/Post/ListOfPosts';
 import classes from './Home.module.css';
 import GreyContainer from '../common/UI/GreyContainer/GreyContainer';
-
 import { connect } from 'react-redux';
 import HeaderOfPost from '../common/UI/HeaderOfPost/HeaderOfPost';
 import CircleImg from '../common/UI/CircleImg/CircleImg';
@@ -31,23 +30,28 @@ const home = props => {
         return array;
       }
     const UNIT = 'vh';
-    const currentUser = props.allusers.find(user => user.uid === props.currentUserUid);
-    console.log('admina li e ' + props.isAdmin)
-    var profileProps = {...currentUser, circleImgWidth: 50};
-    if (!props.isAdmin) {
-        var postsToBeShown = currentUser.followedUsers;
-        var checkFollowerStatus = uid => currentUser.followedUsers.some(userId => userId === +uid);
-        const remainingRecommendations = props.filteredUsers
-        .filter(user => !currentUser.followedUsers.some(uid => uid === user.uid));
-        var recommended = shuffle(remainingRecommendations).slice(0, NUMBER_OF_USERS_TO_RECOMMEND).filter(user => user);
-    }
+    const ADMIN_UID = 0;
+   
+    const isAdmin = props.currentUserUid === 0 ? true : false;
+    const currentUser = isAdmin ? 
+        props.users.find(user => user.uid === ADMIN_UID) 
+    : 
+        props.allusers.find(user => user.uid === props.currentUserUid);
+    const profileProps = {...currentUser, circleImgWidth: 50};
+    
+    const postsToBeShown = currentUser.followedUsers;
+    const checkFollowerStatus = uid => currentUser.followedUsers.some(userId => userId === +uid);
+    const remainingRecommendations = props.filteredUsers
+    .filter(user => !currentUser.followedUsers.some(uid => uid === user.uid));
+    const recommended = shuffle(remainingRecommendations).slice(0, NUMBER_OF_USERS_TO_RECOMMEND).filter(user => user);
+    
 
     
     console.log(props.allusers)
     return (
         <div className={classes.home}>
             <section className={classes.posts}>
-                {props.isAdmin ?
+                {isAdmin ?
                     <>
                     <div className={classes.adminProfile} >
                         <CircleImg {...profileProps}/>
@@ -74,7 +78,7 @@ const home = props => {
                         </>  
                 }
             </section>
-            {!props.isAdmin ?
+            {!isAdmin ?
                 <section className={classes.profileSection}>
                     <div className={classes.userProfile} >
                         <CircleImg {...profileProps}/>
@@ -125,7 +129,7 @@ const mapStateToProps = (state) => {
             && user.uid !== ADMIN_UID), // All users without currently logged and Admin.
         allusers: state.users.filter(user => user.uid !== ADMIN_UID),
         currentUserUid: state.currentUser.user.uid,
-        isAdmin: state.currentUser.isAdmin
+        users: state.users
     }
 }
 const mapDispatchToProps = dispatch => {

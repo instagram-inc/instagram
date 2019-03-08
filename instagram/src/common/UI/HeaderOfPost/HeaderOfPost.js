@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Button from '../Button/Button';
 import { deleteUser } from './actions';
+import { withRouter } from 'react-router';
 
 
 const headerOfPost = props => {
-    
+    console.log(props.location.pathname)
     return (
         
         <div className={classes.header}>
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(headerOfPost);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(headerOfPost));
