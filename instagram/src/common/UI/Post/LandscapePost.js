@@ -31,7 +31,7 @@ class LandscapePost extends React.Component {
         const ACTIVTY_DIV_STYLE = {width: '30%'};
         const DESCRIPTION_DIV_CSS = {marginBottom: '1vh'};
 
-        const backgroundSrc = {backgroundImage: `url("${post.srcPostPic}")`}
+        const backgroundSrc = post ? {backgroundImage: `url("${post.srcPostPic}")`} : null;
         return (
             <React.Fragment>
                 <div 
@@ -41,12 +41,16 @@ class LandscapePost extends React.Component {
                     <div 
                     onClick={this.stopPropagation} // Post container
                     className={classes.postContainer}>
-
-                        <div 
-                        src={post.srcPostPic}
-                        style={backgroundSrc}
-                        className={classes.picContainer} // Post Pic container
-                        ></div>
+                        
+                        {post ?
+                            <div 
+                            src={post.srcPostPic}
+                            style={backgroundSrc}
+                            className={classes.picContainer} // Post Pic container
+                            ></div>
+                        :
+                            null
+                        }
                         
                         <div                                // Post info container
                         className={classes.postInfo}> 
@@ -61,7 +65,11 @@ class LandscapePost extends React.Component {
                             {...user}{...post}
                             descriptionCss={DESCRIPTION_DIV_CSS}/>
 
-                            <ListOfComments comments={post.comments}/>
+                            {post ?
+                                <ListOfComments comments={post.comments}/>
+                            :
+                                null
+                            }
 
                             <ActivityIcons 
                             onCommentAreaFocus={()=> this.toggle()}
@@ -71,14 +79,18 @@ class LandscapePost extends React.Component {
 
                             <hr />
 
-                            <AddAComment  
-                            statOfTextAreaActive ={this.state.isTextAreaActive}
-                            userId={user.uid} 
-                            postId={post.pid} 
-                            userName={user.name} 
-                            comments={post.comments}/>
+                            {post ?
+                                <AddAComment  
+                                statOfTextAreaActive ={this.state.isTextAreaActive}
+                                userId={user.uid} 
+                                postId={post.pid} 
+                                userName={user.name} 
+                                comments={post.comments}/>
+                            :
+                                null
+                            }
 
-                         </div>
+                            </div>
                         </div>
                     </div>
                 </div>

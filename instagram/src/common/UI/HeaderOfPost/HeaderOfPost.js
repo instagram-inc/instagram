@@ -5,11 +5,21 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Button from '../Button/Button';
 import { deleteUser } from './actions';
+import { deletePost } from './actions';
 import { withRouter } from 'react-router';
 
 
 const headerOfPost = props => {
-    console.log(props.location.pathname)
+    const isAdmin = props.currentUser.uid === 0 ? true : false;
+    const isPostForDel = props.location.pathname.includes('post');
+    const url = props.location.pathname.split('post/');
+    const pid = +url[1];
+    
+    const ondeletePost = (uid, pid) => {
+        props.history.goBack();
+        props.ondeletePost(uid, pid);
+    }
+
     return (
         
         <div className={classes.header}>
@@ -24,13 +34,21 @@ const headerOfPost = props => {
                     </h1>
                 </div>
             </div>
-            {props.isAdmin ?
-                <div className={classes.deleteButton}>
-                    <Button
-                    isActive={true}
-                    activeText={'delete user'}
-                    onAdd={() => props.ondeleteUser(props.uid)}/>
-                </div>
+            {isAdmin ?
+                isPostForDel ?
+                    <div className={classes.deleteButton}>
+                        <Button
+                        isActive={true}
+                        activeText={'delete post'}
+                        onAdd={() => ondeletePost(props.uid, pid)}/>
+                    </div>
+                :
+                    <div className={classes.deleteButton}>
+                        <Button
+                        isActive={true}
+                        activeText={'delete user'}
+                        onAdd={() => props.ondeleteUser(props.uid)}/>
+                    </div>
             :
                 null
             }
@@ -40,14 +58,14 @@ const headerOfPost = props => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        ondeleteUser: uid => dispatch(deleteUser(uid))
+        ondeleteUser: uid => dispatch(deleteUser(uid)),
+        ondeletePost: (uid, pid) => dispatch(deletePost(uid, pid))
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        currentUser: state.currentUser.user,
-        isAdmin: state.currentUser.isAdmin
+        currentUser: state.currentUser.user
     };
 };
 

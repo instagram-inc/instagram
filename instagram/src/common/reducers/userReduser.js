@@ -6,7 +6,8 @@ import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
 import { TOGGLE_IS_POST_LIKED, TOGGLE_IS_POST_SAVED } from '../UI/ActivityIcons/actions/actionTypes';
 import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes';
 import { ADD_NEW_POST } from '../../Upload/actions/actionsTypes';
-import { DELETE_USER } from '../UI/HeaderOfPost/actionTypes';
+import { DELETE_USER,
+        DELETE_POST } from '../UI/HeaderOfPost/actionTypes';
 import { SEARCH_FOR_USERS } from '../../Search/actions/actionsTypes';
 
 
@@ -331,7 +332,6 @@ const reducer = (state = initialState, action) => {
         };
         
         case NEW_USER: {
-            console.log(action)
             const newUser = action.user;
             newUser.srcProfilePic = 'http://imperialsoftech.com/images/front/Default_profile_picture.jpg';
             newUser.circleImgWidth = 30;
@@ -419,24 +419,32 @@ const reducer = (state = initialState, action) => {
             const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.post.uid);
             stateUsers[userIndex].posts.push(newPost);
             return {...state, users: stateUsers}
-        }
+        };
 
         case DELETE_USER: {
             const newUsers = [...state.users];
-            console.log('newUsers')
-            console.log(newUsers)
             const indexForDelete = newUsers.findIndex(user => user.uid === action.uid);
-            console.log('indexForDelete')
-            console.log(indexForDelete)
             newUsers.splice(indexForDelete, 1);
-            console.log('newUsers 2')
-            console.log(newUsers)
             return {...state, users: newUsers};
         };
+        
+        case DELETE_POST: {
+            console.log('user: ' + action.uid)
+            console.log('post: ' + action.pid)
+            const newUsers = [...state.users];
+            console.log(newUsers)
+            console.log(newUsers.posts)
+            const user = newUsers.find(user => user.uid === action.uid);
+            const indexForDelete = user.posts.findIndex(post => post.pid === action.pid);
+            user.posts.splice(indexForDelete, 1);
+            console.log(user.posts)
+            return {...state, users: newUsers};
+        };
+
         case SEARCH_FOR_USERS: {
             const requestedUids = action.requestedUids;
             return {...state, requestedUids};
-        }
+        };
 
         default: return state;
     };  
