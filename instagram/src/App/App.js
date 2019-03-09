@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Link } from 'react-router-dom';
-import InstaHeader from '../Header/Header'
+import InstaHeader from '../Header/Header';
 import Home from '../Home/Home';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router'
-
-
 import Explore from '../Explore/Explore';
-import Upload from '../Upload/upload' 
+import Upload from '../Upload/upload';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Register from '../LoginRegister/Register';
 import Login from '../LoginRegister/Login';
 import ProfilePage from '../ProfilePage/ProfilePage';
-import LandscapePost from '../common/UI/Post/LandscapePost'
+import LandscapePost from '../common/UI/Post/LandscapePost';
 import List from '../List/List';
-
+import Footer from '../Footer/Footer';
+import AboutUs from '../AboutUs/AboutUs';
 
 class App extends Component {
 
@@ -44,6 +43,8 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
           }
 
+          <Route exact path="/aboutus" component={AboutUs} />
+
           {isLogged ?
             <React.Fragment>
               <Route exact path="/" component={Home} /> {/*тук ще бъде Home с два ArticleContainer*/}
@@ -67,7 +68,7 @@ class App extends Component {
             () => 
             ( <React.Fragment>
               <h1>Sorry, this page isn't available.</h1>
-              <p>The link you followed may be broken, or the page may have been removed. <Link to="/">Go back to Instagram.</Link></p>
+              <p>The link you followed may be broken, or the page may have been removed.</p>
               </React.Fragment>)
           } />
 
@@ -76,7 +77,7 @@ class App extends Component {
 
         <footer>
           <hr />
-          footer footer footer footer footer footer footer footer
+          <Footer />
         </footer>
 
       </div>

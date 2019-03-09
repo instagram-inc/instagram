@@ -50,3 +50,15 @@
     color: red;
     font-weight: bolder;
 }
+
+@media only screen and (max-width: 600px) {
+    .parentBox {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 600px) {
+    .parentBox {
+        width: 70%;
+    }
+}

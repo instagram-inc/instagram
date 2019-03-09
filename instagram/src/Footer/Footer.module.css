@@ -1,0 +1,32 @@
+.container {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 2vh;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 600px) {
+    .container {
+        width: 70%;
+    }
+    .title{
+        font-size: 1.5em;
+    }
+}

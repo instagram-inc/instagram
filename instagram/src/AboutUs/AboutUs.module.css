@@ -1,0 +1,55 @@
+.title {
+    margin-top: 10vh;
+}
+.img {
+    width: 50%;
+}
+.info {
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+.personalInfo {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2vh;
+}
+.name {
+    margin: 0 auto;
+}
+
+@keyframes show {
+    from {opacity: 0;}
+    to {opacity: 5;}
+}
+
+.letter1 {
+    animation-name: show;
+    animation-duration: 0s;
+}
+.letter2 {
+    animation-name: show;
+    animation-duration: 1.5s;
+}
+.letter3 {
+    animation-name: show;
+    animation-duration: 2.8s;
+}
+.letter4 {
+    animation-name: show;
+    animation-duration: 4s;
+}
+.letter5 {
+    animation-name: show;
+    animation-duration: 4.8s;
+}
+.letter6 {
+    animation-name: show;
+    animation-duration: 5.5s;
+}
+.letter7 {
+    animation-name: show;
+    animation-duration: 6.5s;
+}
