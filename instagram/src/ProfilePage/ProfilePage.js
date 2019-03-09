@@ -26,11 +26,8 @@ class ProfilePage extends React.Component {
 
     render() {
         const UNIT = 'vh';
-<<<<<<< HEAD
-=======
         const ADMIN_UID = 0;
 
->>>>>>> 23085551ef9e8ecc5e586e61c50422782358d83f
         const userId = this.props.match.params.uid;
         const isAdmin = (+userId === ADMIN_UID) ? true : false;
         const isCurrentUser = (+userId === this.props.currentUser.uid) ? true : false;
@@ -41,7 +38,16 @@ class ProfilePage extends React.Component {
         let ownPosts = userINeed.posts;
         ownPosts = ownPosts.sort((p1, p2) => p2.pid - p1.pid);
         let savedPosts = currentUser.savedPosts;
+        savedPosts = savedPosts.map(postInfo => {
+            const user = this.props.users.find(user => user.uid === postInfo.uid);
+            const post = user.posts.find(post => post.pid === postInfo.pid);
+            return post;
+        });
+        console.log('INFO SAVED POST AND ISSAVED ----------')
         console.log(savedPosts)
+        console.log(this.state.isSavedClicked)
+        console.log('CURENT USER')
+        console.log(userINeed)
         
 
         const checkFollowerStatus = () => this.props.currentUser.followedUsers.some(id => id === +userId);
@@ -92,7 +98,7 @@ class ProfilePage extends React.Component {
                 </div>
             </div>
 
-            {isAdmin ?
+            {(!isAdmin && isCurrentUser) ?
                 <div className={classes.buttonsContainer}>
                     <Link to={"/profile/"+userId+"/saved"}>
                         <Button 
@@ -115,13 +121,10 @@ class ProfilePage extends React.Component {
                 {this.state.isSavedClicked ?
                    savedPosts && savedPosts.map(post => <SquarePost key={keyGen()} {...post} />) 
                 :
-<<<<<<< HEAD
-                   ownPosts && ownPosts.map(post => <SquarePost key={keyGen()} {...post} />)
-=======
                     ownPosts && ownPosts.map(post => <SquarePost key={keyGen()} {...post} />)
->>>>>>> 23085551ef9e8ecc5e586e61c50422782358d83f
                 }
-                {((ownPosts && ownPosts.length % 3 === 2) || (ownPosts && ownPosts.length === 2)) ?
+                {(((ownPosts && ownPosts.length % 3 === 2) || (ownPosts && ownPosts.length === 2)) ||
+                    ((savedPosts && savedPosts.length % 3 === 2) || (savedPosts && savedPosts.length === 2))) ?
                     <div className={classes.post}></div>
                 :
                     null

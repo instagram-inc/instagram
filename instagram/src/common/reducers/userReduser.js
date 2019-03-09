@@ -367,6 +367,7 @@ const reducer = (state = initialState, action) => {
 
         case TOGGLE_IS_POST_SAVED: {
             const stateUsers = [...state.users]
+            const curentSaveingUserIndex = stateUsers.findIndex(userIndex => userIndex.uid === state.currentUser.user.uid);
             const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.status.uid);
             const user = stateUsers[userIndex]
             const userPosts = [...user.posts];
@@ -376,9 +377,9 @@ const reducer = (state = initialState, action) => {
             const pid = action.status.pid;
             if (action.status.isThisPostSaved){
                 const status = {uid,pid};
-                stateUsers[userIndex].savedPosts = [status, ...stateUsers[userIndex].savedPosts]
+                stateUsers[curentSaveingUserIndex].savedPosts = [status, ...stateUsers[curentSaveingUserIndex].savedPosts]
             } else {
-                stateUsers[userIndex].savedPosts = stateUsers[userIndex].savedPosts.filter(post => post.uid !== uid && post.pid !== pid);
+                stateUsers[curentSaveingUserIndex].savedPosts = stateUsers[curentSaveingUserIndex].savedPosts.filter(post => post.uid !== uid && post.pid !== pid);
             }
             return {...state, users: stateUsers}
         };

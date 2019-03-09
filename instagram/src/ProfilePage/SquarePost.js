@@ -58,7 +58,7 @@ class SquarePost extends React.Component {
                             <img src={WhiteHeart} alt="" height='20' />
                             <span>{this.props.likes}</span>
                             <img src={WhiteComment} alt="" height='40' />
-                            <span>{this.props.comments.length}</span>
+                            <span>{this.props.comments && this.props.comments.length}</span>
                         </div>
                     </Link>
                 :
