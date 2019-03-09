@@ -26,7 +26,6 @@ class ProfilePage extends React.Component {
 
     render() {
         const UNIT = 'vh';
-
         const userId = this.props.match.params.uid;
         const isCurrentUser = (+userId === this.props.currentUser.uid) ? true : false;
         const users = this.props.users;
@@ -34,8 +33,9 @@ class ProfilePage extends React.Component {
         const profileProps = {...userINeed, circleImgWidth: 150, }
         const currentUser = this.props.users.find(user => user.uid === this.props.currentUserUid);
         let ownPosts = userINeed.posts;
-        ownPosts = ownPosts.sort( (p1, p2) => p2.pid - p1.pid);
+        ownPosts = ownPosts.sort((p1, p2) => p2.pid - p1.pid);
         let savedPosts = currentUser.savedPosts;
+        console.log(savedPosts)
         
 
         const checkFollowerStatus = () => this.props.currentUser.followedUsers.some(id => id === +userId);
@@ -102,7 +102,7 @@ class ProfilePage extends React.Component {
                 {this.state.isSavedClicked ?
                    savedPosts && savedPosts.map(post => <SquarePost key={keyGen()} {...post} />) 
                 :
-                ownPosts && ownPosts.map(post => <SquarePost key={keyGen()} {...post} />)
+                   ownPosts && ownPosts.map(post => <SquarePost key={keyGen()} {...post} />)
                 }
                 {(ownPosts.length % 3 === 2 || ownPosts.length === 2) ?
                     <div className={classes.post}></div>
