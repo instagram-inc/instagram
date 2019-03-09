@@ -20,6 +20,8 @@
     /* float: left; */
     text-align: left;
     font-weight: bold;
+    padding-left: 2vh;
+    box-sizing: border-box;
 }
 
 .tooltip {

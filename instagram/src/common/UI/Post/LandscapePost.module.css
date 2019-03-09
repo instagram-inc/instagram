@@ -35,3 +35,37 @@
     height: 300px;
     /* border: 2px solid blue */
 }
+
+@media only screen and (max-width: 600px) {
+    .postContainer {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        background-color:  white;
+        display: block;
+    }
+    .picContainer{
+        width: 300px;
+        height: 40%;
+        margin: 0 auto;
+    }
+    .postInfo {
+        width: 100%;
+        height: 30%;
+    }
+    .commentArea {
+        margin: 0 auto;
+        width: 95%;
+        height: 120px;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 600px) {
+    .postContainer {
+        width: 100%;
+        height: 600px;
+        margin: auto;
+        background-color:  white;
+        display: flex;
+    }
+}

@@ -5,3 +5,14 @@
     display: flex;
     align-items: center;
 }
+
+@media only screen and (max-width: 600px) {
+    .headerSearch {
+        border: 1px solid #E6E6E6;
+        border-radius: 5%;
+        background-color: #FAFAFA;
+        display: flex;
+        align-items: center;
+        width: 15vh;
+    }
+}

@@ -1,5 +1,5 @@
 .Header-header {
-    height: 10vh;
+    height: 50px;
     width: 100%;
     border-bottom: 1px solid #E6E6E6;
     display: flex;
@@ -45,4 +45,31 @@
 .link {
     text-decoration: none;
     color: blue;
+}
+
+@media only screen and (max-width: 600px) {
+    .Header-logo {
+        display: none;
+    }
+    .Header-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+    }
+    .Header-search {
+        margin-left: -20vh;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 600px) {
+    .Header-search {
+        margin-left: 0vh;
+    }
+    .Header-div {
+        width: 18vh;
+    }
+    .Header-nav {
+        align-items: center;
+    }
 }

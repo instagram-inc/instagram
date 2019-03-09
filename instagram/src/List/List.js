@@ -34,7 +34,7 @@ const list = props => {
                     <img src={ error } alt=""/>
                 </div>
             :
-            users.map(user => <HeaderOfPost key={user.uid} {...user}/>)
+                users.map(user => <HeaderOfPost key={user.uid} {...user}/>)
             }
 
         </div>

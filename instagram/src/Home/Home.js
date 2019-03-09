@@ -50,34 +50,6 @@ const home = props => {
     console.log(props.allusers)
     return (
         <div className={classes.home}>
-            <section className={classes.posts}>
-                {isAdmin ?
-                    <>
-                    <div className={classes.adminProfile} >
-                        <CircleImg {...profileProps}/>
-                        <div className={classes.name}>
-                            <Link className={classes.link} to={"/profile/"+profileProps.uid}>
-                                <h1>{profileProps.name}</h1>
-                            </Link>
-                        </div>
-                        <span>(advanced options)</span>
-                    </div>
-                    <List />
-                    </>
-                :
-                    (postsToBeShown.length !== 0) ?
-                        <ListOfPosts posts={postsToBeShown}/>
-                    :
-                        <>
-                            <div className={classes.wellcome}>
-                                <img className={classes.wellcomePic}
-                                src={WELLCOMEPIC}
-                                alt= {WELLCOMEPIC_ALT}
-                                />
-                            </div>
-                        </>  
-                }
-            </section>
             {!isAdmin ?
                 <section className={classes.profileSection}>
                     <div className={classes.userProfile} >
@@ -118,6 +90,35 @@ const home = props => {
             :
                 null
             }
+            <section className={classes.posts}>
+                {isAdmin ?
+                    <>
+                    <div className={classes.adminProfile} >
+                        <CircleImg {...profileProps}/>
+                        <div className={classes.name}>
+                            <Link className={classes.link} to={"/profile/"+profileProps.uid}>
+                                <h1>{profileProps.name}</h1>
+                            </Link>
+                        </div>
+                        <span>(advanced options)</span>
+                    </div>
+                    <List />
+                    </>
+                :
+                    (postsToBeShown.length !== 0) ?
+                        <ListOfPosts posts={postsToBeShown}/>
+                    :
+                        <>
+                            <div className={classes.wellcome}>
+                                <img className={classes.wellcomePic}
+                                src={WELLCOMEPIC}
+                                alt= {WELLCOMEPIC_ALT}
+                                />
+                            </div>
+                        </>  
+                }
+            </section>
+            
         </div>
     );
 }

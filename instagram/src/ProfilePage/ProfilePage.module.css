@@ -41,3 +41,44 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media only screen and (max-width: 600px) {
+    .parrentDiv {
+        width: 95%;
+    }
+    .nameAndButtonDiv {
+        display: block;
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 1vh;
+    }
+    .buttonsContainer {
+        width: 80%;
+    }
+    .userName {
+        margin-bottom: 2vh;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 600px) {
+    .parrentDiv {
+        width: 70%;
+    }
+    .nameAndButtonDiv {
+        display: block;
+    }
+    .info {
+        display: flex;
+        justify-content: center;
+        margin-top: 1vh;
+    }
+    .buttonsContainer {
+        width: 60%;
+    }
+    .userName {
+        margin-bottom: 2vh;
+    }
+}

@@ -4,6 +4,8 @@
     height: 100%;
     width: 100%;
     overflow-y: scroll;
+    padding-left: 2vh;
+    box-sizing: border-box;
 }
  .container::-webkit-scrollbar {
    display: none;

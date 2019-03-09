@@ -59,3 +59,44 @@
     margin-top: 10vh;
     margin-bottom: -90px;
 }
+
+@media only screen and (max-width: 600px) {
+    .profileSection{
+        width: 100%;
+        position: static;
+        margin: 0 auto;
+        margin-top: 8vh;
+        height: 30vh;
+    }
+    .home {
+        width: 100%;
+    }
+    .posts{
+        width: 100%;
+        margin-top: 25vh;
+    }
+    .userProfile {
+        margin-bottom: -1vh;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 600px) {
+    .profileSection{
+        width: 100%;
+        position: static;
+        margin: 0 auto;
+        margin-top: 9vh;
+        height: 30vh;
+    }
+    .home {
+        width: 100%;
+    }
+    .posts{
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 28vh;
+    }
+    .userProfile {
+        margin-bottom: 0vh;
+    }
+}

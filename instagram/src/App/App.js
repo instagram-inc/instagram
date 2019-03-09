@@ -29,7 +29,7 @@ class App extends Component {
 
         <InstaHeader isLogged={isLogged} />
         
-        <main>
+        <main className="main">
           <Switch>
             
           {isLogged ?

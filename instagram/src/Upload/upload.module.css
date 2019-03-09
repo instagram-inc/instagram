@@ -24,6 +24,7 @@
     border: 2px solid #E6E6E6;
     border-radius: 2%;
     background-color: #FAFAFA;
+    width: 90%;
 }
 
 .innerDiv2 {
@@ -56,6 +57,29 @@
     animation-duration: 5s;
 }
 
-.divShitnq {
-    border: 1px solid black;
+
+@media only screen and (max-width: 600px) {
+    .title {
+        font-size: 1em;
+    }
+    .parentDiv {
+        border:  1px solid #efefef;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .input {
+        border: 1px solid #E6E6E6;
+        width: 90%;
+    }
+    .p {
+        font-size: 1em;
+    }
+    .innerDiv {
+        border-bottom: 1px solid #efefef;
+        height: 17vh;
+    }
+    .innerDiv2 {
+        border-bottom: 1px solid #efefef;
+        height: 26vh;
+    }
 }
