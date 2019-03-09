@@ -69,7 +69,7 @@ class ProfilePage extends React.Component {
                                 style={{padding:`${1 + UNIT} ${6 + UNIT}`}}
                                 />
                             :
-                                (isAdmin) ?
+                                (!isAdmin && !isCurrentUser) ?
                                     <Button 
                                     activeText={"Unfollow"} 
                                     text={"Follow"}

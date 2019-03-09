@@ -232,23 +232,23 @@ const initialState = {
                     comments:[
                         {
                         userName: {
-                            name: 'Tosho',
-                            uid: 3
+                            name: 'Pesho',
+                            uid: 1
                         },
-                        comment: 'Много як пост браааааат! НапраУ пръскаааш!',
+                        comment: 'Много си красива на тази снимка!',
                         cid: 1
                         },
                         {
                         userName: {
-                            name: 'Niki',
+                            name: 'gosho',
                             uid: 2
                         },
-                        comment: 'Всичко свърши!',
+                        comment: 'На живо си още по хубава :)',
                         cid: 2
                         }
                     ],
                     description: '#mnogoSymKrasiva',
-                    likes: 543,
+                    likes: 2548,
                     isThisPostLiked: false,
                     isThisPostSaved: false
 
@@ -257,9 +257,18 @@ const initialState = {
                     uid:5,
                     pid: 2,
                     srcPostPic: "https://i.pinimg.com/originals/91/9f/6d/919f6d84985c345a1e714ca968020856.jpg",
-                    comments:[],
+                    comments:[
+                        {
+                        userName: {
+                            name: 'gosho',
+                            uid: 2
+                        },
+                        comment: 'Много си замислена! Защо не ми звъннеш ;)',
+                        cid: 1
+                        }
+                    ],
                     description: '#mood #perfect #day',
-                    likes: 10,
+                    likes: 1896,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
                 },
@@ -267,9 +276,27 @@ const initialState = {
                     uid:5,
                     pid: 3,
                     srcPostPic: "https://www.portraitprofessional.com/img/page-images/homepage/v18/slider/layers-B.jpg",
-                    comments:[],
+                    comments:[
+                        {
+                            userName: {
+                                name: 'mimi',
+                                uid: 3
+                            },
+                            comment: 'You go girl!!!! #bestfirends',
+                            cid: 1
+                        },
+                        {
+                            userName: {
+                                name: 'conka',
+                                uid: 5
+                            },
+                            comment: 'Мерси Мимче! Много хубави торти правиш!',
+                            cid: 2
+                        }
+
+                    ],
                     description: '#newHairColor',
-                    likes: 250,
+                    likes: 1980,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
                 },
@@ -277,9 +304,93 @@ const initialState = {
                     uid:5,
                     pid: 4,
                     srcPostPic: "https://data.whicdn.com/images/47137307/original.jpg",
-                    comments:[],
+                    comments:[
+                        {
+                            userName: {
+                                name: 'gosho',
+                                uid: 2
+                            },
+                            comment: 'Ти знаеш ли, че имаш страшни очи!',
+                            cid: 1
+                            }
+                    ],
                     description: '#kifla#kroasan#ponichka#banichka',
-                    likes: 250,
+                    likes: 9875,
+                    isThisPostLiked: false,
+                    isThisPostSaved: false,
+                },
+                {
+                    uid:5,
+                    pid: 5,
+                    srcPostPic: "https://hips.hearstapps.com/esquireuk.cdnds.net/17/06/1486567824-marilyn-monroe.jpg",
+                    comments:[
+                        {
+                            userName: {
+                                name: 'gosho',
+                                uid: 2
+                            },
+                            comment: 'Тази не работеше ли на касата в Била',
+                            cid: 1
+                        },
+                        {
+                            userName: {
+                                name: 'conka',
+                                uid: 5
+                            },
+                            comment: 'Нищо не разбираш gosho',
+                            cid: 2
+                        }
+                    ],
+                    description: '#thebestmodel',
+                    likes: 5347,
+                    isThisPostLiked: false,
+                    isThisPostSaved: false,
+                },
+                {
+                    uid:5,
+                    pid: 6,
+                    srcPostPic: "https://underground-secrets.org/static/uploads/2016/10/titanic-movie.jpg",
+                    comments:[],
+                    description: '#bestmovie#ever',
+                    likes: 7895,
+                    isThisPostLiked: false,
+                    isThisPostSaved: false,
+                },
+                {
+                    uid:5,
+                    pid: 7,
+                    srcPostPic: "https://www.travelocity.com/inspire/wp-content/uploads/2018/06/romantic-spots-in-Italy-e1529077561159.jpg",
+                    comments:[
+                        {
+                            userName: {
+                                name: 'mimi',
+                                uid: 3
+                            },
+                            comment: 'Като се върнеш има много да разказваш!',
+                            cid: 1
+                            }
+                    ],
+                    description: '#freespirit#nature#romantic',
+                    likes: 3215,
+                    isThisPostLiked: false,
+                    isThisPostSaved: false,
+                },
+                {
+                    uid:5,
+                    pid: 8,
+                    srcPostPic: "https://cdn.diys.com/wp-content/uploads/2016/06/basket-weave-680x1024.jpg",
+                    comments:[
+                        {
+                            userName: {
+                                name: 'mimi',
+                                uid: 3
+                            },
+                            comment: 'Мойто джезве е по-хубаво!',
+                            cid: 1
+                            }
+                    ],
+                    description: 'Real italian macchiato #besttasteever',
+                    likes: 560,
                     isThisPostLiked: false,
                     isThisPostSaved: false,
                 }

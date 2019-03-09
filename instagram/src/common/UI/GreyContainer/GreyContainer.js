@@ -9,7 +9,7 @@ const greyContainer = props => {
             <div className={classes.title}>
                 <h1>{props.title}</h1>
                 <Link className={classes.link} to={props.to}>
-                <p>{props.link}</p>
+                <p className= {classes.link}>{props.link}</p>
                 </Link>
             </div>
             <div>
