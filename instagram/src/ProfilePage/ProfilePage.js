@@ -26,7 +26,13 @@ class ProfilePage extends React.Component {
 
     render() {
         const UNIT = 'vh';
+<<<<<<< HEAD
+=======
+        const ADMIN_UID = 0;
+
+>>>>>>> 23085551ef9e8ecc5e586e61c50422782358d83f
         const userId = this.props.match.params.uid;
+        const isAdmin = (+userId === ADMIN_UID) ? true : false;
         const isCurrentUser = (+userId === this.props.currentUser.uid) ? true : false;
         const users = this.props.users;
         const userINeed = users.find(user => user.uid === +userId);
@@ -57,29 +63,36 @@ class ProfilePage extends React.Component {
                                 style={{padding:`${1 + UNIT} ${6 + UNIT}`}}
                                 />
                             :
-                                <Button 
-                                activeText={"Unfollow"} 
-                                text={"Follow"}
-                                isActive={checkFollowerStatus()} 
-                                style={{padding:`${1 + UNIT} ${6 + UNIT}`}}
-                                onAdd={() => {
-                                    checkFollowerStatus() ?
-                                    this.props.onAddAfollowed({status: false, uid : profileProps.uid})
-                                    :
-                                    this.props.onAddAfollowed({status: true, uid : profileProps.uid})}} 
-                                />
+                                (isAdmin) ?
+                                    <Button 
+                                    activeText={"Unfollow"} 
+                                    text={"Follow"}
+                                    isActive={checkFollowerStatus()} 
+                                    style={{padding:`${1 + UNIT} ${6 + UNIT}`}}
+                                    onAdd={() => {
+                                        checkFollowerStatus() ?
+                                        this.props.onAddAfollowed({status: false, uid : profileProps.uid})
+                                        :
+                                        this.props.onAddAfollowed({status: true, uid : profileProps.uid})}} 
+                                    />
+                                :
+                                    null
                             }
                         </div>
                     </div>
-                    <div className={classes.info}>
-                        <span><strong>{profileProps.posts.length}</strong> posts</span>
-                        <span><strong>{profileProps.followersOfMe.length}</strong> followers</span>
-                        <span><strong>{profileProps.followedUsers.length}</strong> following</span>
-                    </div>
+                    {!isAdmin ?
+                        <div className={classes.info}>
+                            <span><strong>{profileProps.posts.length}</strong> posts</span>
+                            <span><strong>{profileProps.followersOfMe.length}</strong> followers</span>
+                            <span><strong>{profileProps.followedUsers.length}</strong> following</span>
+                        </div>
+                    :
+                        null
+                    }
                 </div>
             </div>
 
-            {isCurrentUser ?
+            {isAdmin ?
                 <div className={classes.buttonsContainer}>
                     <Link to={"/profile/"+userId+"/saved"}>
                         <Button 
@@ -102,9 +115,13 @@ class ProfilePage extends React.Component {
                 {this.state.isSavedClicked ?
                    savedPosts && savedPosts.map(post => <SquarePost key={keyGen()} {...post} />) 
                 :
+<<<<<<< HEAD
                    ownPosts && ownPosts.map(post => <SquarePost key={keyGen()} {...post} />)
+=======
+                    ownPosts && ownPosts.map(post => <SquarePost key={keyGen()} {...post} />)
+>>>>>>> 23085551ef9e8ecc5e586e61c50422782358d83f
                 }
-                {(ownPosts.length % 3 === 2 || ownPosts.length === 2) ?
+                {((ownPosts && ownPosts.length % 3 === 2) || (ownPosts && ownPosts.length === 2)) ?
                     <div className={classes.post}></div>
                 :
                     null
