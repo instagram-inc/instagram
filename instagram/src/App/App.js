@@ -8,7 +8,7 @@ import { Redirect } from 'react-router'
 
 
 import Explore from '../Explore/Explore';
-import Upload from '../Upload/Upload' 
+import Upload from '../Upload/upload' 
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Register from '../LoginRegister/Register';
 import Login from '../LoginRegister/Login';

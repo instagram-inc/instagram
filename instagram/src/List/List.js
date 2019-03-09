@@ -16,33 +16,35 @@ const list = props => {
     let admin = props.currentUser.uid === 0 ? true : false;
     let  users = props.users.filter(user => user.uid !== props.currentUser.uid);
     let searchError = true;
+    let title = '';
     if (props.requestedUids.length !== 0 && props.match.url.includes(RESAULT)) {
         const requestedUids = props.requestedUids;
         users = requestedUids.map(uid =>props.users.find(user => user.uid === uid));
         searchError = false;
+        title = 'search resault:';
     }
    
     if (props.match.url.includes(RECOMMENDED)){
         users = users.filter(user => !props.currentUser.followedUsers.some(uid => uid === user.uid))
         searchError = false;
-        var title = 'recommended for you';
+        title = 'recommended for you:';
     }
     if (props.match.url.includes(FOLLOWERS_OF_ME)){
         const userOfIntrest = props.users.find(user => user.uid === +props.match.params.uid);
         const name = userOfIntrest.name.toLowerCase();
         users = userOfIntrest.followersOfMe.map(uid => props.users.find(user => user.uid === uid))
-        var title = 'followers of ' + name;
+        title = 'followers of ' + name + ':';
         searchError = false;
     }
     if (props.match.url.includes(FOLLOWED_USERS)){
         const userOfIntrest = props.users.find(user => user.uid === +props.match.params.uid);
         const name = userOfIntrest.name.toLowerCase();
         users = userOfIntrest.followedUsers.map(uid => props.users.find(user => user.uid === uid))
-        var title = 'users that ' + name + ' follows';
+        title = 'users that ' + name + ' follows';
         searchError = false;
     }
     if (admin) {
-        var title = 'user database';
+        title = 'user database:';
         searchError = false;
     }
     
