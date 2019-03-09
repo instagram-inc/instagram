@@ -11,7 +11,7 @@ class Register extends React.Component {
         isButtonActive : {
             isnameOk : false,
             isEmailOk : false,
-            isPassOk : false
+            isPassOk : false,
         },
         newUser : {
             name : '',
@@ -21,7 +21,7 @@ class Register extends React.Component {
             followedUsers : [],
             followersOfMe : [],
             posts : []
-        }
+        },
     }
 
     setname = event => {
@@ -50,7 +50,7 @@ class Register extends React.Component {
         const MAX_EMAIL_LENGHT = 30;
         const value = event.target.value;
         const newUser = {...this.state.newUser};
-        newUser.email = value.substring(0,MAX_EMAIL_LENGHT);
+        newUser.email = value.substring(0,MAX_EMAIL_LENGHT).toLowerCase();
         this.setState({ 
             ...this.state, newUser,  
             isButtonActive: this.EmailDataChecker(newUser.email) ? 
@@ -62,7 +62,7 @@ class Register extends React.Component {
 
     EmailDataChecker = data => {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(data).toLowerCase());
+        return (re.test(String(data).toLowerCase()) && !this.props.users.some(user => user.email.toLowerCase() === data.toLowerCase()));
     }
     
     setPass = event => {
@@ -93,8 +93,6 @@ class Register extends React.Component {
         const newUserId = (lastId) ? lastId.uid + 1 : 1;
         const newData = {...this.state.newUser, uid : newUserId}
         this.props.onAddUSer(newData);
-        console.log(this.props.users);
-
         const newUser = {name: '', email: '', pass: ''};
         this.setState({ newUser });
         this.props.history.goBack();
@@ -112,7 +110,11 @@ class Register extends React.Component {
             <div className={classes.parentBox}>
                 <img className={classes.logo} src={Insta} alt=""></img>
                 <div className={classes.dataDiv}>
-                    <p className={classes.info}>Username must be at least 5 characters</p>
+                    <p className={ this.state.isButtonActive.isnameOk ?
+                        classes.info
+                    :
+                        classes.error
+                    }>Username must be unique and at least 5 characters</p>
                     <input className={classes.input}
                     type="text"
                     placeholder="Enter username"
@@ -121,7 +123,11 @@ class Register extends React.Component {
                     >
                     </input>
                     
-                    <p className={classes.info}>You must enter a valid e-mail</p>
+                    <p className={ this.state.isButtonActive.isEmailOk ?
+                        classes.info
+                    :
+                        classes.error
+                    }>You must enter a valid and unique e-mail</p>
                     <input className={classes.input}
                     type="email"
                     placeholder="Enter e-mail"
@@ -130,7 +136,11 @@ class Register extends React.Component {
                     >
                     </input>
 
-                    <p className={classes.info}>Password must be at least 6 characters</p>
+                    <p className={ this.state.isButtonActive.isPassOk ?
+                        classes.info
+                    :
+                        classes.error
+                    }>Password must be at least 6 characters</p>
                     <input className={classes.input}
                     type="password"
                     placeholder="Enter password"

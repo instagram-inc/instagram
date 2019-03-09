@@ -45,9 +45,6 @@ const home = props => {
     .filter(user => !currentUser.followedUsers.some(uid => uid === user.uid));
     const recommended = shuffle(remainingRecommendations).slice(0, NUMBER_OF_USERS_TO_RECOMMEND).filter(user => user);
     
-
-    
-    console.log(props.allusers)
     return (
         <div className={classes.home}>
             {!isAdmin ?
