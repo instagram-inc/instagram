@@ -59,3 +59,22 @@
 .divShitnq {
     border: 1px solid black;
 }
+.input {
+    border: 1px solid #E6E6E6;
+    background-color: #E6E6E6;
+    outline: none;
+    margin-bottom: 5vh;
+    font-size: 1em;
+    color: black;
+    box-shadow: 0px 5px 35px 0px rgba(0,255,0,1);
+}
+
+.error {
+    border: 1px solid #E6E6E6;
+    background-color: #E6E6E6;
+    outline: none;
+    margin-bottom: 5vh;
+    font-size: 1em;
+    color: black;
+    box-shadow: 0px 5px 35px 0px rgba(255,0,0,1);
+}

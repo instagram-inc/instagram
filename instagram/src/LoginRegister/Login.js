@@ -78,14 +78,24 @@ class Login extends React.Component {
             <div className={classes.parentBox}>
             <img className={classes.logo} src={Insta} alt=""></img>
                 <div className={classes.dataDiv}>
-                    <input className={classes.input}
+                    <input className={this.state.isButtonActive.isEmailOk ?
+                        classes.input
+                    :
+                        classes.error
+                    }
+                    type="text"
                     placeholder="Enter e-mail"
                     onChange={this.setEmail}
                     value={this.state.loginUser.email}
                     >
                     </input>
 
-                    <input className={classes.input}
+                    <input className={this.state.isButtonActive.isPassOk ?
+                        classes.input
+                    :
+                        classes.error
+                    }
+                    type="password"
                     placeholder="Enter password"
                     onChange={this.setPass}
                     value={this.state.loginUser.pass}

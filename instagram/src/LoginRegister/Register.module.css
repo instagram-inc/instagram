@@ -39,4 +39,14 @@
     margin-block-start: 0em;
     margin-block-end: 0em;
     font-size: 0.7em;
+    color: green;
+    font-weight: bold;
+}
+.error{
+    display: inline-block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-size: 0.7em;
+    color: red;
+    font-weight: bolder;
 }

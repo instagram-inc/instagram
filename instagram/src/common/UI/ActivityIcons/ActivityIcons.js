@@ -14,34 +14,34 @@ class ActivityIcons extends React.Component {
     onToggleLiked = () => {
         const pid = this.props.pid;
         const uid = this.props.uid;
-        const isThisPostLiked = !this.props.isThisPostLiked;
-        const likes = (isThisPostLiked) ? this.props.likes + 1 : this.props.likes - 1;
-        const status = {likes, pid, uid, isThisPostLiked};
+        const status = { pid, uid };
         this.props.onToggleLiked(status);
     }
     onToggleSaved = () => {
         const pid = this.props.pid;
         const uid = this.props.uid;
-        const isThisPostSaved = !this.props.isThisPostSaved;
-        const status = { pid, uid, isThisPostSaved};
+        const status = { pid, uid };
         this.props.onToggleSaved(status);
     }
     
     render() {
+        const currentUser = this.props.users.find(user => user.uid === this.props.currentUserUid);
         let landscapePostStyle = null;
         if (this.props.landscapePostStyle){
             landscapePostStyle = this.props.landscapePostStyle;
         }
         let heart = HeartEmpty;
-        if (this.props.isThisPostLiked) {
+        if (currentUser.likedPosts.some(post => post.uid === this.props.uid && post.pid === this.props.pid)) {
             heart = HeartFull;
         }
         
         let save = SaveEmpty;
-        if (this.props.isThisPostSaved) {
+        if (currentUser.savedPosts.some(post => post.uid === this.props.uid && post.pid === this.props.pid)) {
             save = SaveFull;
         }
-        
+        console.log('ActivityIcons')
+        console.log('ActivityIcons')
+        console.log(currentUser.likedPosts)
         return (
             
             <React.Fragment>
@@ -107,5 +107,11 @@ const mapDispatchToProps = dispatch => {
         onToggleSaved: status => dispatch(toggleSaved(status))
     }
 }
+const mapStateToProps = (state) => {
+    return{    
+        users: state.users,
+        currentUserUid: state.currentUser.user.uid
+    }
+}
 
-export default connect(null, mapDispatchToProps)(ActivityIcons);
+export default connect(mapStateToProps, mapDispatchToProps)(ActivityIcons);

@@ -23,6 +23,7 @@ const initialState = {
             srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             followedUsers: [3],
             followersOfMe: [],
+            likedPosts: [],
             savedPosts:[{uid: 1, pid: 2}, {uid: 5, pid:1}],
             posts: [
                 {   
@@ -32,25 +33,25 @@ const initialState = {
                     comments:[
                          {
                         userName: {
-                            name: 'Tosho',
+                            name: 'mimi',
                             uid: 3
                         },
-                        comment: 'Много як пост браааааат! НапраУ пръскаааш!',
+                        comment: 'И аз обичам природата!',
                         cid: 1
                         },
                         {
                         userName: {
-                            name: 'Niki',
-                            uid: 2
+                            name: 'pesho',
+                            uid: 1
                         },
-                        comment: 'Всичко свърши!',
+                        comment: 'Презареждам батериите малко аз :)',
                         cid: 2
                         }
                     ],
                     description: 'Невероятна разходка в парка (happy) :)',
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                    likes: 543,
-                    isThisPostLiked: false,
+                    likes: 17,
+                    
                     isThisPostSaved: false
 
                 },
@@ -62,8 +63,8 @@ const initialState = {
                     comments:[],
                     description: 'Време е за балкан и паржолкииии...',
                     likes: 10,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    
+                    
                 }
             ]
         },
@@ -76,6 +77,7 @@ const initialState = {
             srcProfilePic: "http://www.howtogeek.com/wp-content/uploads/2016/11/650x433xfreddie.jpg.pagespeed.gp+jp+jw+pj+js+rj+rp+rw+ri+cp+md.ic.X9S8A5J_bd.jpg",
             followedUsers: [],
             followersOfMe: [],
+            likedPosts: [],
             savedPosts:[],
             posts: [
                 {
@@ -85,24 +87,23 @@ const initialState = {
                     comments:[
                         {
                         userName: {
-                            name: 'Tosho',
-                            uid: 3
+                            name: 'pesho',
+                            uid: 1
                         },
-                        comment: 'Много як пост браааааат! НапраУ пръскаааш!',
+                        comment: 'Страхотна бегачка!',
                         cid: 1
                         },
                         {
                         userName: {
-                            name: 'Niki',
-                            uid: 2
+                            name: 'mimi',
+                            uid: 3
                         },
-                        comment: 'Всичко свърши!',
+                        comment: 'Гоше кога ще ме повозиш? ;)',
                         cid: 2
                         }
                     ],
                     description: 'Да ми е честита новата кола!',
                     likes: 543,
-                    isThisPostLiked: false,
                     isThisPostSaved: false
 
                 },
@@ -112,19 +113,22 @@ const initialState = {
                     srcPostPic: "https://cmsimages-alt.kbb.com/content/dam/kbb-editorial/make/lamborghini/lamborghini-other/2019-lambo-urus/01-2019-lamborghini-urus-oem.jpg",
                     comments:[],
                     description: '#power #cars #rage',
-                    likes: 10,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    likes: 87,
+                    
+                    
                 }
             ]
         },
         {
             uid:3,
             name: 'Mimi',
+            pass: '123456',
+            email: 'mimi@mimi.bg',
             srcProfilePic: "https://farm1.staticflickr.com/475/18784149924_a2132a1c25_b.jpg",
             followedUsers: [],
             followersOfMe: [],
             savedPosts:[],
+            likedPosts: [],
             circleImgWidth: 30,
             posts: [
                 {
@@ -134,24 +138,24 @@ const initialState = {
                     comments:[
                          {
                         userName: {
-                            name: 'Tosho',
-                            uid: 3
+                            name: 'pesho',
+                            uid: 1
                         },
-                        comment: 'Много як пост браааааат! НапраУ пръскаааш!',
+                        comment: 'Чак ми се дояде и на мен!',
                         cid: 1
                         },
                         {
                         userName: {
-                            name: 'Niki',
-                            uid: 2
+                            name: 'mimi',
+                            uid: 3
                         },
-                        comment: 'Всичко свърши!',
+                        comment: 'Ще направя една и за теб!',
                         cid: 2
                         }
                     ],
                     description: '#homeMade #cake',
-                    likes: 543,
-                    isThisPostLiked: false,
+                    likes: 274,
+                    
                     isThisPostSaved: false
 
                 },
@@ -161,9 +165,9 @@ const initialState = {
                     srcPostPic: "https://www.eatingonadime.com/wp-content/uploads/2016/07/easy-homemade-blueberry-muffins.jpg",
                     comments:[],
                     description: 'Едни мъфинчета, като за през уикенда :)))',
-                    likes: 10,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    likes: 468,
+                    
+                    
                 }
             ]
         },
@@ -171,9 +175,12 @@ const initialState = {
             uid:4,
             name: 'Asparuh',
             circleImgWidth: 30,
+            pass: '123456',
+            email: 'asparuh@asparuh.bg',
             srcProfilePic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBa1wlPR5G3qWNQ_vI-Vylq-x4jMuasvONZxnIdh4I6uTbV80R9A",
             followedUsers: [],
             followersOfMe: [],
+            likedPosts: [],
             savedPosts:[],
             posts: [
                 {   
@@ -183,24 +190,24 @@ const initialState = {
                     comments:[
                          {
                         userName: {
-                            name: 'Tosho',
-                            uid: 3
+                            name: 'conka',
+                            uid: 5
                         },
-                        comment: 'Много як пост браааааат! НапраУ пръскаааш!',
+                        comment: 'Аспарух за мен ти си истински герой!',
                         cid: 1
                         },
                         {
                         userName: {
-                            name: 'Niki',
-                            uid: 2
+                            name: 'Asparuh',
+                            uid: 4
                         },
-                        comment: 'Всичко свърши!',
+                        comment: 'Благодаря ти Цонче! Без теб нямаше да успея!',
                         cid: 2
                         }
                     ],
                     description: 'Тук воювам и спасявам малки кученца...',
                     likes: 543,
-                    isThisPostLiked: false,
+                    
                     isThisPostSaved: false
 
                 },
@@ -211,18 +218,21 @@ const initialState = {
                     comments:[],
                     description: 'Един нормален работен ден :)',
                     likes: 10,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    
+                    
                 }
             ]
         },
         {
             uid:5,
             name: 'Conka',
+            pass: '123456',
+            email: 'conka@conka.bg',
             srcProfilePic: "https://i.pinimg.com/originals/de/da/81/deda811e570b5395e8e2affe66e72996.jpg",
             followedUsers: [],
             followersOfMe: [],
             savedPosts:[],
+            likedPosts: [],
             circleImgWidth: 30,
             posts: [
                 {
@@ -249,7 +259,7 @@ const initialState = {
                     ],
                     description: '#mnogoSymKrasiva',
                     likes: 2548,
-                    isThisPostLiked: false,
+                    
                     isThisPostSaved: false
 
                 },
@@ -269,8 +279,8 @@ const initialState = {
                     ],
                     description: '#mood #perfect #day',
                     likes: 1896,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    
+                    
                 },
                 {
                     uid:5,
@@ -297,8 +307,8 @@ const initialState = {
                     ],
                     description: '#newHairColor',
                     likes: 1980,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    
+                    
                 },
                 {
                     uid:5,
@@ -316,8 +326,8 @@ const initialState = {
                     ],
                     description: '#kifla#kroasan#ponichka#banichka',
                     likes: 9875,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    
+                    
                 },
                 {
                     uid:5,
@@ -343,8 +353,8 @@ const initialState = {
                     ],
                     description: '#thebestmodel',
                     likes: 5347,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    
+                    
                 },
                 {
                     uid:5,
@@ -353,8 +363,8 @@ const initialState = {
                     comments:[],
                     description: '#bestmovie#ever',
                     likes: 7895,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    
+                    
                 },
                 {
                     uid:5,
@@ -372,8 +382,8 @@ const initialState = {
                     ],
                     description: '#freespirit#nature#romantic',
                     likes: 3215,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    
+                    
                 },
                 {
                     uid:5,
@@ -391,8 +401,8 @@ const initialState = {
                     ],
                     description: 'Real italian macchiato #besttasteever',
                     likes: 560,
-                    isThisPostLiked: false,
-                    isThisPostSaved: false,
+                    
+                    
                 }
             ]
         },
@@ -406,6 +416,7 @@ const initialState = {
             followedUsers: [],
             followersOfMe: [],
             savedPosts: [],
+            likedPosts: [],
             posts: []
         }
 
@@ -447,6 +458,7 @@ const reducer = (state = initialState, action) => {
             newUser.srcProfilePic = 'http://imperialsoftech.com/images/front/Default_profile_picture.jpg';
             newUser.circleImgWidth = 30;
             newUser.savedPosts = [];
+            newUser.likedPosts = [];
             return {...state, users: [...state.users, newUser]};
         };
         
@@ -466,27 +478,32 @@ const reducer = (state = initialState, action) => {
 
         case TOGGLE_IS_POST_LIKED: {
             const stateUsers = [...state.users]
+            const currentLikeUserIndex = stateUsers.findIndex(user => user.uid === state.currentUser.user.uid);
             const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.status.uid);
             const user = stateUsers[userIndex]
             const userPosts = [...user.posts];
             const currentPost = userPosts.findIndex(post => post.pid === action.status.pid);
-            stateUsers[userIndex].posts[currentPost].isThisPostLiked = action.status.isThisPostLiked;
-            stateUsers[userIndex].posts[currentPost].likes = action.status.likes;
+            const { uid, pid } = action.status;
 
+            if (!stateUsers[currentLikeUserIndex].likedPosts.some(post => post.uid === uid && post.pid === pid)){
+                const status = {uid,pid,};
+                stateUsers[userIndex].posts[currentPost].likes = stateUsers[userIndex].posts[currentPost].likes + 1;
+                stateUsers[currentLikeUserIndex].likedPosts = [status, ...stateUsers[currentLikeUserIndex].likedPosts]
+            } else {
+                stateUsers[currentLikeUserIndex].likedPosts = stateUsers[currentLikeUserIndex].likedPosts.filter(post => post.uid !== uid && post.pid !== pid);
+                stateUsers[userIndex].posts[currentPost].likes = stateUsers[userIndex].posts[currentPost].likes - 1;
+            }
             return {...state, users: stateUsers}
+
+            
         };
 
         case TOGGLE_IS_POST_SAVED: {
             const stateUsers = [...state.users]
             const curentSaveingUserIndex = stateUsers.findIndex(userIndex => userIndex.uid === state.currentUser.user.uid);
-            const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.status.uid);
-            const user = stateUsers[userIndex]
-            const userPosts = [...user.posts];
-            const currentPost = userPosts.findIndex(post => post.pid === action.status.pid);
-            stateUsers[userIndex].posts[currentPost].isThisPostSaved = action.status.isThisPostSaved;
-            const uid = action.status.uid;
-            const pid = action.status.pid;
-            if (action.status.isThisPostSaved){
+            const { uid, pid } = action.status;
+
+            if (!stateUsers[curentSaveingUserIndex].savedPosts.some(post => post.uid === uid && post.pid === pid)){
                 const status = {uid,pid};
                 stateUsers[curentSaveingUserIndex].savedPosts = [status, ...stateUsers[curentSaveingUserIndex].savedPosts]
             } else {
@@ -521,12 +538,10 @@ const reducer = (state = initialState, action) => {
             ///POST DEAFALUT VALUES:
             const comments = [];
             const likes = 0;
-            const isThisPostLiked = false;
-            const isThisPostSaved = false;
             //INCOMEING VALUES:
             const {pid, uid, srcPostPic, description} = action.post;
             //Compile new post:
-            const newPost = {pid, uid, srcPostPic, comments, description, likes, isThisPostLiked, isThisPostSaved};
+            const newPost = {pid, uid, srcPostPic, comments, description, likes};
             const stateUsers = [...state.users]
             const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.post.uid);
             stateUsers[userIndex].posts.push(newPost);

@@ -7,8 +7,12 @@ import error from '../immages/error.png'
 
 
 const list = props => {
+    console.log("zcczxc")
+    console.log(props)
     const RECOMMENDED = 'recommended';
-    const RESAULT = 'resault'
+    const RESAULT = 'resault';
+    const FOLLOWERS_OF_ME = 'followersOfMe';
+    const FOLLOWED_USERS ='followedUsers'
     let admin = props.currentUser.uid === 0 ? true : false;
     let  users = props.users.filter(user => user.uid !== props.currentUser.uid);
     let searchError = true;
@@ -21,8 +25,24 @@ const list = props => {
     if (props.match.url.includes(RECOMMENDED)){
         users = users.filter(user => !props.currentUser.followedUsers.some(uid => uid === user.uid))
         searchError = false;
+        var title = 'recommended for you';
+    }
+    if (props.match.url.includes(FOLLOWERS_OF_ME)){
+        const userOfIntrest = props.users.find(user => user.uid === +props.match.params.uid);
+        const name = userOfIntrest.name.toLowerCase();
+        users = userOfIntrest.followersOfMe.map(uid => props.users.find(user => user.uid === uid))
+        var title = 'followers of ' + name;
+        searchError = false;
+    }
+    if (props.match.url.includes(FOLLOWED_USERS)){
+        const userOfIntrest = props.users.find(user => user.uid === +props.match.params.uid);
+        const name = userOfIntrest.name.toLowerCase();
+        users = userOfIntrest.followedUsers.map(uid => props.users.find(user => user.uid === uid))
+        var title = 'users that ' + name + ' follows';
+        searchError = false;
     }
     if (admin) {
+        var title = 'user database';
         searchError = false;
     }
     
@@ -34,7 +54,10 @@ const list = props => {
                     <img src={ error } alt=""/>
                 </div>
             :
-            users.map(user => <HeaderOfPost key={user.uid} {...user}/>)
+            <div>
+            <h1 className={classes.title}>{title}</h1>
+            {users.map(user => <HeaderOfPost key={user.uid} {...user}/>)}
+            </div>
             }
 
         </div>

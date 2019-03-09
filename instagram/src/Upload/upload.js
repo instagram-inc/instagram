@@ -45,8 +45,14 @@ class Upload extends React.Component {
     }
 
     validateUrl = url => {
+        const ACCEPTABLE_IMAGE_FORMATS = ['jpg', 'png', 'bmp'];
         const pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-        return pattern.test(url) ? true : false;
+        if (pattern.test(url)) {
+            const FILE_TYPE_LENGTH = 3;
+            const fileType = url.substring(url.length - FILE_TYPE_LENGTH, url.length);
+            return ACCEPTABLE_IMAGE_FORMATS.includes(fileType) ? true : false;
+        }
+        return false;
     }
 
 
@@ -93,8 +99,12 @@ class Upload extends React.Component {
                     <div className={classes.innerDiv}>
                         <p className={classes.p}>First step</p>
                         <div>
-                            <input 
-                            className={classes.input} 
+                            <input className={this.state.uploadFormProperties.isPicButtonActive ?
+                                classes.input
+                            :
+                                classes.error
+                            }
+                            type="url"
                             placeholder="URl to photo" 
                             size="80"
                             value={this.state.newPost.pic} 
@@ -104,8 +114,11 @@ class Upload extends React.Component {
                         
                     <div className={classes.innerDiv2}>
                         <p className={classes.p}>Second step</p>
-                        <textarea 
-                        className={classes.input} 
+                        <textarea className={this.state.uploadFormProperties.isDescButtonActive ?
+                            classes.input
+                        :
+                            classes.error
+                        }
                         placeholder="Add discription..." 
                         rows="5" 
                         cols="80"
@@ -153,17 +166,3 @@ const mapDispatchToProps = dispatch => {
    
 
 export default connect(mapStateToProps, mapDispatchToProps)(Upload);
-
-
-// function is_url(str)
-// {
-//   regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-//         if (regexp.test(str))
-//         {
-//           return true;
-//         }
-//         else
-//         {
-//           return false;
-//         }
-// }
