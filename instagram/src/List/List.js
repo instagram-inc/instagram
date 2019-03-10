@@ -38,9 +38,12 @@ const list = props => {
         searchError = false;
     }
     if (props.match.url.includes(FOLLOWED_USERS)){
+        if (admin) {
+            props.history.push("/");
+        }
         const userOfIntrest = props.users.find(user => user.uid === +props.match.params.uid);
         const name = userOfIntrest.name.toLowerCase();
-        users = userOfIntrest.followedUsers.map(uid => props.users.find(user => user.uid === uid))
+        users = userOfIntrest.followedUsers.map(uid => props.users.find(user => user.uid === uid));
         title = users.length ? 'users that ' + name + ' follows:' : name + ' does not follow anyone';
         searchError = false;
     }

@@ -58,11 +58,11 @@ const profilePage = props => {
                                 style={{padding:`${1 + UNIT} ${6 + UNIT}`}}
                                 />
                             :
-                                (!isAdmin && !isCurrentUser) ?
+                                (!isCurrentUser && !props.isCurrentUserAdmin) ?
                                     <Button 
-                                    activeText={"Unfollow"} 
-                                    text={"Follow"}
-                                    isActive={checkFollowerStatus()} 
+                                    activeText={"Follow"} 
+                                    text={"Unfollow"}
+                                    isActive={!checkFollowerStatus()} 
                                     style={{padding:`${1 + UNIT} ${6 + UNIT}`}}
                                     onAdd={() => {
                                         checkFollowerStatus() ?
@@ -139,7 +139,8 @@ const mapStateToProps = (state) => {
     return {
         currentUser: state.currentUser.user,
         users: state.users,
-        currentUserUid: state.currentUser.user.uid
+        currentUserUid: state.currentUser.user.uid,
+        isCurrentUserAdmin: state.currentUser.isAdmin
     }
 }
 
