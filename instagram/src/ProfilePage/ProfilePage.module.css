@@ -52,14 +52,12 @@
     height: 28vh;
     animation: ring-spin infinite 2s linear;
     pointer-events: none;
-    z-index: 0;
 }
 
 .innerRing {
     position: relative;
-    top: 13px;
-    left: -162px;
-    z-index: 0;
+    top: 17px;
+    left: -167px;
 }
 
 @keyframes ring-spin {

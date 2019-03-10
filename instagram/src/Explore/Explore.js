@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './Explore.module.css';
-import { connect } from 'react-redux';
 import PostsContainer from '../HOC/PostsContainer';
 import SquarePost from '../ProfilePage/SquarePost';
 import keyGen from '../common/keyGen/keyGen';
+import { connect } from 'react-redux';
 
 const explore = props => {
 
@@ -15,7 +15,8 @@ const explore = props => {
     });
     allPosts = allPosts.sort( (p1, p2) => p2.pid - p1.pid);
 
-    return (<React.Fragment>
+    return (
+    <React.Fragment>
         <h1 className={classes.title}>*explore*</h1>
         <PostsContainer>
             {allPosts.map(post => 
@@ -23,14 +24,14 @@ const explore = props => {
             )}
         </PostsContainer>
     </React.Fragment>);
-}
+};
 
 const mapStateToProps = (state) => {
     
     return {
         currentUser: state.currentUser.user,
         users: state.users
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, null)(explore);

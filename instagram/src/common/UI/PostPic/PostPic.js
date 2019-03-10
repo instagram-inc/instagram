@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './PostPic.module.css'
+import classes from './PostPic.module.css';
 
 const postPic = props => {
     
@@ -7,7 +7,7 @@ const postPic = props => {
             <div className={classes.pic} >
                 <img src={props.srcPostPic} className={classes.img} alt=""></img>
             </div>
-        )    
-}
+        );  
+};
 
-export default postPic
+export default postPic;

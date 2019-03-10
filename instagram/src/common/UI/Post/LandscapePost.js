@@ -24,10 +24,10 @@ class LandscapePost extends React.Component {
         this.setState({  isTextAreaActive : !this.state.isTextAreaActive });
     }
     render () {
-        const {uid, pid} = this.props.match.params
+        const {uid, pid} = this.props.match.params;
         const currentUid = +uid;
         const currentPid = +pid;
-        const {user, post} = this.props.getUserAndPostBydIds(currentUid,currentPid)
+        const {user, post} = this.props.getUserAndPostBydIds(currentUid,currentPid);
         const ACTIVTY_DIV_STYLE = {width: '30%'};
         const DESCRIPTION_DIV_CSS = {marginBottom: '1vh'};
 
@@ -107,9 +107,7 @@ const mapStateToProps = state => {
             return {user, post};
         },
         currentUser: state.currentUser
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, null)(withRouter(LandscapePost));
-
-// export default landscapePost

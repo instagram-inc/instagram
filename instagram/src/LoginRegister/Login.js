@@ -32,11 +32,11 @@ class Login extends React.Component {
             :
             {...this.state.isButtonActive, isEmailOk: false}
         });
-    }
+    };
 
     EmailChecker = email => {
         return this.props.users.some(user => user.email === email);
-    }
+    };
 
     setPass = event => {
         const MAX_PASS_LENGHT = 40;
@@ -50,11 +50,11 @@ class Login extends React.Component {
             :
             {...this.state.isButtonActive, isPassOk: false}
         });
-    }
+    };
 
     PassChecker = pass => {
         return this.props.users.some(user => user.pass === pass);
-    }
+    };
 
     onLoginUser = () => {
         const match = this.props.users.find(user => user.email === this.state.loginUser.email);
@@ -63,14 +63,14 @@ class Login extends React.Component {
 
         const loginUser = {email: '', pass: '', matchedUser: null};
         this.setState({ loginUser });
-    }
+    };
 
     render() {
         let isBActive = false;
         if(this.state.isButtonActive.isEmailOk === true &&
             this.state.isButtonActive.isPassOk === true) {
             isBActive = true;
-        }
+        };
 
         return (
             <div className={classes.parentBox}>
@@ -85,9 +85,7 @@ class Login extends React.Component {
                     placeholder="Enter e-mail"
                     onChange={this.setEmail}
                     value={this.state.loginUser.email}
-                    >
-                    </input>
-
+                    />
                     <input className={this.state.isButtonActive.isPassOk ?
                         classes.input
                     :
@@ -97,9 +95,7 @@ class Login extends React.Component {
                     placeholder="Enter password"
                     onChange={this.setPass}
                     value={this.state.loginUser.pass}
-                    >
-                    </input>
-
+                    />
                     {isBActive ?
                         <Link to="/">
                             <Button 
@@ -125,20 +121,20 @@ class Login extends React.Component {
                     }
                 </div>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         onLoginUser: user => dispatch(setAsLogged(user))
-    }
-}
+    };
+};
 
 const mapStateToProps = state => {
     return {
         users: state.users
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

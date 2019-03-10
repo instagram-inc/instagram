@@ -20,7 +20,7 @@ class SquarePost extends React.Component {
         let isHover = false;
         if(this.state.hover === true) {
             isHover = true;
-        }
+        };
 
         const postStyleOn = {
             backgroundImage: `url('${this.props.srcPostPic}')`,
@@ -29,7 +29,7 @@ class SquarePost extends React.Component {
             backgroundPositionX: 'center',
             backgroundPositionY: 'center',
             WebkitFilter: 'brightness(50%)'
-        }
+        };
         
         const postStyleOff = {
             backgroundImage: `url('${this.props.srcPostPic}')`,
@@ -38,10 +38,9 @@ class SquarePost extends React.Component {
             backgroundPositionX: 'center',
             backgroundPositionY: 'center',
             WebkitFilter: 'brightness(100%)'
-        }
+        };
 
         return (
-            
             <div className={classes.post}
             style={ (isHover) ?
                 {...postStyleOn}
@@ -66,8 +65,8 @@ class SquarePost extends React.Component {
                 }
             </div>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default SquarePost;

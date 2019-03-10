@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import InstaHeader from '../Header/Header';
 import Home from '../Home/Home';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router'
 import Explore from '../Explore/Explore';
 import Upload from '../Upload/upload';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Register from '../LoginRegister/Register';
 import Login from '../LoginRegister/Login';
 import ProfilePage from '../ProfilePage/ProfilePage';
@@ -15,6 +12,9 @@ import List from '../List/List';
 import Footer from '../Footer/Footer';
 import AboutUs from '../AboutUs/AboutUs';
 
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { Redirect } from 'react-router'
+import { connect } from 'react-redux';
 class App extends Component {
 
   render() {

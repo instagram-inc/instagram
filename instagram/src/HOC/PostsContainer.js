@@ -7,7 +7,7 @@ const postsContainer = props => {
         <div className={classes.postsContainer}>
             {props.children}
         </div>
-    )
-}
+    );
+};
 
 export default postsContainer;

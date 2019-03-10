@@ -22,7 +22,7 @@ class Register extends React.Component {
             followersOfMe : [],
             posts : []
         },
-    }
+    };
 
     setname = event => {
         const MAX_NAME_LENGHT = 15;
@@ -36,15 +36,15 @@ class Register extends React.Component {
             :
             {...this.state.isButtonActive, isnameOk: false}
         });
-    }
+    };
 
     nameDataChecker = data =>{
         if (data && typeof data === 'string' && data.trim().length > 4) {
             return !this.props.users.some(user => user.name.toLowerCase() === data.toLowerCase());
         } else {
             return false;
-        }
-    }
+        };
+    };
     
     setEmail = event => {
         const MAX_EMAIL_LENGHT = 30;
@@ -58,12 +58,12 @@ class Register extends React.Component {
             :
             {...this.state.isButtonActive, isEmailOk: false}
         });
-    }
+    };
 
     EmailDataChecker = data => {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return (re.test(String(data).toLowerCase()) && !this.props.users.some(user => user.email.toLowerCase() === data.toLowerCase()));
-    }
+    };
     
     setPass = event => {
         const MAX_PASS_LENGHT = 40;
@@ -77,26 +77,26 @@ class Register extends React.Component {
             :
             {...this.state.isButtonActive, isPassOk: false}
         });
-    }
+    };
 
     PassDataChecker = data =>{
         if (data && typeof data === 'string' && data.trim().length > 5) {
             return true;
         } else {
             return false;
-        }
-    }
+        };
+    };
 
 
     onAddUSer = () => {
         const [lastId] = this.props.users.sort( (user1, user2) => user2.uid - user1.uid);
         const newUserId = (lastId) ? lastId.uid + 1 : 1;
-        const newData = {...this.state.newUser, uid : newUserId}
+        const newData = {...this.state.newUser, uid : newUserId};
         this.props.onAddUSer(newData);
         const newUser = {name: '', email: '', pass: ''};
         this.setState({ newUser });
         this.props.history.goBack();
-    }
+    };
 
     render() {
         let isBActive = false;
@@ -104,7 +104,7 @@ class Register extends React.Component {
             this.state.isButtonActive.isEmailOk === true &&
             this.state.isButtonActive.isPassOk === true) {
             isBActive = true;
-        }
+        };
 
         return (
             <div className={classes.parentBox}>
@@ -120,9 +120,7 @@ class Register extends React.Component {
                     placeholder="Enter username"
                     onChange={this.setname}
                     value={this.state.newUser.name}
-                    >
-                    </input>
-                    
+                    />
                     <p className={ this.state.isButtonActive.isEmailOk ?
                         classes.info
                     :
@@ -133,9 +131,7 @@ class Register extends React.Component {
                     placeholder="Enter e-mail"
                     onChange={this.setEmail}
                     value={this.state.newUser.email}
-                    >
-                    </input>
-
+                    />
                     <p className={ this.state.isButtonActive.isPassOk ?
                         classes.info
                     :
@@ -146,9 +142,7 @@ class Register extends React.Component {
                     placeholder="Enter password"
                     onChange={this.setPass}
                     value={this.state.newUser.pass}
-                    >
-                    </input>
-
+                    />
                     <Button 
                     isActive={isBActive}
                     activeText={'Register'}
@@ -160,22 +154,20 @@ class Register extends React.Component {
                     />
                 </div>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         onAddUSer: user => dispatch(addNewUser(user))
-    }
-}
+    };
+};
 
 const mapStateToProps = state => {
-    // console.log(state)
     return {
         users: state.users
-        // followedUsers: state.user[0].followedUsers 
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -5,9 +5,8 @@ import Comment from '../../../immages/Comment.png';
 import SaveEmpty from '../../../immages/SaveEmpty.png';
 import SaveFull from '../../../immages/SaveFull.png';
 import './ActivityIcons.css';
-import { toggleLiked, toggleSaved } from './actions/actions'
+import { toggleLiked, toggleSaved } from './actions/actions';
 import { connect } from 'react-redux';
-
 
 class ActivityIcons extends React.Component {
 
@@ -47,52 +46,43 @@ class ActivityIcons extends React.Component {
         }).join(' ');
         const likeMsg = usersWhoLikedThisPost.trim().length ? 'Likes:' : 'Like';
 
-        
         return (
-            
             <React.Fragment>
-            <div className="grandActivityDiv">
-                <div 
-                className="activityDiv"
-                style={{...landscapePostStyle}}
-                >
-                    <div className="tooltip">
-                    <img
-                    className="img"
-                    onClick={this.onToggleLiked}
-                    src={heart}
-                    alt=""
+                <div className="grandActivityDiv">
+                    <div 
+                    className="activityDiv"
+                    style={{...landscapePostStyle}}
                     >
-                    </img>
-                    <span className="tooltiptext">{likeMsg}<br />{usersWhoLikedThisPost}</span>
+                        <div className="tooltip">
+                            <img
+                            className="img"
+                            onClick={this.onToggleLiked}
+                            src={heart}
+                            alt=""
+                            />
+                            <span className="tooltiptext">{likeMsg}<br />{usersWhoLikedThisPost}</span>
+                        </div>
+                        <div className="tooltip">
+                            <span className="tooltiptext">Comment</span>
+                            <img
+                            className="img"
+                            onClick={this.props.onCommentAreaFocus}
+                            src={Comment}
+                            alt=""
+                            />
+                        </div>
                     </div>
-
                     <div className="tooltip">
-                        <span className="tooltiptext">Comment</span>
+                        <span className="tooltiptext">Save</span>
                         <img
                         className="img"
-                        onClick={this.props.onCommentAreaFocus}
-                        src={Comment}
+                        onClick={this.onToggleSaved}
+                        src={save}
                         alt=""
-                        >
-                        </img>
+                        />
                     </div>
                 </div>
-
-                
-                <div className="tooltip">
-                    <span className="tooltiptext">Save</span>
-                    <img
-                    className="img"
-                    onClick={this.onToggleSaved}
-                    src={save}
-                    alt=""
-                    >
-                    </img>
-                </div>
-
-            </div>
-            <p className="likes">{this.props.likes} likes</p>
+                <p className="likes">{this.props.likes} likes</p>
             </React.Fragment>
         )
     }

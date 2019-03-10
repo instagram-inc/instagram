@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from './GreyContainer.module.css'
+import classes from './GreyContainer.module.css';
 import { Link } from 'react-router-dom';
 
 const greyContainer = props => {
+
     return(
-        
         <div className={classes.container}>
             <div className={classes.title}>
                 <h1>{props.title}</h1>
@@ -16,7 +16,7 @@ const greyContainer = props => {
                 {props.children}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default greyContainer
+export default greyContainer;

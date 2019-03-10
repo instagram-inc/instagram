@@ -1,13 +1,11 @@
 .comment {
     width: 100%;
-    /* border: 2px solid greenyellow; */
     display: flex;
 }
 
 .inputContainer {
     width: 80%;
     height: 50px;
-    /* border: 2px solid red; */
     display: flex;
     align-items: center;
 }

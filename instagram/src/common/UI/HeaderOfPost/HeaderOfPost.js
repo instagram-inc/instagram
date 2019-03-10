@@ -1,13 +1,12 @@
 import React from 'react';
 import classes from './HeaderOfPost.module.css';
 import CircleImg from '../CircleImg/CircleImg';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import Button from '../Button/Button';
 import { deleteUser } from './actions';
 import { deletePost } from './actions';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-
+import { connect } from 'react-redux';
 
 const headerOfPost = props => {
     const isAdmin = props.currentUser.uid === 0 ? true : false;
@@ -21,7 +20,6 @@ const headerOfPost = props => {
     }
 
     return (
-        
         <div className={classes.header}>
             <div className = {classes.content}>
             <CircleImg {...props}
@@ -53,15 +51,15 @@ const headerOfPost = props => {
                 null
             }
         </div>
-    )
-}
+    );
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         ondeleteUser: uid => dispatch(deleteUser(uid)),
         ondeletePost: (uid, pid) => dispatch(deletePost(uid, pid))
-    }
-}
+    };
+};
 
 const mapStateToProps = (state) => {
     return {

@@ -1,5 +1,5 @@
-import React from 'react'
-import classes from './SingleComment.module.css'
+import React from 'react';
+import classes from './SingleComment.module.css';
 import { Link } from 'react-router-dom';
 
 const singleComment = props => {
@@ -18,7 +18,7 @@ const singleComment = props => {
                 </div>
             </div>
         </React.Fragment>
-    )
-}
+    );
+};
 
-export default singleComment
+export default singleComment;

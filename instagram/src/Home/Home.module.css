@@ -2,9 +2,11 @@
     width: 935px;
     margin: 0 auto;
 }
+
 .posts{
     width: 66%
 }
+
 .profileSection{
     max-width: 293px;
     right: 0;
@@ -14,22 +16,26 @@
     left: 849px;
     height: 100vh;
 }
+
 .userProfile{
     display: flex;
     align-items: center;
     margin-bottom: 50px;
 }
+
 .name{
     text-align: left;
     text-transform: lowercase;
     margin-left: 10px;  
 }
+
 .recomendedRow{
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-right: 10px;
 }
+
 .buttonWraper{
     height: 25
 }
@@ -38,6 +44,7 @@
     text-decoration: none;
     color: black;
 }
+
 .wellcome {
     margin-top: 90px;
     width: 100%;
@@ -48,6 +55,7 @@
     display: flex;
     align-items: center;
 }
+
 .wellcomePic{
     width: 100%;
 }

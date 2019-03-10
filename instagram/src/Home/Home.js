@@ -2,14 +2,14 @@ import React from 'react';
 import ListOfPosts from '../common/UI/Post/ListOfPosts';
 import classes from './Home.module.css';
 import GreyContainer from '../common/UI/GreyContainer/GreyContainer';
-import { connect } from 'react-redux';
 import HeaderOfPost from '../common/UI/HeaderOfPost/HeaderOfPost';
 import CircleImg from '../common/UI/CircleImg/CircleImg';
 import Button from '../common/UI/Button/Button';
-import { addAfollowed } from './actions/actions'
-import keyGen from '../common/keyGen/keyGen'
-import { Link } from 'react-router-dom';
+import keyGen from '../common/keyGen/keyGen';
 import List from '../List/List';
+import { addAfollowed } from './actions/actions';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const home = props => {
     const NUMBER_OF_USERS_TO_RECOMMEND = 3;
@@ -18,7 +18,6 @@ const home = props => {
     const WELLCOMEPIC_ALT = 'Image depicting the instagram logo';
     const shuffle = array => {
         let currentIndex = array.length, temporaryValue, randomIndex;
-    
         while (0 !== currentIndex) {
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex -= 1;
@@ -26,12 +25,10 @@ const home = props => {
           array[currentIndex] = array[randomIndex];
           array[randomIndex] = temporaryValue;
         }
-      
         return array;
-      }
+    };
     const UNIT = 'vh';
     const ADMIN_UID = 0;
-   
     const isAdmin = props.currentUserUid === 0 ? true : false;
     const currentUser = isAdmin ? 
         props.users.find(user => user.uid === ADMIN_UID) 
@@ -114,11 +111,10 @@ const home = props => {
                             </div>
                         </>  
                 }
-            </section>
-            
+            </section> 
         </div>
     );
-}
+};
 
 const mapStateToProps = (state) => {
     const ADMIN_UID = 0;
@@ -128,12 +124,12 @@ const mapStateToProps = (state) => {
         allusers: state.users.filter(user => user.uid !== ADMIN_UID),
         currentUserUid: state.currentUser.user.uid,
         users: state.users
-    }
-}
+    };
+};
 const mapDispatchToProps = dispatch => {
     return {
         addAfollowed: status => dispatch(addAfollowed(status))
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(home);

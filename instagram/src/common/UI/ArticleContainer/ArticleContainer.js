@@ -7,9 +7,8 @@ class ArticleContainer extends React.Component{
             <React.Fragment>
                 <GreyContainer title={"Recomended"}/>
             </React.Fragment>
-        ) 
-        
-    }
-}
+        );   
+    };
+};
 
-export default ArticleContainer
+export default ArticleContainer;
