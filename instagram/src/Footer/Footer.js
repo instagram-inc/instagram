@@ -3,13 +3,13 @@ import classes from './Footer.module.css';
 import { Link } from 'react-router-dom';
 
 const footer = () =>
-(<React.Fragment>
+(<footer>
     <div className={classes.container}>
         <Link className={classes.link} to ='/aboutus'>
             <p className={classes.p}>ABOUT US</p>
         </Link>
         <span>&copy; 2019 INSTAGRAM &nbsp;&nbsp;&nbsp; *Mihail &amp; Alex*</span>
     </div>
-</React.Fragment>)
+</footer>)
 
 export default footer;

@@ -52,7 +52,7 @@ const initialState = {
                     srcProfilePic: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     likes: 17,
                     
-                    isThisPostSaved: false
+                    
 
                 },
                 {   
@@ -104,7 +104,7 @@ const initialState = {
                     ],
                     description: 'Да ми е честита новата кола!',
                     likes: 543,
-                    isThisPostSaved: false
+                    
 
                 },
                 {
@@ -156,7 +156,7 @@ const initialState = {
                     description: '#homeMade #cake',
                     likes: 274,
                     
-                    isThisPostSaved: false
+                    
 
                 },
                 {   
@@ -208,7 +208,7 @@ const initialState = {
                     description: 'Тук воювам и спасявам малки кученца...',
                     likes: 543,
                     
-                    isThisPostSaved: false
+                    
 
                 },
                 {
@@ -260,7 +260,7 @@ const initialState = {
                     description: '#mnogoSymKrasiva',
                     likes: 2548,
                     
-                    isThisPostSaved: false
+                    
 
                 },
                 {
@@ -508,7 +508,8 @@ const reducer = (state = initialState, action) => {
                 const status = {uid,pid};
                 stateUsers[curentSaveingUserIndex].savedPosts = [status, ...stateUsers[curentSaveingUserIndex].savedPosts]
             } else {
-                stateUsers[curentSaveingUserIndex].savedPosts = stateUsers[curentSaveingUserIndex].savedPosts.filter(post => post.uid !== uid && post.pid !== pid);
+                const indexOfPost = stateUsers[curentSaveingUserIndex].savedPosts.findIndex(post => post.uid === uid && post.pid === pid);
+                stateUsers[curentSaveingUserIndex].savedPosts.splice(indexOfPost, 1)
             }
             return {...state, users: stateUsers}
         };

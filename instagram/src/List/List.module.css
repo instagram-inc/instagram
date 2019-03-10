@@ -6,6 +6,16 @@
     border-radius: 4px;
 }
 
+.title {
+    animation-name: show;
+    animation-duration: 6s;
+}
+
+@keyframes show {
+    from {opacity: 0;}
+    to {opacity: 5;}
+}
+
 @media only screen and (max-width: 600px) {
     .container {
         width: 100%;

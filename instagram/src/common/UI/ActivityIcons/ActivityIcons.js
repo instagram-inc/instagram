@@ -64,11 +64,11 @@ class ActivityIcons extends React.Component {
                     alt=""
                     >
                     </img>
-                    <span class="tooltiptext">{likeMsg}<br />{usersWhoLikedThisPost}</span>
+                    <span className="tooltiptext">{likeMsg}<br />{usersWhoLikedThisPost}</span>
                     </div>
 
                     <div className="tooltip">
-                        <span class="tooltiptext">Comment</span>
+                        <span className="tooltiptext">Comment</span>
                         <img
                         className="img"
                         onClick={this.props.onCommentAreaFocus}
@@ -77,19 +77,11 @@ class ActivityIcons extends React.Component {
                         >
                         </img>
                     </div>
-                    
-                    {/* <img
-                    className="img"
-                    // onClick={}
-                    src={Share}
-                    alt=""
-                    >
-                    </img> */}
                 </div>
 
                 
                 <div className="tooltip">
-                    <span class="tooltiptext">Save</span>
+                    <span className="tooltiptext">Save</span>
                     <img
                     className="img"
                     onClick={this.onToggleSaved}
