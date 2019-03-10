@@ -40,7 +40,7 @@ class Register extends React.Component {
 
     nameDataChecker = data =>{
         if (data && typeof data === 'string' && data.trim().length > 4) {
-            return true;
+            return !this.props.users.some(user => user.name.toLowerCase() === data.toLowerCase());
         } else {
             return false;
         }

@@ -34,13 +34,14 @@ const list = props => {
         const name = userOfIntrest.name.toLowerCase();
         users = userOfIntrest.followersOfMe.map(uid => props.users.find(user => user.uid === uid))
         title = 'followers of ' + name + ':';
+        title = users.length ? 'followers of ' + name + ':' : name + ' has no followers';
         searchError = false;
     }
     if (props.match.url.includes(FOLLOWED_USERS)){
         const userOfIntrest = props.users.find(user => user.uid === +props.match.params.uid);
         const name = userOfIntrest.name.toLowerCase();
         users = userOfIntrest.followedUsers.map(uid => props.users.find(user => user.uid === uid))
-        title = users.length ? 'users that ' + name + ' follows' : name + ' does not follow anyone';
+        title = users.length ? 'users that ' + name + ' follows:' : name + ' does not follow anyone';
         searchError = false;
     }
     if (admin) {

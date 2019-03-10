@@ -45,6 +45,7 @@ class ActivityIcons extends React.Component {
                 return user.name;
             }
         }).join(' ');
+        const likeMsg = usersWhoLikedThisPost.trim().length ? 'Likes:' : 'Like';
 
         
         return (
@@ -63,7 +64,7 @@ class ActivityIcons extends React.Component {
                     alt=""
                     >
                     </img>
-                    <span class="tooltiptext">Like<br />{usersWhoLikedThisPost}</span>
+                    <span class="tooltiptext">{likeMsg}<br />{usersWhoLikedThisPost}</span>
                     </div>
 
                     <div className="tooltip">
