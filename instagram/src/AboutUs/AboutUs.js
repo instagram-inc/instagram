@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './AboutUs.module.css';
+import InstaOffice from '../immages/InstaOffice.jpg';
 
 const aboutUs = () => 
 (<React.Fragment>
@@ -14,7 +15,7 @@ const aboutUs = () =>
             <span className={classes.letter7}>S</span>
         </strong>
     </h1>
-    <img className={classes.img} src="https://biint.ru/upload/medialibrary/197/197438ae10e51f96c811c16cb9e94588.jpg" alt=""></img>
+    <img className={classes.img} src={InstaOffice} alt=""></img>
     <div className={classes.info}>
         <div className={classes.personalInfo}>
             <h4 className={classes.name}><strong>Михаил Ризов</strong></h4>

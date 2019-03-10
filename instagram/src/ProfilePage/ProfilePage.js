@@ -83,7 +83,7 @@ const profilePage = props => {
                             }
                         </div>
                     </div>
-                    {!isAdmin ?
+                    {!props.isCurrentUserAdmin ?
                         <div className={classes.info}>
                             <span><strong>{profileProps.posts.length}</strong> posts</span>
                             {profileProps.followersOfMe.length ? 
