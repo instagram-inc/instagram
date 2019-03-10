@@ -63,7 +63,6 @@ class Login extends React.Component {
 
         const loginUser = {email: '', pass: '', matchedUser: null};
         this.setState({ loginUser });
-        // window.location = '/';
     }
 
     render() {
@@ -72,7 +71,6 @@ class Login extends React.Component {
             this.state.isButtonActive.isPassOk === true) {
             isBActive = true;
         }
-        console.log('e tuka ' + this.props.users[0].acc);
 
         return (
             <div className={classes.parentBox}>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Link } from 'react-router-dom';
 import InstaHeader from '../Header/Header';
 import Home from '../Home/Home';
 import { connect } from 'react-redux';
@@ -21,6 +20,7 @@ class App extends Component {
   render() {
 
     const isLogged = window.sessionStorage.getItem("loggedUser");
+    const isAdmin = window.sessionStorage.getItem("isAdmin");
 
     return (
       <BrowserRouter>
@@ -44,6 +44,12 @@ class App extends Component {
           }
 
           <Route exact path="/aboutus" component={AboutUs} />
+
+          {!isAdmin ?
+            <Route exact path="/profile/0" render={() => (<Redirect to="/" />)} />
+          :
+            <Route exact path="/profile/:uid" component={ProfilePage} />
+          }
 
           {isLogged ?
             <React.Fragment>

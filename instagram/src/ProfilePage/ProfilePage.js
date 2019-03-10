@@ -9,6 +9,7 @@ import PostsContainer from '../HOC/PostsContainer';
 import SquarePost from './SquarePost';
 import keyGen from '../common/keyGen/keyGen';
 import { Link } from 'react-router-dom';
+import Ring from '../immages/Ring.png';
 
 const profilePage = props => {
  
@@ -41,11 +42,18 @@ const profilePage = props => {
 
         const checkFollowerStatus = () => props.currentUser.followedUsers.some(id => id === +userId);
 
+        // var ringSrc = {
+        //     backgroundImage: `url('${Ring}')`
+        // }
+
         return ( <React.Fragment>
             <div className={classes.parrentDiv}>
-                <div>
-                    <CircleImg {...profileProps} />
-                </div>
+                {/* <div className={classes.animation}> */}
+                    <img className={classes.ring} src={Ring} alt=""></img>
+                {/* </div>               */}
+                    <div className={classes.innerRing}>
+                        <CircleImg {...profileProps} />
+                    </div>
                 <div className={classes.container}>
                     <div className={classes.nameAndButtonDiv}>
                         <h4 className={classes.userName}><strong>{profileProps.name}</strong></h4>

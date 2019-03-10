@@ -19,7 +19,7 @@
 }
 
 .container {
-    width: 60%;
+    width: 70%;
 }
 
 .info {
@@ -47,6 +47,30 @@
     justify-content: space-between;
 }
 
+.ring {
+    width: 28vh;
+    height: 28vh;
+    animation: ring-spin infinite 2s linear;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.innerRing {
+    position: relative;
+    top: 13px;
+    left: -162px;
+    z-index: 0;
+}
+
+@keyframes ring-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
 @media only screen and (max-width: 600px) {
     .parrentDiv {
         width: 95%;
@@ -65,6 +89,12 @@
     }
     .userName {
         margin-bottom: 2vh;
+    }
+    .innerRing {
+        position: static;
+    }
+    .ring {
+        display: none;
     }
 }
 
@@ -85,5 +115,17 @@
     }
     .userName {
         margin-bottom: 2vh;
+    }
+    .innerRing {
+        position: static;
+    }
+    .ring {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 995px) {
+    .nameAndButtonDiv {
+        width: 350px;
     }
 }

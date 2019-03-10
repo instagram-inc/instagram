@@ -470,6 +470,7 @@ const reducer = (state = initialState, action) => {
             let isAdmin = false;
             if (action.user.email === ADMIN_EMAIL && action.user.pass === ADMIN_PASS) {
                 isAdmin = true;
+                sessionStorage.setItem('isAdmin', JSON.stringify(isAdmin));
             } 
             const isLog = true;
             const users = [...state.users];
@@ -528,6 +529,7 @@ const reducer = (state = initialState, action) => {
 
         case LOGOUT_USER: {
             sessionStorage.removeItem('loggedUser');
+            sessionStorage.removeItem('isAdmin');
             const isLog = false;
             const logOut = null;
             const users = [...state.users];
