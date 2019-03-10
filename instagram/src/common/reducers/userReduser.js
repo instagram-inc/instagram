@@ -162,7 +162,7 @@ const initialState = {
                 {   
                     uid:3,
                     pid: 2,
-                    srcPostPic: "https://www.eatingonadime.com/wp-content/uploads/2016/07/easy-homemade-blueberry-muffins.jpg",
+                    srcPostPic: "http://www.runningwithspoons.com/wp-content/uploads/2018/01/One-Bowl-Chocolate-Chip-Banana-Oat-Muffins4.jpg",
                     comments:[],
                     description: 'Едни мъфинчета, като за през уикенда :)))',
                     likes: 468,

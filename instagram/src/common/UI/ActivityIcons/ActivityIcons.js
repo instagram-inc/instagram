@@ -39,9 +39,14 @@ class ActivityIcons extends React.Component {
         if (currentUser.savedPosts.some(post => post.uid === this.props.uid && post.pid === this.props.pid)) {
             save = SaveFull;
         }
-        console.log('ActivityIcons')
-        console.log('ActivityIcons')
-        console.log(currentUser.likedPosts)
+        
+        const usersWhoLikedThisPost = this.props.users.map(user => {
+            if (user.likedPosts.some(post => post.uid === this.props.uid && post.pid === this.props.pid)){
+                return user.name;
+            }
+        }).join(' ');
+
+        
         return (
             
             <React.Fragment>
@@ -58,7 +63,7 @@ class ActivityIcons extends React.Component {
                     alt=""
                     >
                     </img>
-                    <span class="tooltiptext">Like</span>
+                    <span class="tooltiptext">Like<br />{usersWhoLikedThisPost}</span>
                     </div>
 
                     <div className="tooltip">

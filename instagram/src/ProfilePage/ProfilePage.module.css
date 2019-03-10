@@ -26,6 +26,11 @@
     margin-top: 4vh;
     display: flex;
     justify-content: space-between;
+    
+}
+.link {
+    text-decoration: none;
+    color: black;
 }
 
 .post {

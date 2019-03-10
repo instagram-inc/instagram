@@ -79,7 +79,7 @@ const profilePage = props => {
                         <div className={classes.info}>
                             <span><strong>{profileProps.posts.length}</strong> posts</span>
                             {profileProps.followersOfMe.length ? 
-                             <Link to={"/list/followersOfMe/"+userINeed.uid}>
+                             <Link className={classes.link} to={"/list/followersOfMe/"+userINeed.uid}>
                              <span><strong>{profileProps.followersOfMe.length}</strong> followers</span>
                              </Link>
                             :
@@ -87,7 +87,7 @@ const profilePage = props => {
                             }
                             
                             {profileProps.followedUsers.length ? 
-                             <Link to={"/list/followedUsers/"+userINeed.uid}>
+                             <Link className={classes.link} to={"/list/followedUsers/"+userINeed.uid}>
                              <span><strong>{profileProps.followedUsers.length}</strong> following</span>
                              </Link>
                             :
