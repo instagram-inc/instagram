@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './upload.module.css';
-import Button from "../common/UI/Button/Button"
-import { onAddNewPost } from './actions/actions'
-import { connect } from 'react-redux';
+import Button from "../common/UI/Button/Button";
+import { onAddNewPost } from './actions/actions';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Upload extends React.Component {
     state = {
@@ -28,10 +28,8 @@ class Upload extends React.Component {
             {...this.state.uploadFormProperties, isPicButtonActive:true}
             :
             {...this.state.uploadFormProperties, isPicButtonActive:false}
-        })
-        
-
-    }
+        });
+    };
 
     postDataChecker = (data, urlType) =>{
         if (data && typeof data === 'string' && data.trim().length > 0) {
@@ -41,8 +39,8 @@ class Upload extends React.Component {
             return true;
         } else {
             return false;
-        }
-    }
+        };
+    };
 
     validateUrl = url => {
         const ACCEPTABLE_IMAGE_FORMATS = ['jpg', 'png', 'bmp'];
@@ -55,7 +53,6 @@ class Upload extends React.Component {
         return false;
     }
 
-
     setDescription = event => {
         const MAX_UPLOAD_LENGHT = 300;
         const value = event.target.value;
@@ -67,30 +64,30 @@ class Upload extends React.Component {
             {...this.state.uploadFormProperties, isDescButtonActive:true}
             :
             {...this.state.uploadFormProperties, isDescButtonActive:false}
-        })
+        });
+    };
 
-    }
     onAddNewPost = () => {
         if (this.state.uploadFormProperties.isPicButtonActive 
             && this.state.uploadFormProperties.isDescButtonActive) {
             const uid = this.props.currentUser.user.uid;
             const [lastPost] = this.props.currentUser.user.posts.sort((post1,post2) => post2.pid - post1.pid);
-            const pid = lastPost ? lastPost.pid + 1 : 1
+            const pid = lastPost ? lastPost.pid + 1 : 1;
             const srcPostPic = this.state.newPost.pic.trim();
             const description = this.state.newPost.desc.trim();
             const postToBeAdded = {uid, pid, srcPostPic, description};
             this.props.onAddNewPost(postToBeAdded);
             this.setState({...this.state,newPost: {...this.state.newPost, pic: '', desc: ''},
             uploadFormProperties: {...this.state.uploadFormProperties, isPicButtonActive:false, isDescButtonActive: false}})
-        }
-    }
+        };
+    };
 
     render() {
         let isBActive = false;
         if(this.state.uploadFormProperties.isPicButtonActive === true &&
             this.state.uploadFormProperties.isDescButtonActive === true) {
             isBActive = true;
-        }
+        };
 
         return (
             <React.Fragment>
@@ -127,7 +124,6 @@ class Upload extends React.Component {
                         >
                         </textarea>
                     </div>
-                    
                     <div className={classes.innerDiv}> 
                         <p className={classes.p}>Final step</p>
                         {isBActive ?
@@ -146,23 +142,22 @@ class Upload extends React.Component {
                     </div>
                 </div>
             </React.Fragment>
-        )
-    }
-}
+        );
+    };
+};
 
-const mapStateToProps = (state) => {
-    
+const mapStateToProps = (state) => {    
     return {
         currentUser: state.currentUser,
         getUserByUid: uid => state.users.find(user => user.uid === uid)
 
-    }
-}
+    };
+};
 const mapDispatchToProps = dispatch => {
     return {
         onAddNewPost: post => dispatch(onAddNewPost(post))
-    }
-}
+    };
+};
    
 
 export default connect(mapStateToProps, mapDispatchToProps)(Upload);

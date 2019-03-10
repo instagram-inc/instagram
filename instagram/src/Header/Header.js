@@ -1,8 +1,8 @@
 import React from 'react';
 import './Header.css';
+import Search from '../Search/Search';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Search from '../Search/Search';
 
 const instaHeader = props =>
 (<header className="Header-header">
@@ -40,14 +40,12 @@ const instaHeader = props =>
     }
 </header>);
 
-// export default instaHeader;
-
 const mapStateToProps = (state) => {
     
     return {
         currentUser: state.currentUser.user,
         users: state.users
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, null)(instaHeader);

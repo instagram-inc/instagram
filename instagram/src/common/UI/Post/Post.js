@@ -1,9 +1,8 @@
 import React from 'react';
 import HeaderOfPost from '../HeaderOfPost/HeaderOfPost';
 import PostPic from '../PostPic/PostPic';
-
-import ActivityIcons from '../ActivityIcons/ActivityIcons'
-import classes from './Post.module.css'
+import ActivityIcons from '../ActivityIcons/ActivityIcons';
+import classes from './Post.module.css';
 import ListOfComments from '../ListOfComments/ListOfComments';
 import AddAComment from '../AddAComment/AddAComment';
 import PostDescription from '../PostDescription/PostDescription';
@@ -41,18 +40,14 @@ class Post extends React.Component {
                 userName={user.name} 
                 comments={post.comments}/>
             </section>
-    
-        )
-    }
-
-}
+        );
+    };
+};
 
 const mapStateToProps = state => {
     return {
         users: state.users,
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, null)(Post);
-
-// export default Post

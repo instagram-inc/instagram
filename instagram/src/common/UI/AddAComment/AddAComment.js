@@ -1,10 +1,9 @@
 import React from 'react';
 import classes from './AddAComment.module.css';
-import { addNewComment } from './actions/actions';
-
-import { connect } from 'react-redux';
 import Button from '../Button/Button';
 
+import { addNewComment } from './actions/actions';
+import { connect } from 'react-redux';
 
 class AddAComment extends React.Component {
     
@@ -28,23 +27,23 @@ class AddAComment extends React.Component {
             {...this.state.commentProperties, isPostButtonActive:true}
             :
             {...this.state.commentProperties, isPostButtonActive:false}
-        })
-    }
+        });
+    };
 
     commentDataChecker = data =>{
         if (data && typeof data === 'string' && data.trim().length > 0) {
             return true;
         } else {
             return false;
-        }
+        };
 
-    }
+    };
 
     componentDidUpdate (prevProps) {
         if (prevProps.statOfTextAreaActive !== this.props.statOfTextAreaActive){
             this._input.focus();
-        }     
-    }
+        };     
+    };
 
 
     onAddNewComment = event => {
@@ -53,12 +52,12 @@ class AddAComment extends React.Component {
             const [lastId] = this.props.comments.sort((com1,com2) => com2.cid - com1.cid);
             const newCommentId = (lastId) ? lastId.cid + 1 : 1;
             let newComment = this.state.newComment.comment.trim();
-            let contentToBeAdded = {userId: this.props.userId, newCommentId, newComment, postId: this.props.postId}
+            let contentToBeAdded = {userId: this.props.userId, newCommentId, newComment, postId: this.props.postId};
             this.props.onAddNewComment(contentToBeAdded);
             this.setState({...this.state,newComment: {...newComment, comment: ''},
-            commentProperties: {...this.state.commentProperties, isPostButtonActive:false}})
-        }
-    }
+            commentProperties: {...this.state.commentProperties, isPostButtonActive:false}});
+        };
+    };
 
     render () {
         return (
@@ -75,7 +74,6 @@ class AddAComment extends React.Component {
                 isActive={this.state.commentProperties.isPostButtonActive} 
                 activeText={'Post'}
                 onAdd={event => this.onAddNewComment(event)}/>
-
             </div>
         )
     }
@@ -84,8 +82,7 @@ class AddAComment extends React.Component {
 const mapDispatchToProps = dispatch => {
     return {
         onAddNewComment: comment => dispatch(addNewComment(comment))
-    }
-}
+    };
+};
    
-
 export default connect(null, mapDispatchToProps)(AddAComment);

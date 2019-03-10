@@ -1,7 +1,7 @@
 import { DEFINE_CURRENT_USER,
-    NEW_USER,
-    LOGIN_USER,
-    LOGOUT_USER  } from '../UI/Post/actions/actionTypes';
+        NEW_USER,
+        LOGIN_USER,
+        LOGOUT_USER  } from '../UI/Post/actions/actionTypes';
 import { ADD_NEW_COMMENT } from '../UI/AddAComment/actions/actionsTypes';
 import { TOGGLE_IS_POST_LIKED, TOGGLE_IS_POST_SAVED } from '../UI/ActivityIcons/actions/actionTypes';
 import { ADD_A_FOLLOWER_TO_CURRENT_USER } from '../../Home/actions/actionsTypes';
@@ -433,24 +433,22 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case ADD_NEW_COMMENT: {
-            //За момента не барай защото работи
-            const stateUsers = [...state.users]
-            const currentUserIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.comment.userId)
-            const currentUser = stateUsers[currentUserIndex]
+            const stateUsers = [...state.users];
+            const currentUserIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.comment.userId);
+            const currentUser = stateUsers[currentUserIndex];
             const currentUserPosts = [...currentUser.posts];
-            const currentPost = currentUserPosts.findIndex(post => post.pid === action.comment.postId)
+            const currentPost = currentUserPosts.findIndex(post => post.pid === action.comment.postId);
             const comments = currentUser.posts[currentPost].comments.slice();
-            const userName = {name: state.currentUser.user.name, uid: state.currentUser.user.uid} 
-            console.log(userName)
+            const userName = {name: state.currentUser.user.name, uid: state.currentUser.user.uid};
             comments.push({userName, cid: action.comment.newCommentId, comment: action.comment.newComment});
             currentUser.posts[currentPost].comments = comments;
             stateUsers.splice(currentUserIndex, 1, currentUser);
-            return {...state, users: stateUsers}
+            return {...state, users: stateUsers};
         };
 
         case DEFINE_CURRENT_USER: {
-            const newState = {...state, currentUser: state.users.find(user => user.id === action.userID)}
-            return newState 
+            const newState = {...state, currentUser: state.users.find(user => user.id === action.userID)};
+            return newState; 
         };
         
         case NEW_USER: {
@@ -465,7 +463,6 @@ const reducer = (state = initialState, action) => {
         case LOGIN_USER: {
             const ADMIN_EMAIL = 'admin@admin.bg';
             const ADMIN_PASS = '123456';
-
             sessionStorage.setItem('loggedUser', JSON.stringify(action.user));
             let isAdmin = false;
             if (action.user.email === ADMIN_EMAIL && action.user.pass === ADMIN_PASS) {
@@ -478,10 +475,10 @@ const reducer = (state = initialState, action) => {
         };
 
         case TOGGLE_IS_POST_LIKED: {
-            const stateUsers = [...state.users]
+            const stateUsers = [...state.users];
             const currentLikeUserIndex = stateUsers.findIndex(user => user.uid === state.currentUser.user.uid);
             const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.status.uid);
-            const user = stateUsers[userIndex]
+            const user = stateUsers[userIndex];
             const userPosts = [...user.posts];
             const currentPost = userPosts.findIndex(post => post.pid === action.status.pid);
             const { uid, pid } = action.status;
@@ -489,35 +486,36 @@ const reducer = (state = initialState, action) => {
             if (!stateUsers[currentLikeUserIndex].likedPosts.some(post => post.uid === uid && post.pid === pid)){
                 const status = {uid,pid,};
                 stateUsers[userIndex].posts[currentPost].likes = stateUsers[userIndex].posts[currentPost].likes + 1;
-                stateUsers[currentLikeUserIndex].likedPosts = [status, ...stateUsers[currentLikeUserIndex].likedPosts]
+                stateUsers[currentLikeUserIndex].likedPosts = [status, ...stateUsers[currentLikeUserIndex].likedPosts];
             } else {
                 stateUsers[currentLikeUserIndex].likedPosts = stateUsers[currentLikeUserIndex].likedPosts.filter(post => post.uid !== uid && post.pid !== pid);
                 stateUsers[userIndex].posts[currentPost].likes = stateUsers[userIndex].posts[currentPost].likes - 1;
             }
-            return {...state, users: stateUsers}
+            return {...state, users: stateUsers};
 
             
         };
 
         case TOGGLE_IS_POST_SAVED: {
-            const stateUsers = [...state.users]
+            const stateUsers = [...state.users];
             const curentSaveingUserIndex = stateUsers.findIndex(userIndex => userIndex.uid === state.currentUser.user.uid);
             const { uid, pid } = action.status;
 
             if (!stateUsers[curentSaveingUserIndex].savedPosts.some(post => post.uid === uid && post.pid === pid)){
                 const status = {uid,pid};
-                stateUsers[curentSaveingUserIndex].savedPosts = [status, ...stateUsers[curentSaveingUserIndex].savedPosts]
+                stateUsers[curentSaveingUserIndex].savedPosts = [status, ...stateUsers[curentSaveingUserIndex].savedPosts];
             } else {
                 const indexOfPost = stateUsers[curentSaveingUserIndex].savedPosts.findIndex(post => post.uid === uid && post.pid === pid);
-                stateUsers[curentSaveingUserIndex].savedPosts.splice(indexOfPost, 1)
+                stateUsers[curentSaveingUserIndex].savedPosts.splice(indexOfPost, 1);
             }
-            return {...state, users: stateUsers}
+            return {...state, users: stateUsers};
         };
 
         case ADD_A_FOLLOWER_TO_CURRENT_USER: {
-            const users = [...state.users]
+            const users = [...state.users];
             const folloedUserIndex = users.findIndex(user => user.uid === action.status.uid);
             const currentUserIndex = users.findIndex(user => user.uid === state.currentUser.user.uid);
+
             if (action.status.status){
                 users[currentUserIndex].followedUsers.push(action.status.uid);
                 users[folloedUserIndex].followersOfMe.push(state.currentUser.user.uid);
@@ -525,7 +523,7 @@ const reducer = (state = initialState, action) => {
                 users[currentUserIndex].followedUsers = users[currentUserIndex].followedUsers.filter(uid => uid !== action.status.uid);
                 users[folloedUserIndex].followersOfMe = users[folloedUserIndex].followersOfMe.filter(uid => uid !== state.currentUser.user.uid);
             }
-            return {...state, users, currentUser: {...state.currentUser, user: users[currentUserIndex]}}
+            return {...state, users, currentUser: {...state.currentUser, user: users[currentUserIndex]}};
         };
 
         case LOGOUT_USER: {
@@ -545,10 +543,10 @@ const reducer = (state = initialState, action) => {
             const {pid, uid, srcPostPic, description} = action.post;
             //Compile new post:
             const newPost = {pid, uid, srcPostPic, comments, description, likes};
-            const stateUsers = [...state.users]
+            const stateUsers = [...state.users];
             const userIndex = stateUsers.findIndex(userIndex => userIndex.uid === action.post.uid);
             stateUsers[userIndex].posts.push(newPost);
-            return {...state, users: stateUsers}
+            return {...state, users: stateUsers};
         };
 
         case DELETE_USER: {
@@ -559,15 +557,11 @@ const reducer = (state = initialState, action) => {
         };
         
         case DELETE_POST: {
-            console.log('user: ' + action.uid)
-            console.log('post: ' + action.pid)
             const newUsers = [...state.users];
-            console.log(newUsers)
-            console.log(newUsers.posts)
             const user = newUsers.find(user => user.uid === action.uid);
             const indexForDelete = user.posts.findIndex(post => post.pid === action.pid);
             user.posts.splice(indexForDelete, 1);
-            console.log(user.posts)
+
             return {...state, users: newUsers};
         };
 
@@ -580,4 +574,4 @@ const reducer = (state = initialState, action) => {
     };  
 };
 
-export default reducer
+export default reducer;

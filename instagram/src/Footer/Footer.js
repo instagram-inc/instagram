@@ -10,6 +10,6 @@ const footer = () =>
         </Link>
         <span>&copy; 2019 INSTAGRAM &nbsp;&nbsp;&nbsp; *Mihail &amp; Alex*</span>
     </div>
-</footer>)
+</footer>);
 
 export default footer;

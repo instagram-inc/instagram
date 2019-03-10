@@ -4,5 +4,5 @@ export const searchForUsers = requestedUids => {
     return {
         type: SEARCH_FOR_USERS,
         requestedUids
-    }
-} 
+    };
+}; 

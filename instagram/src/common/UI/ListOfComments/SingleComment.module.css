@@ -20,9 +20,6 @@
     padding: 0;
     margin: auto 0;
     text-align: left;
-    
-    
-
 }
 
 .nameContainer {
@@ -31,8 +28,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center
-    
+    justify-content: center  
 }
 
 .commentContainer{
@@ -46,6 +42,7 @@
     padding-right: 17px; 
     box-sizing: content-box;
 }
+
 .commentContainer::-webkit-scrollbar {
     display: none;
 }

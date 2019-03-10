@@ -34,7 +34,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* overflow-y: scroll; */
     padding-right: 1vh;
     box-sizing: content-box;
 }

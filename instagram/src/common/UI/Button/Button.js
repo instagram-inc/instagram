@@ -5,12 +5,12 @@ import classes from './Button.module.css'
 class Button extends React.Component {
 
     render() {
-        let {active, notActive} = classes
+        let {active, notActive} = classes;
         let buttonStyle = [active];
         if (!this.props.isActive) {
           buttonStyle = [...buttonStyle,notActive];
-        }
-        buttonStyle = buttonStyle.join(' ') 
+        };
+        buttonStyle = buttonStyle.join(' ');
         
         return (
             <button
@@ -20,9 +20,8 @@ class Button extends React.Component {
             >
             {this.props.isActive ?  this.props.activeText : this.props.text  || this.props.activeText}
             </button>
-
-        )
-    }
-} 
+        );
+    };
+}; 
 
 export default Button;

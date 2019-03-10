@@ -4,5 +4,5 @@ export const onAddNewPost = post => {
     return {
         type: ADD_NEW_POST,
         post
-    }
-} 
+    };
+}; 

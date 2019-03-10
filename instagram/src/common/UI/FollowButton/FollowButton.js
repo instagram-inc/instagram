@@ -12,12 +12,12 @@ class FollowButton extends Component {
     }
 
     render() {
-        let {followButton, followed} = classes
+        let {followButton, followed} = classes;
         let buttonStyle = [followButton];
         if (this.state.isFollowing) {
           buttonStyle = [...buttonStyle,followed];
         }
-        buttonStyle = buttonStyle.join(' ') 
+        buttonStyle = buttonStyle.join(' ');
         
         return (
             <button
@@ -26,10 +26,8 @@ class FollowButton extends Component {
             >
             {this.state.isFollowing ? "Following" : "Follow"}
             </button>
-        )
-    }
-} 
-
-
+        );
+    };
+};
 
 export default FollowButton;

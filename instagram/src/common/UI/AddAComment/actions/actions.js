@@ -4,5 +4,5 @@ export const addNewComment = comment => {
     return {
         type: ADD_NEW_COMMENT,
         comment
-    }
-} 
+    };
+}; 
