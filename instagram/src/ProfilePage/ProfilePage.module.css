@@ -19,7 +19,7 @@
 }
 
 .container {
-    width: 70%;
+    width: 60%;
 }
 
 .info {
@@ -28,6 +28,7 @@
     justify-content: space-between;
     
 }
+
 .link {
     text-decoration: none;
     color: black;
@@ -46,28 +47,6 @@
     display: flex;
     justify-content: space-between;
 }
-
-.ring {
-    width: 28vh;
-    height: 28vh;
-    animation: ring-spin infinite 2s linear;
-    pointer-events: none;
-}
-
-.innerRing {
-    position: relative;
-    top: 17px;
-    left: -167px;
-}
-
-@keyframes ring-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
 
 @media only screen and (max-width: 600px) {
     .parrentDiv {
@@ -119,11 +98,5 @@
     }
     .ring {
         display: none;
-    }
-}
-
-@media only screen and (min-width: 995px) {
-    .nameAndButtonDiv {
-        width: 350px;
     }
 }

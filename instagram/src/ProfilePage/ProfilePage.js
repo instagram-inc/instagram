@@ -43,8 +43,7 @@ const profilePage = props => {
     return ( 
         <React.Fragment>
             <div className={classes.parrentDiv}>
-                <img className={classes.ring} src={Ring} alt="" />
-                <div className={classes.innerRing}>
+                <div>
                     <CircleImg {...profileProps} />
                 </div>
                 <div className={classes.container}>
