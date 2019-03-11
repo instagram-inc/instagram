@@ -76,7 +76,7 @@ const initialState = {
             circleImgWidth: 30,
             srcProfilePic: "http://www.howtogeek.com/wp-content/uploads/2016/11/650x433xfreddie.jpg.pagespeed.gp+jp+jw+pj+js+rj+rp+rw+ri+cp+md.ic.X9S8A5J_bd.jpg",
             followedUsers: [],
-            followersOfMe: [],
+            followersOfMe: [1],
             likedPosts: [],
             savedPosts:[],
             posts: [

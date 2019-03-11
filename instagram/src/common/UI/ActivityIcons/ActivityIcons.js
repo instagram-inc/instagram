@@ -43,7 +43,7 @@ class ActivityIcons extends React.Component {
             if (user.likedPosts.some(post => post.uid === this.props.uid && post.pid === this.props.pid)){
                 return user.name;
             }
-        }).join(' ');
+        }).join(' ').toLowerCase();
         const likeMsg = usersWhoLikedThisPost.trim().length ? 'Likes:' : 'Like';
 
         return (
